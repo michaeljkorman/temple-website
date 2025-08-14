@@ -3,34 +3,723 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Temple FAQ & Audio</title>
-<link rel="stylesheet" href="https://unpkg.com/pico.css">
+<title>Temple FAQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=Alegreya+Sans&family=Lora&display=swap" rel="stylesheet">
 <style>
-  body { max-width: 800px; margin: auto; padding: 2rem; }
-  audio { width: 100%; margin: 1rem 0; }
-  .faq { margin-bottom: 2rem; }
+  body {
+    background-color: #6B6B6B;
+    font-family: 'Lora', serif;
+    color: #fff;
+    margin: 0;
+    padding: 2rem 1rem;
+  }
+
+  .faq-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: url('/images/texture.png') repeat; /* subtle temple texture */
+    border-radius: 2rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    backdrop-filter: blur(2px);
+  }
+
+  .faq-section {
+    margin-bottom: 2rem;
+  }
+
+  .faq-section h2 {
+    font-family: 'Alegreya', serif;
+    font-weight: bold;
+    color: #ffd700; /* goldish for temple feel */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+  }
+
+  .faq-item {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    padding: 1rem;
+    background-color: rgba(24,18,28,0.8);
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .faq-item h3 {
+    font-family: 'Alegreya Sans', sans-serif;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding-left: 1rem;
+    color: #fff;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+  }
 </style>
 </head>
 <body>
-<h1>Temple FAQ & Audio Guide</h1>
+  <div class="faq-container">
+    
+    <div class="faq-section">
+      <h2>Part 1</h2>
+         <div class="faq-item">
+        <h3>What’s “the stone”?</h3>
+        <div class="faq-answer">
+          <p>The “first stone” is a marker of progress in this world. There are 10 stones. Each demands a certain amount of money. When a stone gets its amount, it lights up, and we move to the next.</p>
+        </div>
+   </div>
 
-<h2>Listen to the Audio Guide</h2>
-<audio controls>
-  <source src="temple-audio.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+   <div class="faq-item">
+        <h3>Why $616?</h3>
+        <div class="faq-answer">
+          <p>It’s a mythical number. It also loosely covers my actual expenses.</p>
+        </div>
+   </div>
 
-<div class="faq">
-  <h2>Q: What is the temple?</h2>
-  <p>A: [Your FAQ answer goes here]</p>
-</div>
+   <div class="faq-item">
+        <h3>How do I give?</h3>
+        <div class="faq-answer">
+          <p>Go to the link in my bio and click “Temple Offering – $11.”</p>
+        </div>
+   </div>
 
-<div class="faq">
-  <h2>Q: How do I visit?</h2>
-  <p>A: [Your FAQ answer goes here]</p>
-</div>
+   <div class="faq-item">
+        <h3>What’s the money for?</h3>
+        <div class="faq-answer">
+          <p>It goes to me. To help me keep making things like this. This is a business, not a charity.</p>
+        </div>
+   </div>
 
-<!-- Repeat FAQ blocks as needed -->
+   <div class="faq-item">
+        <h3>Is this a joke?</h3>
+        <div class="faq-answer">
+          <p>No.</p>
+        </div>
+   </div>
 
+   <div class="faq-item">
+        <h3>Is this a scam?</h3>
+        <div class="faq-answer">
+          <p>No.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is this a cult?</h3>
+        <div class="faq-answer">
+          <p>No.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What do I get if I participate?</h3>
+        <div class="faq-answer">
+          <p>You get to move the story forward.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What do I get if the stone lights up?</h3>
+        <div class="faq-answer">
+          <p>A public discourse (livestream). A miracle that wouldn’t have happened without you. That’s not nothing.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What happens if the stone doesn’t light up?</h3>
+        <div class="faq-answer">
+          <p>The priest will keep calling out until the devoted step forward. He’s patient.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why should I care about some random guy’s stones?</h3>
+        <div class="faq-answer">
+          <p>You shouldn’t.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How do I know this is legit?</h3>
+        <div class="faq-answer">
+          <p>I’ve been doing work on Instagram for over 5 years. I’m not going to vanish with your money.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Can I give more or less than $11?</h3>
+        <div class="faq-answer">
+          <p>Yes. For more, just choose a higher quantity.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What if I don’t want to give money?</h3>
+        <div class="faq-answer">
+          <p>Then participate. Don’t just like a post.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is this a one-time thing or ongoing?</h3>
+        <div class="faq-answer">
+          <p>The temple runs on devotion, not subscriptions.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What if I change my mind?</h3>
+        <div class="faq-answer">
+          <p>No refunds. The temple accepts only firm offerings.</p>
+        </div>
+   </div>
+
+   <h2>Part 2</h2>
+      <div class="faq-item">
+        <h3>Are you really a priest?</h3>
+        <div class="faq-answer">
+          <p>No. The priest is a character in the story, loosely based on me.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What’s “the ritual”?</h3>
+        <div class="faq-answer">
+          <p>The ritual is my Instagram story—a stream of content posted with a rhythm and purpose.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What are “artifacts”?</h3>
+        <div class="faq-answer">
+          <p>Digital creations—usually PDFs—that hold art, poetry, or myth. They deepen the world of the temple.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What are “the scrolls”?</h3>
+        <div class="faq-answer">
+          <p>The Fragmented Scrolls are an artifact (PDF) written as scripture and lore. They explain how I designed this whole thing.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What’s “the flame”?</h3>
+        <div class="faq-answer">
+          <p>A metaphor for the energy that fuels my content creation.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What are “the gods”?</h3>
+        <div class="faq-answer">
+          <p>Characters in the story representing higher forces.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Do I have to give money to be part of the temple?</h3>
+        <div class="faq-answer">
+          <p>No. To be part of the temple, all you need is to talk about it as if it matters.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>If I don’t give money, will that hurt the temple?</h3>
+        <div class="faq-answer">
+          <p>No. The temple existed long before you showed up. It needs money, but not your money specifically.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What happened to all the piano and meditation content you used to post?</h3>
+        <div class="faq-answer">
+          <p>It’s all part of the temple now. It was always part of a bigger project—I just didn’t have a name for it until now.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is this a religion?</h3>
+        <div class="faq-answer">
+          <p>No.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is this a spiritual community?</h3>
+        <div class="faq-answer">
+          <p>No. It’s an art project turned business. It means a lot to me, and I hope you find meaning in it too.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is it okay to watch without participating?</h3>
+        <div class="faq-answer">
+          <p>Yes.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What does “the priest is bleeding on the stones” mean?</h3>
+        <div class="faq-answer">
+          <p>It’s a metaphor for pouring your heart into something and not getting what you hoped for in return.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What does it mean for the ritual to “stall”?</h3>
+        <div class="faq-answer">
+          <p>The ritual stalls when offerings slow down. Offerings keep it alive—they motivate me to keep posting. When they stop, I feel it. That’s when I say “the ritual stalled.”</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What are “drops”?</h3>
+        <div class="faq-answer">
+          <p>Drops are pieces of content that take effort or feel risky to post. FAQs like this aren’t drops—they don’t carry that risk.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why do drops need money to be released?</h3>
+        <div class="faq-answer">
+          <p>Because they cost me something—time, energy, heart. Content just for vibe or clarity doesn’t cost that much. When I put my heart on the line, I need to be paid. That’s the core metaphor of the temple.</p>
+        </div>
+   </div>
+
+   <h2>Part 3</h2>
+      <div class="faq-item">
+        <h3>What happens if I stop giving? Does the temple die?</h3>
+        <div class="faq-answer">
+          <p>The temple doesn’t depend on one person’s money. But if *everyone* stopped, I’d have to keep going without money—and that can only last so long.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Can anyone become a priest, or is it just you?</h3>
+        <div class="faq-answer">
+          <p>Just me. My brain’s wired in a way that makes sharing...unlikely. But sometimes the temple recognizes priests from other lands.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What’s the ultimate goal of the temple?</h3>
+        <div class="faq-answer">
+          <p>To carve out a place where myth-makers, chaotic-minded wanderers, and rogue builders can thrive in a world that prefers straight lines.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How do the stones connect to the real world?</h3>
+        <div class="faq-answer">
+          <p>They mark real goals, but I blur the details to keep the story intact.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why is money tied to myth? Isn’t that strange?</h3>
+        <div class="faq-answer">
+          <p>Not at all. Money is a myth we’ve charged with real power. Pretending money and myth should be separate is another myth—a bad one.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What if I don’t believe in gods or myths — can I still participate?</h3>
+        <div class="faq-answer">
+          <p>Yes. You don’t have to believe anything. Think of it like acting, roleplay, or a video game. We’re telling a story together.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What kind of people does the temple repel?</h3>
+        <div class="faq-answer">
+          <p>People with rigid ideas about business, religion, social media, or reality. People allergic to fantasy.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is the temple open to change or is it fixed?</h3>
+        <div class="faq-answer">
+          <p>It changes, but only within its own logic. It’s chaos, solidified.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What’s the meaning behind the glitch, decay, and dark vibe?</h3>
+        <div class="faq-answer">
+          <p>We live in a broken, stuck world. The temple memorializes that, but also cracks it open—a return to something simpler and more playful. That takes a little ego death.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How do offerings actually move the ritual?</h3>
+        <div class="faq-answer">
+          <p>Offerings change what I post. The money is real, my work is real, and the content is symbolic—the link between myth and reality.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why does the priest bleed on the stones?</h3>
+        <div class="faq-answer">
+          <p>Because he’s given a lot to the temple, and gotten very little back.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What’s the role of community here?</h3>
+        <div class="faq-answer">
+          <p>I don’t know yet. This isn’t a social temple. But I like to think we’re connected on some subtle level, even if we never gather in the same room.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How can I participate without giving money?</h3>
+        <div class="faq-answer">
+          <p>Talk about the temple like it matters. Read the archives. Imitate it. Make things. Sell things. Spread the myth.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why trust a priest who admits he’s bleeding on the stones?</h3>
+        <div class="faq-answer">
+          <p>Maybe you shouldn’t. But I’m the one building the temple. Someone’s got to.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What’s the story behind the number 616?</h3>
+        <div class="faq-answer">
+          <p>It’s a mythical number, a palindrome, and it loosely matches some of my real expenses.</p>
+        </div>
+   </div>
+
+   <h2>Part 4</h2>
+      <div class="faq-item">
+        <h3>Why does the temple demand offerings instead of just accepting goodwill?</h3>
+        <div class="faq-answer">
+          <p>Because the temple needs devotion, not just money. Offerings must come from people who want to be part of the temple, not just “support a cause.” That’s how it becomes something bigger than me.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Isn’t asking for money upfront off-putting?</h3>
+        <div class="faq-answer">
+          <p>Yes. And that’s the point. If you’re here for the right reasons, it won’t feel off-putting—it’ll feel obvious. If you’re not, you’ll walk away. The temple doesn’t pretend to be something it’s not just to keep you comfortable.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What kind of person would pay for the temple?</h3>
+        <div class="faq-answer">
+          <p>Entrepreneurs, artists, musicians, teachers, coaches. Anyone who already gets that investing in myth and ritual is part of the grind. The temple gives them permission to own their weirdness with purpose.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How is this different from typical crowdfunding or donations?</h3>
+        <div class="faq-answer">
+          <p>Typical crowdfunding is usually about getting stuff done or fixing a problem. People give because they want a product, a reward, or to help a cause.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What if I can’t afford to give? Does that mean I’m not part of the temple?</h3>
+        <div class="faq-answer">
+          <p>No. To be part of the temple, you only have to act like it matters. Money is just one way—and often the easiest way—to do that.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why does the priest come across as harsh or demanding?</h3>
+        <div class="faq-answer">
+          <p>Because he’s suffered. Because he takes his role as keeper of the flame seriously. He’s not a customer-service rep.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is the temple just about money or something deeper?</h3>
+        <div class="faq-answer">
+          <p>Something deeper. Money is simply a charged form of myth—a way to make meaning real.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How do offerings affect the ritual and the community?</h3>
+        <div class="faq-answer">
+          <p>Offerings shape the story. More offerings mean riskier, richer content. Fewer offerings mean the temple dims, sometimes literally. Everyone feels it.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What happens if people don’t give? Does the temple collapse?</h3>
+        <div class="faq-answer">
+          <p>Eventually, yes. The temple doesn’t need *your* money specifically, but it needs money. If everyone stops, I can only run it without funds for so long.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why should I trust a priest who admits to being flawed or “asshole-y”?</h3>
+        <div class="faq-answer">
+          <p>Maybe you shouldn’t. But someone has to build the temple, and I’m the one doing it.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Can someone participate without giving money?</h3>
+        <div class="faq-answer">
+          <p>Yes. Take it seriously. Share it. Talk about it. Read the archives. Imitate it. Make things and sell them. Act like it matters.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What makes this “asshole” approach different from being simply rude or</h3>
+        <div class="faq-answer">
+          <p></p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>exploitative?</h3>
+        <div class="faq-answer">
+          <p>It’s theater with a purpose. The priest is a character who cares about the disciples and the ritual. Sometimes that means hurting feelings to keep the higher calling alive. If he doesn’t tend the flame, no one will. But he’s human—maybe he’s wrong. You decide.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How does demanding offerings create respect rather than resentment?</h3>
+        <div class="faq-answer">
+          <p>It makes the cost clear. It sets a threshold for entry. “The temple took effort</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why is it important to push boundaries and make people uncomfortable?</h3>
+        <div class="faq-answer">
+          <p>Because without boundaries there is no form, and without form there’s nothing to</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How does the temple maintain balance between being demanding and being</h3>
+        <div class="faq-answer">
+          <p></p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>inclusive?</h3>
+        <div class="faq-answer">
+          <p>It’s open to anyone—but only if they treat it as sacred.</p>
+        </div>
+   </div>
+
+   <h2>Part 5</h2>
+      <div class="faq-item">
+        <h3>Why is a pianist building a temple and asking for offerings?</h3>
+        <div class="faq-answer">
+          <p>Because the piano world was rigid tradition and groupthink—no room for individuality or growth. I got pushed out, but I’m still a pianist. The temple includes piano but goes far beyond it. Offerings aren’t just money—they’re part of the ritual that keeps this alive.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What made you shift from being a piano guy to this whole temple concept?</h3>
+        <div class="faq-answer">
+          <p>I was never just a “piano guy.” The temple began in 2020 when I dove into social media marketing to sell a piano course. As the pandemic tore down the old world, I started sharing more of myself. Now it’s all one story, under one roof—the temple.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is the temple a side project or your main focus now?</h3>
+        <div class="faq-answer">
+          <p>It’s my main focus. Has been since 2020. The name is new, but the work isn’t.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How does your background in music influence the temple’s vibe and work?</h3>
+        <div class="faq-answer">
+          <p>Music taught me why ritual matters. I wasn’t just practicing piano—I was learning how to practice everything.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How does your music relate to the temple and its rituals?</h3>
+        <div class="faq-answer">
+          <p>*Learn Piano in 5 Days* has been folded into the temple’s framework. Popular piano videos are disappearing, replaced by glitchy temple transmissions to preserve sanctity. _Every Tiny Thing_ is a relic from before the collapse. _You Hold the Key_ is now the temple anthem. _Take Yourself Seriously_ is sacred scripture. Even the blog posts are fragments of old transmissions. Everything’s being templified.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Will you still share music content, or is this replacing that?</h3>
+        <div class="faq-answer">
+          <p>Nothing’s replaced—everything is reframed within the temple’s context.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How does the temple connect with your personal story and values?</h3>
+        <div class="faq-answer">
+          <p>The temple _is_ my story. It’s designed for my mind, a place where I don’t have to fight to exist. Maybe it’ll fit yours too.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What does the temple mean to you beyond just money?</h3>
+        <div class="faq-answer">
+          <p>Nothing. And that’s the point—when you ask that, you trivialize money. Most people spend 8 hours a day doing work they hate. Ask *them* what their life means beyond money. The temple lets me get paid without losing meaning.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How can someone who loves your music relate to the temple?</h3>
+        <div class="faq-answer">
+          <p>Look beneath the music’s surface. The temple is about _process_, not product.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is this temple stuff just a metaphor or something you really believe?</h3>
+        <div class="faq-answer">
+          <p>It’s metaphor. I’m not literally a priest guarding ancient stones.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>If I make an offering, what should I expect in future asks?</h3>
+        <div class="faq-answer">
+          <p>An offering means you’re in the circle. I’ll call on you again—devotion is ongoing. If you step back, I’ll feel it. This isn’t a faceless transaction.</p>
+        </div>
+   </div>
+      
+      <h2>Part 6</h2>
+
+   <div class="faq-item">
+        <h3>What is “the temple” or “the ritual” you keep referencing?</h3>
+        <div class="faq-answer">
+          <p>The temple is this whole project. The ritual is the ongoing stream of content—the living story. It’s my personal myth, designed for my mind, a space where I don’t have to fight just to exist. Maybe you’ll find it meaningful too.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Is this an art project, a spiritual practice, or something else?</h3>
+        <div class="faq-answer">
+          <p>It’s all of those and a business too. Ritual, art, and commerce—woven together intentionally.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How do these pieces connect? Is there a bigger story or meaning?</h3>
+        <div class="faq-answer">
+          <p>Everything is connected. This isn’t random. It’s a story you join by showing up—by making an offering.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>How can someone participate or get involved?</h3>
+        <div class="faq-answer">
+          <p>By making an offering. That’s the best way to cross the threshold.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What does “11 down, 99 to go” refer to?</h3>
+        <div class="faq-answer">
+          <p>The first stone in the Pillar of Stones needs $110 to light up. We’ve got $11 so far—$99 left.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What is the “First Stone” highlight?</h3>
+        <div class="faq-answer">
+          <p>It’s the first piece of the Pillar of Stones. Lighting it requires an offering of $110.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What’s “Joint Quest” about?</h3>
+        <div class="faq-answer">
+          <p>It’s a new chapter that began when an offering unlocked the gate to the Pillar of Stones. Now we’re working on lighting those stones.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What do “Tuning” and “2nd Tuning” highlights mean?</h3>
+        <div class="faq-answer">
+          <p>“Tuning” is when the ritual stalled because offerings stopped. The priest (me) stepped back to listen, adjust, and speak deliberately—like tuning a guitar until every note rings clearly.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why is your Instagram story text gray on a black background?</h3>
+        <div class="faq-answer">
+          <p>Because the flame went out. Offerings slowed, so the ritual darkened to reflect that. It’ll light up again when offerings return.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why is your profile picture gray, and why does “The Ritual” highlight show gray smoke?</h3>
+        <div class="faq-answer">
+          <p>Same reason. The ritual’s flame went dark. It’s a visual signal that this isn’t business as usual.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What does the text “(this drop has been released)” mean on your reels?</h3>
+        <div class="faq-answer">
+          <p>Drops are special ritual content—released only after an offering is made. That text marks when a drop has landed.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>What does your bio mean with “The ritual is stirring” and “Upon lighting the first stone…”?</h3>
+        <div class="faq-answer">
+          <p>The ritual was stalled, but now it’s waking up. Lighting the first stone means hitting that $110 goal to reignite the flame.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why is your username “no.michael.here”?</h3>
+        <div class="faq-answer">
+          <p>It’s a nod to the Buddhist concept of “no self”—reminding you this isn’t about me, but the story we build.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Why does your page look so minimalistic and mysterious?</h3>
+        <div class="faq-answer">
+          <p>Because every detail matters. When the flame dies, things go dark. The temple isn’t a cozy place—it’s sacred and serious.</p>
+        </div>
+   </div>
+
+   <div class="faq-item">
+        <h3>Are you promoting something or just sharing your personal journey?</h3>
+        <div class="faq-answer">
+          <p>This _is_ a business. I’m inviting people to participate in the ritual. But it’s rooted in my personal journey—because no meaningful work isn’t.</p>
+        </div>
+   </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
