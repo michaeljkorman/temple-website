@@ -34,14 +34,23 @@
       color: #A3A3A3;
   }
 
-  
-
   .getting-started {
-      font-size: 1.2rem;
+      margin-bottom: 3rem;
   }
 
   .getting-started li {
       margin-bottom: 1.2rem;
+  }
+
+  @counter-style getting-started {
+      system: fixed;
+      symbols: "🎧" "📲" "💸";
+      suffix: " ";
+  }
+
+  .getting-started {
+      list-style: getting-started;
+      font-size: 1.2rem;
   }
 
   @media (max-width: 600px) {
@@ -52,7 +61,6 @@
 	  border-radius: 0px;
       }
   }
-
 
   .faq-section {
     margin-bottom: 2rem;
@@ -121,7 +129,7 @@
     <ol class="getting-started">
     <li>
       <p>
-	Listen to the AI-generated podcast:
+	<b>Listen</b> to the AI-generated podcast:
       </p>
 
     <audio controls>
@@ -132,9 +140,9 @@ _and_Personal_Mythology.m4a?rlkey=csg3vru0gx46npnot0fspaxhn&st=7tg7n8um&raw=1" t
     </audio>
     </li>
 
-    <li>Read the 'Enter Here' highlight on the Instagram account (<a href="https://instagram.com/no.michael.here">@no.michael.here</a>).</li>
+    <li><b>Read</b> the <a href="https://www.instagram.com/stories/highlights/17910029955053686/">Enter Here</a> highlight on the Instagram account (@no.michael.here).</li>
 
-    <li>Signal you&rsquo;re ready to play the game by making an <a href="https://offering.michaelkorman.com/">$11 offering</a>.</li>
+    <li><b>Offer</b> $11 to <a href="https://offering.michaelkorman.com/">signal you&rsquo;re ready</a> to play the game.</li>
 	  
     </ol>
 
