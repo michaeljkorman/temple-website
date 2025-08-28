@@ -1,1032 +1,908 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Temple FAQ</title>
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=Alegreya+Sans&family=Lora&display=swap" rel="stylesheet">
-<style>
-  body {
-    background-color: #5B5B5B;
-    font-family: 'Lora', serif;
-    color: #eee;
-    margin: 0;
-    padding: 0;
-    font-size: 1.2rem;
-    justify-content: center;
-    display: flex;
-  }
 
-  .faq-container {
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temple FAQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=Alegreya+Sans&family=Lora&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      background-color: #5B5B5B;
+      font-family: 'Lora', serif;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+      font-size: 1.2rem;
+      justify-content: center;
+      display: flex;
+    }
+
+    .faq-container {
       position: relative;
       max-width: 520px;
       width: 100%;
       /*      margin: 0 auto;*/
       margin: 3rem 1rem;
       padding: 2rem 1.5rem;
-      background: url('/images/texture.png') repeat; /* subtle temple texture */
+      background: url('/images/texture.png') repeat;
+      /* subtle temple texture */
       border-radius: 2rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(2px);
-  }
+    }
 
-  .overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(rgba(255,255,255,0.2), rgba(0,0,0,0.1));
-    border-radius: 24px;
-    pointer-events: none;
-    z-index: 0;
-  }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1));
+      border-radius: 24px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  a {
+    a {
       color: #2B272E;
-  }
+    }
 
-  .faq-item a {
+    details a {
       color: #A3A3A3;
-  }
+    }
 
-  .getting-started {
+    .getting-started {
       margin-bottom: 3rem;
-  }
+    }
 
-  .getting-started li {
+    .getting-started li {
       margin-bottom: 1.5rem;
-  }
+    }
 
-  @counter-style getting-started {
+    @counter-style getting-started {
       system: fixed;
       symbols: "🎧" "📲" "💸" "🔑";
       suffix: " ";
-  }
+    }
 
-  .getting-started {
+    .getting-started {
       list-style: getting-started;
       font-size: 1.4rem;
-  }
+    }
 
-  @media (max-width: 600px) {
+    @media (max-width: 600px) {
       .faq-container {
-	  width: 100%;
-	  margin: 0;
-	  padding: 2rem 1rem;
-	  border-radius: 0px;
+        width: 100%;
+        margin: 0;
+        padding: 2rem 1rem;
+        border-radius: 0px;
       }
-      
+
       .overlay {
-	  border-radius: 0px;
+        border-radius: 0px;
       }
 
-  }
+    }
 
-  .content {
+    .content {
       position: relative;
       z-index: 1;
-  }
+    }
 
-  .faq-section {
-    margin-bottom: 2rem;
-  }
+    details {
+      margin-bottom: 2rem;
+    }
 
-  h2 {
-    font-family: 'Alegreya', serif;
-    font-weight: bold;
-    color: #ffd700; /* goldish for temple feel */
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-  }
+    h2 {
+      font-family: 'Alegreya', serif;
+      font-weight: bold;
+      color: #ffd700;
+      /* goldish for temple feel */
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
 
-  .faq-item {
-    margin-bottom: 1rem;
-    cursor: pointer;
-    padding: 1rem;
-    background-color: rgba(24,18,28,0.8);
-    border-radius: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-  }
+    details {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      cursor: pointer;
+      background-color: rgba(24, 18, 28, 0.8);
+      border-radius: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
 
-  .faq-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
+    details:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
 
-  .faq-item h3 {
-    font-family: 'Alegreya Sans', sans-serif;
-    margin: 0;
-    font-size: 1.4rem;
-    font-weight: normal;
-  }
+    summary {
+      display: block;
+      /*padding: 1rem;*/
+      cursor: pointer;
+      font-family: 'Alegreya Sans', sans-serif;
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: normal;
+    }
 
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    padding-left: 1rem;
-    color: #fff;
-  }
+    details p {
+      max-height: 500px;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding-left: 2rem;
+      /*color: #fff;*/
+    }
 
-  .faq-item.active .faq-answer {
-    max-height: 500px;
-  }
-</style>
+    /*details.active {
+      background-color: white;
+      max-height: 500px;
+    }*/
+  </style>
 
-<script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Re Ms Fs Pe Rs Cs capture Ve calculateEventProperties Ds register register_once register_for_session unregister unregister_for_session zs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ls As createPersonProfile Ns Is Us opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing is_capturing clear_opt_in_out_capturing Os debug I js getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init Re Ms Fs Pe Rs Cs capture Ve calculateEventProperties Ds register register_once register_for_session unregister unregister_for_session zs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ls As createPersonProfile Ns Is Us opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing is_capturing clear_opt_in_out_capturing Os debug I js getPageViewId captureTraceFeedback captureTraceMetric".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
     posthog.init('phc_X3RBPEtoltUZgeok4tGE3IrU3lfpISjx9IHvia0RlGZ', {
-        api_host: 'https://us.i.posthog.com',
-        defaults: '2025-05-24',
-        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+      api_host: 'https://us.i.posthog.com',
+      defaults: '2025-05-24',
+      person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
     })
-</script>
+  </script>
 
 </head>
+
 <body>
   <div class="faq-container">
     <div class="overlay"></div>
     <div class="content">
-    <a href="/">Back</a>
+      <a href="/">Back</a>
 
-    <h2>How To Get Started in the Temple</h2>
+      <h2>How To Get Started in the Temple</h2>
 
-    <ol class="getting-started">
-    <li>
+      <ol class="getting-started">
+        <li>
+          <p>
+            <b>Step 1: Listen</b> to the AI-generated podcast:
+          </p>
+
+          <audio controls>
+            <source
+              src="https://www.dropbox.com/scl/fi/3y1nsibab7roodz0nhk58/The_Temple_Project__Unpacking_a_Unique_Hybrid_of_Art-_Business-_and_Personal_Mythology.m4a?rlkey=csg3vru0gx46npnot0fspaxhn&st=7tg7n8um&raw=1"
+              type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </li>
+
+        <li><b>Step 2: Read</b> the <a href="https://www.instagram.com/stories/highlights/17910029955053686/">Enter
+            Here</a> highlight on the Instagram account (@no.michael.here).</li>
+
+        <li><b>Step 3: Offer</b> $11 to <a href="https://offering.michaelkorman.com/">signal you&rsquo;re ready</a> to
+          play the game.</li>
+
+        <li><strong>NOTE: Instagram
+            (<a href="https://www.instagram.com/no.michael.here/">@no.michael.here</a>)
+            is the home base of the temple. </strong>Some rituals may reach other
+          platforms, but everything originates there.</li>
+
+      </ol>
+
       <p>
-	<b>Step 1: Listen</b> to the AI-generated podcast:
+        Below, you’ll find detailed FAQs that expand on what you hear, answer
+        common questions, and give you the full picture.
       </p>
 
-    <audio controls>
-      <source src="https://www.dropbox.com/scl/fi/3y1nsibab7roodz0nhk58/The_Temple_Project__Unpacking_a_Unique_Hybrid_of_Art-_Business-_and_Personal_Mythology.m4a?rlkey=csg3vru0gx46npnot0fspaxhn&st=7tg7n8um&raw=1" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-    </li>
+      <div id="top"></div>
 
-    <li><b>Step 2: Read</b> the <a href="https://www.instagram.com/stories/highlights/17910029955053686/">Enter Here</a> highlight on the Instagram account (@no.michael.here).</li>
+      <div class="faq-toc">
+        <h2>Table of Contents</h2>
+        <ul>
+          <li><a href="#section1">Basics/Legitimacy</a></li>
+          <li><a href="#section2">Participation & Money</a></li>
+          <li><a href="#section3">Rituals & Objects</a></li>
+          <li><a href="#section4">Story, Numbers & Symbolism</a></li>
+          <li><a href="#section5">Philosophy, Community & Boundaries</a></li>
+          <li><a href="#section6">Connection to Music / Personal Story</a></li>
+          <li><a href="#section7">Misc / Logistics</a></li>
+        </ul>
+      </div>
 
-    <li><b>Step 3: Offer</b> $11 to <a href="https://offering.michaelkorman.com/">signal you&rsquo;re ready</a> to play the game.</li>
 
-    <li><strong>NOTE: Instagram
-    (<a href="https://www.instagram.com/no.michael.here/">@no.michael.here</a>)
-    is the home base of the temple. </strong>Some rituals may reach other
-    platforms, but everything originates there.</li>
-	  
-    </ol>
+      <div id="section1" class="faq-section">
+        <h2>Basics/Legitimacy</h2>
 
-    <p>
-      Below, you’ll find detailed FAQs that expand on what you hear, answer
-      common questions, and give you the full picture.
-    </p>
-
-    <div class="faq-section">
-      <h2>Basics/Legitimacy</h2>
-
-      <div class="faq-item">
-        <h3>What&rsquo;s the purpose of the temple?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What&rsquo;s the purpose of the temple?</summary>
           <p>To be a model for how to provide value without getting a
-          job and without bending your mind to fit into normal status
-          games.</p>
-        </div>
-      </div>
+            job and without bending your mind to fit into normal status
+            games.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is this a joke?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is this a joke?</summary>
           <p>No.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is this a scam?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is this a scam?</summary>
           <p>No.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is this a cult?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is this a cult?</summary>
           <p>No.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>How do I know this is legit?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How do I know this is legit?</summary>
           <p>I’ve been doing work on Instagram for over 5 years. I’m
-          not going to vanish with your money.</p>
-	  <p>If by “legit” you mean socially acceptable—then probably
-	  not. This isn’t normal.</p>
-        </div>
-      </div>
+            not going to vanish with your money.</p>
+          <p>If by “legit” you mean socially acceptable—then probably
+            not. This isn’t normal.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Are you really a priest?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Are you really a priest?</summary>
           <p>No. The priest is a character in the story, loosely based on me.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is this a religion?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is this a religion?</summary>
           <p>No.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is this a spiritual community?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is this a spiritual community?</summary>
           <p>No. It’s an art project turned business. It means a lot
-          to me, and I hope you find meaning in it too.</p>
-        </div>
-      </div>
+            to me, and I hope you find meaning in it too.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is this an art project, a spiritual practice, or something else?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is this an art project, a spiritual practice, or something else?</summary>
           <p>It’s all of those and a business too. Ritual, art, and
-          commerce—woven together intentionally.</p>
-        </div>
-      </div>
+            commerce—woven together intentionally.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is this temple stuff just a metaphor or something you
-        really believe?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is this temple stuff just a metaphor or something you
+            really believe?</summary>
           <p>It’s metaphor. I’m not literally a priest guarding
-          ancient stones.</p>
-        </div>
-      </div>
+            ancient stones.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why should I care about some random guy’s stones?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why should I care about some random guy’s stones?</summary>
           <p>You shouldn’t. You should care about what lights you
-            up.</p><p>But if my work has meant something to you, the
+            up.</p>
+          <p>But if my work has meant something to you, the
             stones are where it all converges.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>What if I don’t believe in gods or myths — can I still
-        participate?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What if I don’t believe in gods or myths — can I still
+            participate?</summary>
           <p>Yes. You don’t have to believe anything. Think of it like
-          acting, roleplay, or a video game. We’re telling a story
-          together.</p>
-        </div>
-      </div>
+            acting, roleplay, or a video game. We’re telling a story
+            together.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What happened to all the piano and meditation content you
-        used to post?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What happened to all the piano and meditation content you
+            used to post?</summary>
           <p>It’s all part of the temple now. It was always part of a
-          bigger project—I just didn’t have a name for it until
-          now.</p>
-        </div>
-      </div>
+            bigger project—I just didn’t have a name for it until
+            now.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>How do these pieces connect? Is there a bigger story or
-        meaning?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How do these pieces connect? Is there a bigger story or
+            meaning?</summary>
           <p>Everything is connected. This isn’t random. It’s a story
-          you join by showing up—by making an offering.</p>
-        </div>
-      </div>
+            you join by showing up—by making an offering.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>How can someone participate or get involved?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How can someone participate or get involved?</summary>
           <p>By making
-          an <a href="https://offering.michaelkorman.com/">offering</a>. That’s
-          the best way to cross the threshold.</p>
-        </div>
+            an <a href="https://offering.michaelkorman.com/">offering</a>. That’s
+            the best way to cross the threshold.</p>
+        </details>
+
+        <p><a href="#top">Back to top</a></p>
       </div>
 
-    </div>
-   
-    <div class="faq-section">
-      <h2>Participation & Money</h2>
+      <div id="section2" class="faq-section">
+        <h2>Participation & Money</h2>
 
-      <div class="faq-item">
-        <h3>What’s the money for?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What’s the money for?</summary>
           <p>It goes to me. To help me keep making things like
-          this. This is a business, not a charity.</p>
-        </div>
-      </div>
+            this. This is a business, not a charity.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>How do I give?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How do I give?</summary>
           <p>By making
             an <a href="https://offering.michaelkorman.com/">$11
               offering</a>.</p>
 
-	  <p>Or acquire (buy) <a href="https://shop.michaelkorman.com/">temple
-	      artifacts</a>—digital products related to the work.</p>
-        </div>
-      </div>
+          <p>Or acquire (buy) <a href="https://shop.michaelkorman.com/">temple
+              artifacts</a>—digital products related to the work.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Can I give more or less than $11?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Can I give more or less than $11?</summary>
           <p>Yes. For more, just choose a higher quantity.</p>
-	  <p>For less, send any amount via PayPal (@nomichaelhere) or
-	  Venmo (@Michael-Korman-3).</p>
-        </div>
-      </div>
+          <p>For less, send any amount via PayPal (@nomichaelhere) or
+            Venmo (@Michael-Korman-3).</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What if I don’t want to give money?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What if I don’t want to give money?</summary>
           <p>Then participate. Don’t just like a post.</p>
-	  <p>Talk about the temple.</p>
-	  <p><i>Act like it matters.</i></p>
-	  <p>Let it haunt your group chats.</p>
-        </div>
-      </div>
+          <p>Talk about the temple.</p>
+          <p><i>Act like it matters.</i></p>
+          <p>Let it haunt your group chats.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Do I have to give money to be part of the temple?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Do I have to give money to be part of the temple?</summary>
           <p>No. To be part of the temple, all you need is to talk
-          about it as if it matters.</p>
-        </div>
-      </div>
+            about it as if it matters.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>If I don’t give money, will that hurt the temple?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>If I don’t give money, will that hurt the temple?</summary>
           <p>No. The temple existed long before you showed up. It
-          needs money, but not your money specifically.</p>
-        </div>
-      </div>
+            needs money, but not your money specifically.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What happens if I stop giving? Does the temple die?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What happens if I stop giving? Does the temple die?</summary>
           <p>The temple doesn’t depend on one person’s money. But if
-          *everyone* stopped, I’d have to keep going without money—and
-          that can only last so long.</p>
-        </div>
-      </div>
+            *everyone* stopped, I’d have to keep going without money—and
+            that can only last so long.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What happens if people don’t give? Does the temple
-        collapse?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What happens if people don’t give? Does the temple
+            collapse?</summary>
           <p>Eventually, yes. The temple doesn’t need *your* money
-          specifically, but it needs money. If everyone stops, I can
-          only run it without funds for so long.</p>
-        </div>
-      </div>
+            specifically, but it needs money. If everyone stops, I can
+            only run it without funds for so long.</p>
+        </details>
 
 
-      <div class="faq-item">
-        <h3>Why does the temple demand offerings instead of just accepting goodwill?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why does the temple demand offerings instead of just accepting goodwill?</summary>
           <p>Because the temple needs devotion, not just
-          money. Offerings must come from people who want to be part
-          of the temple, not just “support a cause.” That’s how it
-          becomes something bigger than me.</p>
-        </div>
-      </div>
+            money. Offerings must come from people who want to be part
+            of the temple, not just “support a cause.” That’s how it
+            becomes something bigger than me.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Isn’t asking for money upfront off-putting?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Isn’t asking for money upfront off-putting?</summary>
           <p>Yes. And that’s the point. If you’re here for the right
-          reasons, it won’t feel off-putting—it’ll feel obvious. If
-          you’re not, you’ll walk away. The temple doesn’t pretend to
-          be something it’s not just to keep you comfortable.</p>
-        </div>
-      </div>
+            reasons, it won’t feel off-putting—it’ll feel obvious. If
+            you’re not, you’ll walk away. The temple doesn’t pretend to
+            be something it’s not just to keep you comfortable.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What if I can’t afford to give? Does that mean I’m not
-        part of the temple?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What if I can’t afford to give? Does that mean I’m not
+            part of the temple?</summary>
           <p>No. To be part of the temple, you only have to act like
-          it matters. Money is just one way—and often the easiest
-          way—to do that.</p>
-        </div>
-      </div>
+            it matters. Money is just one way—and often the easiest
+            way—to do that.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What kind of person would pay for the temple?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What kind of person would pay for the temple?</summary>
           <p>Entrepreneurs, artists, musicians, teachers,
-          coaches. Anyone who already gets that investing in myth and
-          ritual is part of the grind. The temple gives them
-          permission to own their weirdness with purpose.</p>
-        </div>
-      </div>
+            coaches. Anyone who already gets that investing in myth and
+            ritual is part of the grind. The temple gives them
+            permission to own their weirdness with purpose.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>How is this different from typical crowdfunding or donations?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How is this different from typical crowdfunding or donations?</summary>
           <p>Typical crowdfunding is usually about getting stuff done
-          or fixing a problem. People give because they want a
-          product, a reward, or to help a cause.</p>
-        </div>
-      </div>
+            or fixing a problem. People give because they want a
+            product, a reward, or to help a cause.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>How can I participate without giving money?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How can I participate without giving money?</summary>
           <p>Talk about the temple like it matters. Read the
-          archives. Imitate it. Make things. Sell things. Spread the
-          myth.</p>
-        </div>
-      </div>
+            archives. Imitate it. Make things. Sell things. Spread the
+            myth.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Can someone participate without giving money?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Can someone participate without giving money?</summary>
           <p>Yes. Take it seriously. Share it. Talk about it. Read the
-          archives. Imitate it. Make things and sell them. Act like it
-          matters.</p>
-        </div>
-      </div>
+            archives. Imitate it. Make things and sell them. Act like it
+            matters.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>How do offerings affect the ritual and the community?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How do offerings affect the ritual and the community?</summary>
           <p>Offerings shape the story. More offerings mean riskier,
-          richer content. Fewer offerings mean the temple dims,
-          sometimes literally. Everyone feels it.</p>
-        </div>
-      </div>
+            richer content. Fewer offerings mean the temple dims,
+            sometimes literally. Everyone feels it.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why is money tied to myth? Isn’t that strange?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why is money tied to myth? Isn’t that strange?</summary>
           <p>Not at all. Money is a myth we’ve charged with real
-          power. Pretending money and myth should be separate is
-          another myth—a bad one.</p>
-        </div>
-      </div>
+            power. Pretending money and myth should be separate is
+            another myth—a bad one.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why should I trust a priest who admits to being flawed or
-        “asshole-y”?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why should I trust a priest who admits to being flawed or
+            “asshole-y”?</summary>
           <p>Maybe you shouldn’t. But someone has to build the temple,
-          and I’m the one doing it.</p>
-        </div>
-      </div>
+            and I’m the one doing it.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is it okay to watch without participating?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is it okay to watch without participating?</summary>
           <p>Yes.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is the temple just about money or something deeper?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is the temple just about money or something deeper?</summary>
           <p>Something deeper. Money is simply a charged form of
-          myth—a way to make meaning real.</p>
-        </div>
-   </div>
+            myth—a way to make meaning real.</p>
+        </details>
 
-    </div>
+        <p><a href="#top">Back to top</a></p>
+      </div>
 
-    <div class="faq-section">
-      <h2>Rituals & Objects</h2>
+      <div id="section3" class="faq-section">
+        <h2>Rituals & Objects</h2>
 
-      <div class="faq-item">
-        <h3>What is “the temple” or “the ritual” you keep referencing?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What is “the temple” or “the ritual” you keep referencing?</summary>
           <p>The temple is this whole project. The ritual is the
-          ongoing stream of content—the living story. It’s my personal
-          myth, designed for my mind, a space where I don’t have to
-          fight just to exist. Maybe you’ll find it meaningful
-          too.</p>
-        </div>
-      </div>
+            ongoing stream of content—the living story. It’s my personal
+            myth, designed for my mind, a space where I don’t have to
+            fight just to exist. Maybe you’ll find it meaningful
+            too.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What’s “the ritual”?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What’s “the ritual”?</summary>
           <p>The ritual is my Instagram story—a stream of content
-          posted with a rhythm and purpose.</p>
-        </div>
-      </div>
+            posted with a rhythm and purpose.</p>
+        </details>
 
-      <div class="faq-item">
-	<h3>What’s “the stone”?</h3>
-	<div class="faq-answer">
-	  <p>The “stone” is a marker of progress in this world. There
-	    are 10 stones. Each demands a certain amount of
-	    money. When a stone gets its amount, it lights up, and we
-	    move to the next.</p>
-	  
-	  <p>The first stone (the one we’re working on right now)
-	    demands $110.</p>
-	  
-	  <p>The entire Pillar of Stones requires $616 to fully
-	    light.</p>
-	</div>
-      </div>
+        <details>
+          <summary>What’s “the stone”?</summary>
+          <p>The “stone” is a marker of progress in this world. There
+            are 10 stones. Each demands a certain amount of
+            money. When a stone gets its amount, it lights up, and we
+            move to the next.</p>
 
-      <div class="faq-item">
-        <h3>What are “artifacts”?</h3>
-        <div class="faq-answer">
+          <p>The first stone (the one we’re working on right now)
+            demands $110.</p>
+
+          <p>The entire Pillar of Stones requires $616 to fully
+            light.</p>
+        </details>
+
+        <details>
+          <summary>What are “artifacts”?</summary>
           <p>Digital creations—usually PDFs—that hold art, poetry, or
-          myth. They deepen the world of the temple.</p>
-        </div>
-      </div>
+            myth. They deepen the world of the temple.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What are “the scrolls”?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What are “the scrolls”?</summary>
           <p>The Fragmented Scrolls are an artifact (PDF) written as
-          scripture and lore. They explain how I designed this whole
-          thing.</p>
-        </div>
-      </div>
+            scripture and lore. They explain how I designed this whole
+            thing.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What’s “the flame”?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What’s “the flame”?</summary>
           <p>A metaphor for the energy that fuels my content
-          creation.</p>
-        </div>
-      </div>
+            creation.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What are “the gods”?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What are “the gods”?</summary>
           <p>Characters in the story representing higher forces.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>What does “the priest is bleeding on the stones” mean?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What does “the priest is bleeding on the stones” mean?</summary>
           <p>It’s a metaphor for pouring your heart into something and
-          not getting what you hoped for in return.</p>
-        </div>
-      </div>
+            not getting what you hoped for in return.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why trust a priest who admits he’s bleeding on the stones?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why trust a priest who admits he’s bleeding on the stones?</summary>
           <p>Maybe you shouldn’t. But I’m the one building the
-          temple. Someone’s got to.</p>
-        </div>
-      </div>
+            temple. Someone’s got to.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What does it mean for the ritual to “stall”?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What does it mean for the ritual to “stall”?</summary>
           <p>The ritual stalls when offerings slow down. Offerings
-          keep it alive—they motivate me to keep posting. When they
-          stop, I feel it. That’s when I say “the ritual stalled.”</p>
-        </div>
-      </div>
+            keep it alive—they motivate me to keep posting. When they
+            stop, I feel it. That’s when I say “the ritual stalled.”</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What are “drops”?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What are “drops”?</summary>
           <p>Drops are pieces of content that take effort or feel
-          risky to post. FAQs like this aren’t drops—they don’t carry
-          that risk.</p>
-        </div>
-      </div>
+            risky to post. FAQs like this aren’t drops—they don’t carry
+            that risk.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why do drops need money to be released?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why do drops need money to be released?</summary>
           <p>Because they cost me something—time, energy,
-          heart. Content just for vibe or clarity doesn’t cost that
-          much. When I put my heart on the line, I need to be
-          paid. That’s the core metaphor of the temple.</p>
-        </div>
-      </div>
+            heart. Content just for vibe or clarity doesn’t cost that
+            much. When I put my heart on the line, I need to be
+            paid. That’s the core metaphor of the temple.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>How do the stones connect to the real world?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How do the stones connect to the real world?</summary>
           <p>They mark real goals, but I blur the details to keep the
-          story intact.</p>
-        </div>
-      </div>
+            story intact.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>How do offerings actually move the ritual?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How do offerings actually move the ritual?</summary>
           <p>Offerings change what I post. The money is real, my work
-          is real, and the content is symbolic—the link between myth
-          and reality.</p>
-        </div>
-      </div>
+            is real, and the content is symbolic—the link between myth
+            and reality.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why does the priest bleed on the stones?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why does the priest bleed on the stones?</summary>
           <p>Because he’s given a lot to the temple, and gotten very
-          little back.</p>
-        </div>
-      </div>
+            little back.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What do I get if I participate?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What do I get if I participate?</summary>
           <p>You get to move the story forward.</p>
-	  <p>If you choose an artifact, you get the artifact.</p>
-	  <p>And if your offering lights the stone, you get to witness
-	  the result.</p>
-        </div>
-      </div>
+          <p>If you choose an artifact, you get the artifact.</p>
+          <p>And if your offering lights the stone, you get to witness
+            the result.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What do I get if the stone lights up?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What do I get if the stone lights up?</summary>
           <p>A public discourse (livestream). A miracle that wouldn’t
-          have happened without you. That’s not nothing.</p>
-        </div>
-      </div>
+            have happened without you. That’s not nothing.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What happens if the stone doesn’t light up?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What happens if the stone doesn’t light up?</summary>
           <p>The priest will keep calling out until the devoted step
-          forward. He’s patient.</p>
-        </div>
+            forward. He’s patient.</p>
+        </details>
+
+        <p><a href="#top">Back to top</a></p>
       </div>
-    </div>
 
-    <div class="faq-section">
-      <h2>Story, Numbers & Symbolism</h2>
+      <div id="section4" class="faq-section">
+        <h2>Story, Numbers & Symbolism</h2>
 
-      <div class="faq-item">
-        <h3>Why $616?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why $616?</summary>
           <p>It’s a mythical number. It also loosely covers my actual
-          expenses.</p>
-        </div>
-      </div>
+            expenses.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What’s the story behind the number 616?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What’s the story behind the number 616?</summary>
           <p>It’s a mythical number. It also loosely corresponds to
             some of my real-life expenses.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>What does “11 down, 99 to go” refer to?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What does “11 down, 99 to go” refer to?</summary>
           <p>The first stone in the Pillar of Stones needs $110 to
-          light up. We’ve got $11 so far—$99 left.</p>
-        </div>
-      </div>
+            light up. We’ve got $11 so far—$99 left.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What is the “First Stone” highlight?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What is the “First Stone” highlight?</summary>
           <p>It’s the first piece of the Pillar of Stones. Lighting it
-          requires an offering of $110.</p>
-        </div>
-      </div>
+            requires an offering of $110.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What’s “Joint Quest” about?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What’s “Joint Quest” about?</summary>
           <p>It’s a new chapter that began when an offering unlocked
-          the gate to the Pillar of Stones. Now we’re working on
-          lighting those stones.</p>
-        </div>
-      </div>
+            the gate to the Pillar of Stones. Now we’re working on
+            lighting those stones.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What do “Tuning” and “2nd Tuning” highlights mean?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What do “Tuning” and “2nd Tuning” highlights mean?</summary>
           <p>“Tuning” is when the ritual stalled because offerings
-          stopped. The priest (me) stepped back to listen, adjust, and
-          speak deliberately—like tuning a guitar until every note
-          rings clearly.</p>
-        </div>
-      </div>
+            stopped. The priest (me) stepped back to listen, adjust, and
+            speak deliberately—like tuning a guitar until every note
+            rings clearly.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why is your Instagram story text gray on a black background?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why is your Instagram story text gray on a black background?</summary>
           <p>Because the flame went out. Offerings slowed, so the
-          ritual darkened to reflect that. It’ll light up again when
-          offerings return.</p>
-        </div>
-      </div>
+            ritual darkened to reflect that. It’ll light up again when
+            offerings return.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why is your profile picture gray, and why does “The
-        Ritual” highlight show gray smoke?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why is your profile picture gray, and why does “The
+            Ritual” highlight show gray smoke?</summary>
           <p>Same reason. The ritual’s flame went dark. It’s a visual
-          signal that this isn’t business as usual.</p>
-        </div>
-      </div>
+            signal that this isn’t business as usual.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What does the text “(this drop has been released)” mean on
-        your reels?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What does the text “(this drop has been released)” mean on
+            your reels?</summary>
           <p>Drops are special ritual content—released only after an
-          offering is made. That text marks when a drop has
-          landed.</p>
-        </div>
-      </div>
+            offering is made. That text marks when a drop has
+            landed.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What does your bio mean with “The ritual is stirring” and
-        “Upon lighting the first stone…”?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What does your bio mean with “The ritual is stirring” and
+            “Upon lighting the first stone…”?</summary>
           <p>The ritual was stalled, but now it’s waking up. Lighting
-          the first stone means hitting that $110 goal to reignite the
-          flame.</p>
-        </div>
-      </div>
+            the first stone means hitting that $110 goal to reignite the
+            flame.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why is your username “no.michael.here”?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why is your username “no.michael.here”?</summary>
           <p>It’s a nod to the Buddhist concept of “no self”—reminding
-          you this isn’t about me, but the story we build.</p>
-        </div>
-      </div>
+            you this isn’t about me, but the story we build.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why does your page look so minimalistic and mysterious?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why does your page look so minimalistic and mysterious?</summary>
           <p>Because every detail matters. When the flame dies, things
-          go dark. The temple isn’t a cozy place—it’s sacred and
-          serious.</p>
-        </div>
+            go dark. The temple isn’t a cozy place—it’s sacred and
+            serious.</p>
+        </details>
+
+        <p><a href="#top">Back to top</a></p>
       </div>
-    </div>
 
-    <div class="faq-section">
-      <h2>Philosophy, Community & Boundaries</h2>
+      <div id="section5" class="faq-section">
+        <h2>Philosophy, Community & Boundaries</h2>
 
-      <div class="faq-item">
-        <h3>What’s the ultimate goal of the temple?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What’s the ultimate goal of the temple?</summary>
           <p>To carve out a place where myth-makers, chaotic-minded
-          wanderers, and rogue builders can thrive in a world that
-          prefers straight lines.</p>
-        </div>
-      </div>
+            wanderers, and rogue builders can thrive in a world that
+            prefers straight lines.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What kind of people does the temple repel?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What kind of people does the temple repel?</summary>
           <p>People with rigid ideas about business, religion, social
-          media, or reality. People allergic to fantasy.</p>
-        </div>
-      </div>
+            media, or reality. People allergic to fantasy.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Is the temple open to change or is it fixed?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is the temple open to change or is it fixed?</summary>
           <p>It changes, but only within its own logic. It’s chaos,
-          solidified.</p>
-        </div>
-      </div>
+            solidified.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What’s the meaning behind the glitch, decay, and dark vibe?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What’s the meaning behind the glitch, decay, and dark vibe?</summary>
           <p>We live in a broken, stuck world. The temple memorializes
-          that, but also cracks it open—a return to somethingsimpler
-          and more playful. That takes a little ego death.</p>
-        </div>
-      </div>
+            that, but also cracks it open—a return to somethingsimpler
+            and more playful. That takes a little ego death.</p>
+        </details>
 
 
-      <div class="faq-item">
-        <h3>What’s the role of community here?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What’s the role of community here?</summary>
           <p>I don’t know yet. This isn’t a social temple. But I like
-          to think we’re connected on some subtle level, even if we
-          never gather in the same room.</p>
-        </div>
-      </div>
+            to think we’re connected on some subtle level, even if we
+            never gather in the same room.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>How does the temple maintain balance between being
-        demanding and being inclusive?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>How does the temple maintain balance between being
+            demanding and being inclusive?</summary>
           <p>It’s open to anyone—but only if they treat it as
-          sacred.</p>
-        </div>
-      </div>
+            sacred.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Can anyone become a priest, or is it just you?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Can anyone become a priest, or is it just you?</summary>
           <p>Just me. My brain’s wired in a way that makes
-          sharing...unlikely. But sometimes the temple recognizes
-          priests from other lands.</p>
-        </div>
-      </div>
+            sharing...unlikely. But sometimes the temple recognizes
+            priests from other lands.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why does the priest come across as harsh or demanding?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why does the priest come across as harsh or demanding?</summary>
           <p>Because he’s suffered. Because he takes his role as
-          keeper of the flame seriously. He’s not a customer-service
-          rep.</p>
-        </div>
-      </div>
+            keeper of the flame seriously. He’s not a customer-service
+            rep.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>Why is it important to push boundaries and make people
-        uncomfortable?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Why is it important to push boundaries and make people
+            uncomfortable?</summary>
           <p>Because without boundaries there is no form, and without
-          form there’s nothing to</p>
-        </div>
-      </div>
+            form there’s nothing to</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What makes this “asshole” approach different from being
-        simply rude or exploitative?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What makes this “asshole” approach different from being
+            simply rude or exploitative?</summary>
           <p>It’s theater with a purpose. The priest is a character
-          who cares about the disciples and the ritual. Sometimes that
-          means hurting feelings to keep the higher calling alive. If
-          he doesn’t tend the flame, no one will. But he’s human—maybe
-          he’s wrong. You decide.</p>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <h3>How does demanding offerings create respect rather than
-        resentment?</h3>
-        <div class="faq-answer">
+            who cares about the disciples and the ritual. Sometimes that
+            means hurting feelings to keep the higher calling alive. If
+            he doesn’t tend the flame, no one will. But he’s human—maybe
+            he’s wrong. You decide.</p>
+        </details>
+
+        <details>
+          <summary>How does demanding offerings create respect rather than
+            resentment?</summary>
           <p>It makes the cost clear. It sets a threshold for
-          entry. “The temple took effort</p>
-        </div>
-      </div>
-    </div>
+            entry. “The temple took effort</p>
+        </details>
 
-    <div class="faq-section">
-      <h2>Connection to Music / Personal Story</h2>
-      <div class="faq-item">
-	<h3>Why is a pianist building a temple and asking for
-	offerings?</h3>
-	<div class="faq-answer">
+        <p><a href="#top">Back to top</a></p>
+      </div>
+
+      <div id="section6" class="faq-section">
+        <h2>Connection to Music / Personal Story</h2>
+        <details>
+          <summary>Why is a pianist building a temple and asking for
+            offerings?</summary>
           <p>Because the piano world was rigid tradition and
-          groupthink—no room for individuality or growth. I got pushed
-          out, but I’m still a pianist. The temple includes piano but
-          goes far beyond it. Offerings aren’t just money—they’re part
-          of the ritual that keeps this alive.</p>
-	</div>
-      </div>
+            groupthink—no room for individuality or growth. I got pushed
+            out, but I’m still a pianist. The temple includes piano but
+            goes far beyond it. Offerings aren’t just money—they’re part
+            of the ritual that keeps this alive.</p>
+        </details>
 
-      <div class="faq-item">
-	<h3>What made you shift from being a piano guy to this whole
-	temple concept?</h3>
-	<div class="faq-answer">
+        <details>
+          <summary>What made you shift from being a piano guy to this whole
+            temple concept?</summary>
           <p>I was never just a “piano guy.” The temple began in 2020
-          when I dove into social media marketing to sell a piano
-          course. As the pandemic tore down the old world, I started
-          sharing more of myself. Now it’s all one story, under one
-          roof—the temple.</p>
-	</div>
-      </div>
+            when I dove into social media marketing to sell a piano
+            course. As the pandemic tore down the old world, I started
+            sharing more of myself. Now it’s all one story, under one
+            roof—the temple.</p>
+        </details>
 
-      <div class="faq-item">
-	<h3>Is the temple a side project or your main focus now?</h3>
-	<div class="faq-answer">
+        <details>
+          <summary>Is the temple a side project or your main focus now?</summary>
           <p>It’s my main focus. Has been since 2020. The name is new,
-          but the work isn’t.</p>
-	</div>
-      </div>
+            but the work isn’t.</p>
+        </details>
 
-      <div class="faq-item">
-	<h3>How does your background in music influence the temple’s
-	vibe and work?</h3>
-	<div class="faq-answer">
+        <details>
+          <summary>How does your background in music influence the temple’s
+            vibe and work?</summary>
           <p>Music taught me why ritual matters. I wasn’t just
-          practicing piano—I was learning how to practice
-          everything.</p>
-	</div>
-      </div>
+            practicing piano—I was learning how to practice
+            everything.</p>
+        </details>
 
-      <div class="faq-item">
-	<h3>How does your music relate to the temple and its
-	rituals?</h3>
-	<div class="faq-answer">
+        <details>
+          <summary>How does your music relate to the temple and its
+            rituals?</summary>
           <p><i>Learn Piano in 5 Days</i> has been folded into the
-          temple’s framework. Popular piano videos are disappearing,
-          replaced by glitchy temple transmissions to preserve
-          sanctity. <i>Every Tiny Thing</i> is a relic from before the
-          collapse. <i>You Hold the Key</i> is now the temple
-          anthem. <i>Take Yourself Seriously</i> is sacred
-          scripture. Even the blog posts are fragments of old
-          transmissions. Everything’s being templified.</p>
-	</div>
-      </div>
+            temple’s framework. Popular piano videos are disappearing,
+            replaced by glitchy temple transmissions to preserve
+            sanctity. <i>Every Tiny Thing</i> is a relic from before the
+            collapse. <i>You Hold the Key</i> is now the temple
+            anthem. <i>Take Yourself Seriously</i> is sacred
+            scripture. Even the blog posts are fragments of old
+            transmissions. Everything’s being templified.</p>
+        </details>
 
-      <div class="faq-item">
-	<h3>Will you still share music content, or is this replacing
-	that?</h3>
-	<div class="faq-answer">
+        <details>
+          <summary>Will you still share music content, or is this replacing
+            that?</summary>
           <p>Nothing’s replaced—everything is reframed within the
-          temple’s context.</p>
-	</div>
-      </div>
+            temple’s context.</p>
+        </details>
 
-      <div class="faq-item">
-	<h3>How can someone who loves your music relate to the
-	temple?</h3>
-	<div class="faq-answer">
-	  <p>Look beneath the music’s surface. The temple is about
-	  _process_, not product.</p>
-	</div>
-      </div>
+        <details>
+          <summary>How can someone who loves your music relate to the
+            temple?</summary>
+          <p>Look beneath the music’s surface. The temple is about
+            _process_, not product.</p>
+        </details>
 
-      <div class="faq-item">
-	<h3>How does the temple connect with your personal story and
-	values?</h3>
-	<div class="faq-answer">
+        <details>
+          <summary>How does the temple connect with your personal story and
+            values?</summary>
           <p>The temple <i>is</i> my story. It’s designed for my mind,
-          a place where I don’t have to fight to exist. Maybe it’ll
-          fit yours too.</p>
-	</div>
-      </div>
+            a place where I don’t have to fight to exist. Maybe it’ll
+            fit yours too.</p>
+        </details>
 
-      <div class="faq-item">
-	<h3>What does the temple mean to you beyond just money?</h3>
-	<div class="faq-answer">
+        <details>
+          <summary>What does the temple mean to you beyond just money?</summary>
           <p>Nothing. And that’s the point—when you ask that, you
-          trivialize money. Most people spend 8 hours a day doing work
-          they hate. Ask *them* what their life means beyond
-          money. The temple lets me get paid without losing
-          meaning.</p>
-	</div>
+            trivialize money. Most people spend 8 hours a day doing work
+            they hate. Ask *them* what their life means beyond
+            money. The temple lets me get paid without losing
+            meaning.</p>
+        </details>
+
+        <p><a href="#top">Back to top</a></p>
       </div>
-    </div>
 
-    <div class="faq-section">
-      <h2>Misc / Logistics</h2>
+      <div id="section7" class="faq-section">
+        <h2>Misc / Logistics</h2>
 
-      <div class="faq-item">
-        <h3>Is this a one-time thing or ongoing?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Is this a one-time thing or ongoing?</summary>
           <p>The temple runs on devotion, not subscriptions.</p>
-	  <p>Show up when you&rsquo;re called. Or wait. Someone will
-	  knock. Eventually.</p>
-        </div>
-      </div>
+          <p>Show up when you&rsquo;re called. Or wait. Someone will
+            knock. Eventually.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>What if I change my mind?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>What if I change my mind?</summary>
           <p>No refunds. The temple accepts only firm offerings.</p>
-        </div>
-      </div>
+        </details>
 
-      <div class="faq-item">
-        <h3>Are you promoting something or just sharing your personal
-        journey?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>Are you promoting something or just sharing your personal
+            journey?</summary>
           <p>This _is_ a business. I’m inviting people to participate
-          in the ritual. But it’s rooted in my personal
-          journey—because no meaningful work isn’t.</p>
-        </div>
-      </div>
+            in the ritual. But it’s rooted in my personal
+            journey—because no meaningful work isn’t.</p>
+        </details>
 
-      <div class="faq-item">
-        <h3>If I make an offering, what should I expect in future asks?</h3>
-        <div class="faq-answer">
+        <details>
+          <summary>If I make an offering, what should I expect in future asks?</summary>
           <p>An offering means you’re in the circle. I’ll call on you
-          again—devotion is ongoing. If you step back, I’ll feel
-          it. This isn’t a faceless transaction.</p>
-        </div>
+            again—devotion is ongoing. If you step back, I’ll feel
+            it. This isn’t a faceless transaction.</p>
+        </details>
+
+        <p><a href="#top">Back to top</a></p>
       </div>
-    </div>
     </div>
   </div>
 
   <script>
-    document.querySelectorAll('.faq-item').forEach(item => {
+    document.querySelectorAll('details').forEach(item => {
       item.addEventListener('click', () => {
         item.classList.toggle('active');
       });
     });
+
+    document.querySelectorAll('details').forEach(d => {
+      d.addEventListener('click', e => {
+        // Only toggle if the click is not on a link inside
+        if (e.target.tagName !== 'SUMMARY' && e.target.tagName !== 'A') {
+          d.open = !d.open;
+        }
+      });
+    });
   </script>
 </body>
+
 </html>
