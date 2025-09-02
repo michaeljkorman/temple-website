@@ -1,0 +1,8 @@
+{
+    "html.format.wrapLineLength": 0,
+    "editor.wordWrap": "off",
+    "editor.unicodeHighlight.allowedCharacters": {
+        "’": true
+    },
+    "editor.wordWrapColumn": 100
+}
