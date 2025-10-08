@@ -71,20 +71,6 @@
       font-size: 1.4rem;
     }
 
-    @media (max-width: 600px) {
-      .faq-container {
-        width: 100%;
-        margin: 0;
-        padding: 2rem 1rem;
-        border-radius: 0px;
-      }
-
-      .overlay {
-        border-radius: 0px;
-      }
-
-    }
-
     .content {
       position: relative;
       z-index: 1;
@@ -148,6 +134,23 @@
       transition: max-height 0.4s ease;
       padding-left: 2rem;
       /*color: #fff;*/
+    }
+
+    @media (max-width: 600px) {
+      .faq-container {
+        width: 100%;
+        margin: 0;
+        padding: 2rem 1rem;
+        border-radius: 0px;
+      }
+
+      .overlay {
+        border-radius: 0px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
     }
 
     /*details.active {
