@@ -4,5 +4,6 @@
     "editor.unicodeHighlight.allowedCharacters": {
         "’": true
     },
-    "editor.wordWrapColumn": 100
+    "editor.wordWrapColumn": 100,
+    "saveEditorLayout.list": []
 }
