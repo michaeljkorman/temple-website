@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ritual Hall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=Alegreya+Sans&family=Lora&family=" Lora+Italic"&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #5B5B5B;
+            font-family: 'Lora', serif;
+            color: #eee;
+            margin: 0;
+            padding: 0;
+            font-size: 1.1rem;
+            justify-content: center;
+            display: flex;
+        }
+
+        .faq-container {
+            position: relative;
+            max-width: 520px;
+            width: 100%;
+            /*      margin: 0 auto;*/
+            margin: 3rem 1rem;
+            padding: 2rem 1.5rem;
+            background: url('/images/texture.png') repeat;
+            /* subtle temple texture */
+            border-radius: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(2px);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(30, 30, 30, 0.6), rgba(0, 0, 0, 0.6));
+            /*background: white;*/
+            border-radius: 24px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        a {
+            color: #bf93e2;
+        }
+
+        details a {
+            color: #A3A3A3;
+        }
+
+        .getting-started {
+            margin-bottom: 3rem;
+        }
+
+        .getting-started li {
+            margin-bottom: 1.5rem;
+        }
+
+        @counter-style getting-started {
+            system: fixed;
+            symbols: "👉" "🎧" "📲" "💸";
+            suffix: " ";
+        }
+
+        .getting-started {
+            list-style: getting-started;
+            font-size: 1.4rem;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        details {
+            margin-bottom: 2rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Alegreya', serif;
+            font-weight: bold;
+            color: #ffd700;
+            /* goldish for temple feel */
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 1em;
+            line-height: 1.5;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 75%;
+            max-width: 95%;
+            box-sizing: border-box;
+            margin: 2rem auto;
+            padding: 1rem 1.5rem;
+            padding-left: 60px;
+            font-size: 1.5rem;
+            font-family: 'Alegreya Sans', sans-serif;
+            /*    font-weight: bold;*/
+            color: #eeeeee;
+            background: #18121c;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px) translateX(-1px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.75);
+        }
+
+        .btn img {
+            position: absolute;
+            left: 1rem;
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .btn i {
+            position: absolute;
+            left: 1rem;
+            font-size: 2rem;
+        }
+
+        details {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            cursor: pointer;
+            background-color: rgba(24, 18, 28, 0.8);
+            border-radius: 1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        details:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        summary {
+            display: block;
+            /*padding: 1rem;*/
+            cursor: pointer;
+            font-family: 'Alegreya Sans', sans-serif;
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: normal;
+        }
+
+        details p {
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding-left: 2rem;
+            /*color: #fff;*/
+        }
+
+        .ritual-separator {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .overlay {
+                border-radius: 0px;
+            }
+
+            h1 {
+                font-size: 2rem;
+                white-space: nowrap;
+            }
+        }
+
+        /*details.active {
+      background-color: white;
+      max-height: 500px;
+    }*/
+    </style>
+
+    <script>
+        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init Re Ms Fs Pe Rs Cs capture Ve calculateEventProperties Ds register register_once register_for_session unregister unregister_for_session zs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ls As createPersonProfile Ns Is Us opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing is_capturing clear_opt_in_out_capturing Os debug I js getPageViewId captureTraceFeedback captureTraceMetric".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+        posthog.init('phc_X3RBPEtoltUZgeok4tGE3IrU3lfpISjx9IHvia0RlGZ', {
+            api_host: 'https://us.i.posthog.com',
+            defaults: '2025-05-24',
+            person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+        })
+    </script>
+
+</head>
+
+<body>
+    <div class="faq-container">
+        <div class="overlay"></div>
+        <div class="content">
+            <a href="/">Home</a>
+
+            <h1>The Temple Has Moved</h1>
+
+            <p>The old gate has closed. A new one stands open.</p>
+
+            <p>
+                If you were already in contact with the temple, your messages may not have been received.
+                If you are newly arriving, you may step forward now.
+            </p>
+
+            <p>
+                This is not a casual space. Entry requires clear intent.
+                If you understand what that means, proceed below.
+            </p>
+
+            <a href="https://forms.gle/eMi59PtToU34q6bd6" class="btn">Enter the Ritual Hall</a>
+
+            <p style="text-align: center; max-width: 75%; margin: 0 auto; display: block;">
+                <em>(The link leads to a short form where you’ll state your intent. No payment required...yet.)</em>
+            </p>
+
+        </div>
+</body>
+
+</html>
