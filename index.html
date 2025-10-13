@@ -1,13 +1,301 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta http-equiv="refresh" content="0; url=https://temple.michaelkorman.com/ritual-hall" />
-  <title>Redirecting…</title>
-</head>
-<body>
-  <p>Redirecting to the ritual hall…</p>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Temple</title>
+
+  <!-- Google Fonts -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for social icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      background-color: #5B5B5B;
+      color: black;
+    }
+
+    .container {
+      position: relative;
+      margin: 3rem 1rem;
+      max-width: 520px;
+      width: 100%;
+      background: url('images/texture.png');
+      background-size: cover;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1));
+      border-radius: 24px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 100%;
+        margin: 0;
+        padding: 2rem 1rem;
+        border-radius: 0px;
+      }
+
+      .overlay {
+        border-radius: 0px;
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      /*    border: 3px solid #4a6cf7;*/
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      margin: 0.5rem 0 0.5rem 0;
+      font-family: 'Alegreya', serif;
+      color: black;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .bio {
+      font-size: 1rem;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .social-icons {
+      margin-bottom: 2rem;
+      display: inline-flex;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .social-icons a {
+      color: black;
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+      display: inline-block;
+      transition: transform 0.15s ease;
+      cursor: pointer;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.15);
+    }
+
+    .social-icons a i {
+      display: inline-block;
+      /* prevents text cursor flicker */
+      cursor: inherit;
+      /* inherits hand from parent */
+      line-height: 1;
+      /* avoid gaps */
+    }
+
+    .section {
+      margin-top: 2rem;
+    }
+
+    .section h2 {
+      margin-bottom: 1rem;
+      font-family: 'Alegreya', serif;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      max-width: 95%;
+      box-sizing: border-box;
+      margin: 0.7rem auto;
+      padding: 1.5rem 1.5rem;
+      padding-left: 60px;
+      font-size: 1.1rem;
+      font-family: 'Alegreya Sans', sans-serif;
+      /*    font-weight: bold;*/
+      color: #eeeeee;
+      background: #18121c;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px) translateX(-1px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.75);
+    }
+
+    .btn img {
+      position: absolute;
+      left: 1rem;
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+    }
+
+    .btn i {
+      position: absolute;
+      left: 1rem;
+      font-size: 2rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: black;
+    }
+  </style>
+
   <script>
-    window.location.href = "https://temple.michaelkorman.com/ritual-hall";
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init Re Ms Fs Pe Rs Cs capture Ve calculateEventProperties Ds register register_once register_for_session unregister unregister_for_session zs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ls As createPersonProfile Ns Is Us opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing is_capturing clear_opt_in_out_capturing Os debug I js getPageViewId captureTraceFeedback captureTraceMetric".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_X3RBPEtoltUZgeok4tGE3IrU3lfpISjx9IHvia0RlGZ', {
+      api_host: 'https://us.i.posthog.com',
+      defaults: '2025-05-24',
+      person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
   </script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="overlay"></div>
+    <div class="content">
+      <!-- Profile -->
+      <img src="images/nomichaelhere-01.jpeg" alt="Profile Picture" class="profile-pic">
+      <h1>@no.michael.here</h1>
+      <div class="bio">🜃 The temple moves. A living story you can enter. The 3rd stone glows faintly: 15 down, 62 to go. No one knows what it will do when lit. ↯</div>
+
+      <!-- Social icons -->
+      <div class="social-icons">
+        <!--<a href="https://instagram.com/no.michael.here"><i class="fab fa-instagram"></i></a>-->
+        <a href="https://youtube.com/MichaelKorman"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@no.michael.here"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.threads.net/@no.michael.here"><i class="fa-brands fa-threads"></i></a> <!-- placeholder for Threads -->
+      </div>
+
+      <!-- Sections -->
+      <div class="section">
+        <a href="/ritual-hall/" class="btn">
+          <img src="images/ritual-smoke.png" alt="">
+          THE RITUAL HALL
+        </a>
+
+        <a href="/laws" class="btn">
+          <img src="images/laws.png" alt="">
+          The Laws of the Temple
+        </a>
+
+        <a href="https://offering.michaelkorman.com/" class="btn">
+          <img src="images/offering.png" alt="">
+          Temple Offering - $11
+        </a>
+
+        <!--<a href="/faq" class="btn">
+          <i class="fas fa-question"></i>
+          <span>FAQs About the Temple</span>
+        </a>-->
+
+        <!--<a href="https://shop.michaelkorman.com/collection/parables-and-lore" class="btn">
+          <img src="images/parables-and-lore.png" alt="">
+          Parables and Lore
+        </a>-->
+
+        <a href="https://shop.michaelkorman.com/" class="btn">
+          <img src="images/temple-artifacts.png" alt="">
+          Temple Artifacts
+        </a>
+
+        <a href="https://substack.com/@nomichaelhere?utm_source=share&utm_medium=android&r=1vkq2m" class="btn">
+          <img src="images/backstage-notes.png" alt="">
+          Backstage Notes
+        </a>
+
+        <a href="https://michaelkorman.com/waiting-room/" class="btn">
+          <img src="images/waiting-room.png" alt="">
+          Waiting Room
+        </a>
+      </div>
+
+      <div class="section">
+        <h2>⦲ KorMusic Transmissions</h2>
+        <a href="https://michaelkorman.com/5days?utm_source=linktree&utm_medium=link&utm_campaign=lp5d&utm_content=linktree" class="btn">
+          <img src="images/lp5d.png" alt="">
+          Learn Piano in 5 Days (initiation rite)
+        </a>
+        <a href="https://michaelkorman.com/take-yourself-seriously/" class="btn">
+          <img src="images/tys.png" alt="">
+          Take Yourself Seriously (sacred tract)
+        </a>
+      </div>
+
+      <div class="section">
+        <h2>⛧ Inner Practices</h2>
+        <a href="https://michaelkorman.com/no-problem/" class="btn">
+          <img src="images/no-problem.png" alt="">
+          No Problem (guided stillness)
+        </a>
+      </div>
+
+      <div class="section">
+        <h2>⌬ Audio Relics</h2>
+        <a href="http://nomichaelhere.substack.com/podcast" class="btn">
+          <img src="images/podcast.png" alt="">
+          Self-Defined Human Podcast (spoken discourses)
+        </a>
+
+        <a href="https://open.spotify.com/track/6XpPH5DURPajeRgpux8bqd?go=1&sp_cid=a1d4bc5fb918c233b06c3eb4c4b03848&utm_source=embed_player_p&utm_medium=desktop" class="btn">
+          <img src="images/you-hold-the-key.jpeg" alt="">
+          You Hold the Key (temple anthem)
+        </a>
+
+        <a href="https://open.spotify.com/album/285ZVT6nrSIKwgF6uejrX5" class="btn">
+          <img src="images/every-tiny-thing.jpeg" alt="">
+          Every Tiny Thing (an artifact from before the collapse)
+        </a>
+      </div>
+
+      <footer>© 2025 Michael Korman</footer>
+    </div>
+  </div>
+
 </body>
+
 </html>
