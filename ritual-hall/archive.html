@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zuck.js Demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/zuck.js/dist/zuck.css" />
+    <link rel="stylesheet" href="https://unpkg.com/zuck.js/dist/skins/snapgram.css" />
+
+    <script src="https://unpkg.com/zuck.js/dist/zuck.js"></script>
+    <style>
+        body {
+            background: #000;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stories"></div>
+
+    <script>
+        const options = {}; // See ./src/options.ts
+
+        const element = document.querySelector("#stories");
+        //const stories = Zuck(element, options);
+
+        const stories = Zuck(element, {
+            skin: 'snapgram', // other options: 'snapssenger', 'facesnap', 'swipe'
+            avatars: true,
+            list: false,
+            openEffect: true,
+            cubeEffect: true,
+            autoFullScreen: false,
+            backButton: true,
+            backNative: true,
+            stories: [
+                {
+                    id: "you",
+                    photo: "https://placekitten.com/200/200",
+                    name: "Third Stone",
+                    link: "https://example.com",
+                    lastUpdated: 1761508877,
+                    items: [
+                        {
+                            id: "you-1",
+                            type: "video",
+                            length: 18,
+                            src: "https://michaelkorman.com/closingslide-krita.mp4",
+                            preview: "https://placekitten.com/400/700",
+                            link: "https://offering.michaelkorman.com",
+                            seen: false,
+                            time: 1761508877,
+                        },
+                    ]
+                }
+            ]
+        });
+
+        function timestamp() {
+            return new Date().getTime() / 1000;
+        }
+    </script>
+</body>
+
+</html>
