@@ -37,12 +37,11 @@
         const options = {}; // See ./src/options.ts
 
         const element = document.querySelector("#stories");
-        //const stories = Zuck(element, options);
-
+        
         const stories = Zuck(element, {
             skin: 'snapgram', // other options: 'snapssenger', 'facesnap', 'swipe'
             avatars: true,
-            list: false,
+            list: true,
             openEffect: true,
             cubeEffect: true,
             autoFullScreen: false,
@@ -50,14 +49,14 @@
             backNative: true,
             stories: [
                 {
-                    id: "you",
+                    id: "third-stone",
                     photo: "/images/ritual-smoke.png",
                     name: "Third Stone",
                     /*link: "https://example.com",*/
                     lastUpdated: Math.floor(new Date("2025-10-27 16:00:00").getTime()/1000),
                     items: [        
                         {
-                            id: "you-1",
+                            id: "third-stone-1",
                             type: "video",
                             length: 18,
                             src: "https://michaelkorman.com/ritual-hall/third-stone-lit-text.mp4",
