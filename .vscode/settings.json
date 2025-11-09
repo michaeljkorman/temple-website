@@ -1,9 +1,9 @@
 {
     "html.format.wrapLineLength": 0,
-    "editor.wordWrap": "off",
+    "editor.wordWrap": "bounded",
     "editor.unicodeHighlight.allowedCharacters": {
         "’": true
     },
-    "editor.wordWrapColumn": 100,
-    "saveEditorLayout.list": []
+    "saveEditorLayout.list": [],
+    "html.format.wrapAttributes": "auto"
 }
