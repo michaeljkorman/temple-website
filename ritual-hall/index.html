@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/zuck.js/dist/zuck.css" />
     <link rel="stylesheet" href="https://unpkg.com/zuck.js/dist/skins/snapgram.css" />
 
-    <script src="https://unpkg.com/zuck.js/dist/zuck.js"></script>
+    <script src="/js/zuck.min.js"></script>
     <style>
         body {
             background: black;
@@ -37,38 +37,57 @@
         const options = {}; // See ./src/options.ts
 
         const element = document.querySelector("#stories");
-        
-        const stories = Zuck(element, {
-            skin: 'snapgram', // other options: 'snapssenger', 'facesnap', 'swipe'
-            avatars: true,
-            list: true,
-            openEffect: true,
-            cubeEffect: true,
-            autoFullScreen: false,
-            backButton: true,
-            backNative: true,
-            stories: [
-                {
-                    id: "third-stone",
-                    photo: "/images/ritual-smoke.png",
-                    name: "Third Stone",
-                    /*link: "https://example.com",*/
-                    lastUpdated: Math.floor(new Date("2025-10-27 16:00:00").getTime()/1000),
-                    items: [        
-                        {
-                            id: "third-stone-1",
-                            type: "video",
-                            length: 18,
-                            src: "https://michaelkorman.com/ritual-hall/third-stone-lit-text.mp4",
-                            /*preview: "https://placekitten.com/400/700",*/
-                            /*link: "https://offering.michaelkorman.com",*/
-                            seen: false,
-                            time: Math.floor(new Date("2025-10-27 16:00:00").getTime()/1000),
-                        },
-                    ]
-                }
-            ]
-        });
+
+        fetch("https://michaelkorman.com/ritual-hall/stories.json")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                new Zuck(element, {
+                    openEffect: true,
+                    cubeEffect: true,
+                    autoFullScreen: false,
+                    previousTap: true,
+                    backButton: true,
+                    backNative: false,
+                    paginationArrows: true,
+                    stories: data,
+                    skin: 'snapgram',
+                    list: false
+                });
+            });
+
+
+        // const stories = Zuck(element, {
+        //     skin: 'snapgram', // other options: 'snapssenger', 'facesnap', 'swipe'
+        //     avatars: true,
+        //     list: true,
+        //     openEffect: true,
+        //     cubeEffect: true,
+        //     autoFullScreen: false,
+        //     backButton: true,
+        //     backNative: true,
+        //     stories: [
+        //         {
+        //             id: "third-stone",
+        //             photo: "/images/ritual-smoke.png",
+        //             name: "Third Stone",
+        //             /*link: "https://example.com",*/
+        //             lastUpdated: Math.floor(new Date("2025-10-27 16:00:00").getTime()/1000),
+        //             items: [        
+        //                 {
+        //                     id: "third-stone-1",
+        //                     type: "video",
+        //                     length: 18,
+        //                     src: "https://michaelkorman.com/ritual-hall/third-stone-lit-text.mp4",
+        //                     /*preview: "https://placekitten.com/400/700",*/
+        //                     /*link: "https://offering.michaelkorman.com",*/
+        //                     seen: false,
+        //                     time: Math.floor(new Date("2025-10-27 16:00:00").getTime()/1000),
+        //                 },
+        //             ]
+        //         }
+        //     ]
+        // });
 
         function timestamp() {
             return new Date().getTime() / 1000;
