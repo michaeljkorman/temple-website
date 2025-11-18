@@ -105,36 +105,52 @@
       max-width: 400px;
       text-align: center;
       /* color: #272727; */
-      text-shadow: 0 0 12px rgb(255, 255, 255);
+      /* text-shadow: 0 0 12px rgb(255, 255, 255); */
     }
 
     .down-to-go {
       /*display: inline-block;*/
       /* so filter/text-shadow apply reliably */
       will-change: opacity, filter, text-shadow;
-      animation: throb 3s ease-out infinite;
+      animation: throb 3s cubic-bezier(.9, 0, .3, 1) infinite;
       -webkit-filter: brightness(1);
       /* vendor fallback */
     }
 
-    @keyframes throb {
+    /* @keyframes throb {
 
       0%,
       100% {
         opacity: 0.2;
-        /* filter: brightness(1); */
-                /* text-shadow: 0 0 12px rgb(255, 255, 255); */
-
+        /* filter: brightness(1);
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0);
       }
 
       50% {
-        opacity: 1;
-        /* filter: brightness(4.35); */
-                /* text-shadow: 0 0 0 rgba(255, 255, 255, 0); */
+        opacity: 0.8;
+        /* filter: brightness(4.35);
+        text-shadow: 0 0 3px rgb(255, 255, 255);
+      }
+    } */
 
-        /* subtle glow */
+    @keyframes throb {
+      0% {
+        opacity: 0.2;
+        animation-timing-function: cubic-bezier(1, 0, 1, 1);
+        /* fast into 50% */
+      }
+
+      50% {
+        opacity: 0.8;
+        animation-timing-function:ease;
+        /* slow out */
+      }
+
+      100% {
+        opacity: 0.2;
       }
     }
+
 
     .social-icons {
       /*margin-bottom: 1rem;*/
