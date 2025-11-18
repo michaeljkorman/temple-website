@@ -104,10 +104,40 @@
       margin-bottom: 2rem;
       max-width: 400px;
       text-align: center;
+      /* color: #272727; */
+      text-shadow: 0 0 12px rgb(255, 255, 255);
+    }
+
+    .down-to-go {
+      /*display: inline-block;*/
+      /* so filter/text-shadow apply reliably */
+      will-change: opacity, filter, text-shadow;
+      animation: throb 3s ease-out infinite;
+      -webkit-filter: brightness(1);
+      /* vendor fallback */
+    }
+
+    @keyframes throb {
+
+      0%,
+      100% {
+        opacity: 0.2;
+        /* filter: brightness(1); */
+                /* text-shadow: 0 0 12px rgb(255, 255, 255); */
+
+      }
+
+      50% {
+        opacity: 1;
+        /* filter: brightness(4.35); */
+                /* text-shadow: 0 0 0 rgba(255, 255, 255, 0); */
+
+        /* subtle glow */
+      }
     }
 
     .social-icons {
-      margin-bottom: 1rem;
+      /*margin-bottom: 1rem;*/
       display: inline-flex;
       gap: 0.5rem;
       cursor: pointer;
@@ -257,7 +287,7 @@
       </div>
 
       <div class="under-icons-text">
-        <p>The fourth stone glows faintly:<br>31 down, 46 to go.</p>
+        <p>The fourth stone glows faintly:<span class="down-to-go"><br>31 down, 46 to go.</span></p>
       </div>
 
       <!-- Sections -->
