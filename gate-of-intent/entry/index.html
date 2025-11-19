@@ -323,7 +323,7 @@
                 .join('; ');
             data.set('conditions', conditions);
 
-            const response = await fetch('http://localhost:8000/submit', {
+            const response = await fetch('https://gate.michaelkorman.com/submit', {
                 method: 'POST',
                 body: data
             });
