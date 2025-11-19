@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#242424">
+
+    <title>The Gate of Intent – Entry Form</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=IM+Fell+English:ital,wght@0,400;0,700&family=Lora:ital,wght@0,400..700;1,400..700&family=Alegreya+Sans&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* --bg: #3b3b3b; */
+            --bg: #313131;
+            --card: rgb(167, 167, 167);
+            --warning: #7a1a1a;
+            /* --accent: #ff5555; */
+            --accent: #18121c;
+            --accent-hover: #e6e6e6;
+            --text: black;
+            --subtle: #636363;
+            --button-text: white;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            background: url('/images/wall.jpeg') no-repeat top left;
+            background-size: 450px 450px;
+            mask-image: radial-gradient(circle at top left, black 2%, transparent 70%);
+            /*-webkit-mask-image: linear-gradient(135deg, black, transparent);*/
+            z-index: -1;
+            /* behind content */
+
+            width: 20vw;
+            /* 20% of viewport width */
+            height: 20vw;
+            /* keep square */
+            min-width: 400px;
+            min-height: 400px;
+            background-size: cover;
+            /* fills the mask box */
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--bg);
+            max-width: 640px;
+            margin: 2em auto;
+            padding: 1em 2em;
+            line-height: 1.3;
+            font-size: 1rem;
+        }
+
+        h1 {
+            font-family: 'Alegreya', serif;
+            text-align: left;
+            font-size: 2em;
+            margin-bottom: 0.2em;
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 1.3em;
+        }
+
+        /* p.warning {
+             font-weight: bold;
+    color: #ff5555;
+        } */
+
+        p.note {
+            border-top: 1px solid var(--subtle);
+            padding-top: 0.5em;
+            /* font-weight: bold; */
+            color: var(--warning);
+        }
+
+        label.required::after {
+            content: " *";
+            color: var(--warning);
+            margin-left: 0.2em;
+        }
+
+        label.question-title {
+            font-family: 'IM Fell English', serif;
+            display: block;
+            /* margin-top: 1.5em; */
+            font-size: 1.4em;
+        }
+
+        .description {
+            /* font-style: italic; */
+            margin-top: 0.4em;
+            margin-bottom: 1em;
+            /* color: #f0f0f0; */
+        }
+
+        .question {
+            background-color: var(--card);
+            border-radius: 12px;
+            color: var(--text);
+            padding: 24px;
+            margin: 0 0 12px;
+            /* margin-bottom: 2em; */
+        }
+
+        @media (max-width: 600px) {
+            body {
+               padding: 10px;
+            }
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.5em;
+            margin-top: 0.2em;
+            box-sizing: border-box;
+            font-family: 'Alegreya Sans';
+            /* background-color: #333; */
+            background-color: var(--card);
+            /* color: #f0f0f0; */
+            color: var(--text);
+            font-size: 1.1rem;
+            border: 1px solid var(--subtle);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* .checkbox-group {
+    margin-top: 0.5em;
+}
+.checkbox-group label {
+    font-weight: normal;
+    display: block;
+} */
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            cursor: pointer;
+            user-select: none;
+            margin-bottom: 1.1em;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .checkbox-group label::before {
+            content: "";
+            width: 1em;
+            height: 1em;
+            border: 2px solid var(--subtle);
+            border-radius: 0.3em;
+            background-color: var(--card);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked+label::before {
+            content: "✔";
+            color: var(--text);
+            font-size: 1em;
+        }
+
+        .checkbox-group input[type="checkbox"]:focus+label::before {
+            box-shadow: 0 0px 10px var(--accent-hover);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        /* button {
+            margin-top: 1.5em;
+            padding: 0.8em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: var(--accent);
+            color: var(--button-text);
+            border: none;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        } */
+
+        button {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            position: relative;
+            /* width: 75%; */
+            max-width: 95%;
+            box-sizing: border-box;
+            /* margin: 2rem auto; */
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            font-family: 'Alegreya Sans', sans-serif;
+            /*    font-weight: bold;*/
+            color: var(--button-text);
+            background: var(--accent);
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            border: none;
+        }
+
+        button:hover {
+            transform: translateY(-1px) translateX(-1px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.75);
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px var(--card) inset !important;
+            box-shadow: 0 0 0px 1000px var(--card) inset !important;
+            -webkit-text-fill-color: var(--text) !important;
+            caret-color: var(--text);
+            transition: background-color 9999s ease-in-out 0s;
+        }
+    </style>
+
+    <script>
+        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init Re Ms Fs Pe Rs Cs capture Ve calculateEventProperties Ds register register_once register_for_session unregister unregister_for_session zs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ls As createPersonProfile Ns Is Us opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing is_capturing clear_opt_in_out_capturing Os debug I js getPageViewId captureTraceFeedback captureTraceMetric".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+        posthog.init('phc_X3RBPEtoltUZgeok4tGE3IrU3lfpISjx9IHvia0RlGZ', {
+            api_host: 'https://us.i.posthog.com',
+            defaults: '2025-05-24',
+            person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+        })
+    </script>
+</head>
+
+<body>
+
+    <div class="question">
+        <h1>The Gate of Intent – Entry Form</h1>
+        <p><strong>Welcome, traveler</strong>. The gates of the temple respond only to those who act with intent. By submitting this form, your intent will be recorded. The priest will review it, and if deemed worthy, <strong>begin a teaching</strong> with you within 24 hours. Until then, you remain in the courtyard.</p>
+        <p class="warning"><strong>⛩️ BE AWARE</strong>: The temple gates open and close according to the clock. Time is of the essence. Messages will come from michael@michaelkorman.com or a Gmail address—<strong>check with care</strong>; those who miss the call miss the Gate.</p>
+        <p>🜃⦲</p>
+        <p><em>(Your name and email are held in trust for this purpose alone.)</em></p>
+        <p class="note">* Indicates required question</p>
+    </div>
+
+    <form id="templeForm">
+        <div class="question">
+            <label class="question-title required" for="email">Email</label>
+            <p class="description"></p>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="question">
+            <label class="question-title required" for="name">Full Name</label>
+            <p class="description">Enter the name—<strong>first and last</strong>—you will use consistently across your engagement with the temple. Pen names are accepted, but you must link to a stable public profile (see below).</p>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="question">
+            <label class="question-title required" for="handle">Primary Public Handle</label>
+            <p class="description">Link to one stable public profile (Instagram, YouTube, X, LinkedIn, YouTube, etc.). It should show <strong>real activity from a real person</strong> and be visible <strong>without logging in</strong> to the platform; throwaway or empty accounts will not receive a reply.</p>
+            <input type="text" id="handle" name="handle" required>
+        </div>
+
+        <div class="question">
+            <label class="question-title required" for="declaration">Declaration of Intent</label>
+            <p class="description">In a few words, tell me what you wish to gain by seeking entry. Speak plainly—do not use spiritual/fantasy language here.</p>
+            <textarea id="declaration" name="declaration" required></textarea>
+        </div>
+
+        <div class="question">
+            <label class="question-title required">Conditions of Engagement</label>
+            <p class="description">You must agree to all four conditions to submit.</p>
+            <div class="checkbox-group">
+                <input type="checkbox" id="cond1" name="conditions" value="18+" required>
+                <label for="cond1">I confirm I am 18+.</label>
+                <input type="checkbox" id="cond2" name="conditions" value="wish_teaching" required>
+                <label for="cond2">I confirm I wish to receive a teaching by letting the temple guide me.</label>
+                <input type="checkbox" id="cond3" name="conditions" value="consent_contact" required>
+                <label for="cond3">I consent to being contacted at this email regarding my request.</label>
+                <input type="checkbox" id="cond4" name="conditions" value="understand_gate" required>
+                <label for="cond4">I understand the Gate does not open for trolling, wasting time, or malicious intent, and that throwaway accounts will be rejected.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <label class="question-title" for="message">Message to the Priest (optional)</label>
+            <p class="description">Any words, questions, or declarations you wish to include. If we've had <strong>prior communication</strong>, also include any information that will help the temple recognize you (unless already provided above).</p>
+            <textarea id="message" name="message"></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('templeForm');
+
+        form.onsubmit = async function (e) {
+            e.preventDefault();
+
+            const data = new FormData(form);
+
+            // Concatenate all checked checkboxes into a single string
+            const conditions = Array.from(form.querySelectorAll('input[name="conditions"]:checked'))
+                .map(cb => cb.value)
+                .join('; ');
+            data.set('conditions', conditions);
+
+            const response = await fetch('http://localhost:8000/submit', {
+                method: 'POST',
+                body: data
+            });
+
+            if (response.ok) {
+                // Redirect to thank you page
+                window.location.href = "recorded.html";
+            } else {
+                alert("Submission failed. Try again.");
+            }
+        };
+    </script>
+
+</body>
+
+</html>

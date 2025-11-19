@@ -21,6 +21,29 @@
             display: flex;
         }
 
+                body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            background: url('/images/wall.jpeg') no-repeat top left;
+            background-size: 450px 450px;
+            mask-image: radial-gradient(circle at top left, black 2%, transparent 70%);
+            /*-webkit-mask-image: linear-gradient(135deg, black, transparent);*/
+            z-index: -1;
+            /* behind content */
+
+            width: 20vw;
+            /* 20% of viewport width */
+            height: 20vw;
+            /* keep square */
+            min-width: 400px;
+            min-height: 400px;
+            background-size: cover;
+            /* fills the mask box */
+        }
+
         .faq-container {
             position: relative;
             max-width: 520px;

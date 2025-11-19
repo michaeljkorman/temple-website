@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#242424">
+
+    <title>The Gate of Intent – Entry Form</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=IM+Fell+English:ital,wght@0,400;0,700&family=Lora:ital,wght@0,400..700;1,400..700&family=Alegreya+Sans&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* --bg: #3b3b3b; */
+            --bg: #313131;
+            --card: rgb(167, 167, 167);
+            --warning: #7a1a1a;
+            /* --accent: #ff5555; */
+            --accent: #18121c;
+            --accent-hover: #ff9494;
+            --text: black;
+            --subtle: #636363;
+            --button-text: white;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--bg);
+            max-width: 625px;
+            margin: 2em auto;
+            padding: 1em 2em;
+            line-height: 1.3;
+            font-size: 1rem;
+        }
+
+                body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            background: url('/images/wall.jpeg') no-repeat top left;
+            background-size: 450px 450px;
+            mask-image: radial-gradient(circle at top left, black 2%, transparent 70%);
+            /*-webkit-mask-image: linear-gradient(135deg, black, transparent);*/
+            z-index: -1;
+            /* behind content */
+
+            width: 20vw;
+            /* 20% of viewport width */
+            height: 20vw;
+            /* keep square */
+            min-width: 400px;
+            min-height: 400px;
+            background-size: cover;
+            /* fills the mask box */
+        }
+
+        a {
+            color: #4a3a57;
+        }
+
+
+        h1 {
+            font-family: 'Alegreya', serif;
+            text-align: left;
+            font-size: 2em;
+            margin-bottom: 0.2em;
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 1.3em;
+        }
+
+        /* p.warning { */
+             /* font-weight: bold; */
+    /* color: #ff5555; */
+        /* } */
+
+        p.note {
+            border-top: 0.5px solid var(--bg);
+            padding-top: 0.5em;
+            /* font-weight: bold; */
+            color: var(--warning);
+        }
+
+        label.required::after {
+            content: " *";
+            color: var(--warning);
+            margin-left: 0.2em;
+        }
+
+        label.question-title {
+            font-family: 'IM Fell English', serif;
+            display: block;
+            /* margin-top: 1.5em; */
+            font-size: 1.4em;
+        }
+
+        .description {
+            /* font-style: italic; */
+            margin-top: 0.4em;
+            margin-bottom: 1em;
+            /* color: #f0f0f0; */
+        }
+
+        .question {
+            background-color: var(--card);
+            border-radius: 12px;
+            color: var(--text);
+            padding: 24px;
+            margin: 0 0 12px;
+            /* margin-bottom: 2em; */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.5em;
+            margin-top: 0.2em;
+            box-sizing: border-box;
+            font-family: 'Alegreya Sans';
+            /* background-color: #333; */
+            background-color: var(--card);
+            /* color: #f0f0f0; */
+            color: var(--text);
+            font-size: 1.1rem;
+            border: 1px solid var(--subtle);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* .checkbox-group {
+    margin-top: 0.5em;
+}
+.checkbox-group label {
+    font-weight: normal;
+    display: block;
+} */
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            cursor: pointer;
+            user-select: none;
+            margin-bottom: 1.1em;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkbox-group label::before {
+            content: "";
+            width: 1em;
+            height: 1em;
+            border: 2px solid var(--subtle);
+            border-radius: 0.3em;
+            background-color: var(--card);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked+label::before {
+            content: "✔";
+            color: var(--text);
+            font-size: 1em;
+        }
+
+        /* button {
+            margin-top: 1.5em;
+            padding: 0.8em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: var(--accent);
+            color: var(--button-text);
+            border: none;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        } */
+
+        button {
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            position: relative;
+            /* width: 75%; */
+            max-width: 95%;
+            box-sizing: border-box;
+            /* margin: 2rem auto; */
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            font-family: 'Alegreya Sans', sans-serif;
+            /*    font-weight: bold;*/
+            color: var(--button-text);
+            background: var(--accent);
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            border: none;
+        }
+
+        button:hover {
+            transform: translateY(-1px) translateX(-1px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.75);
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px var(--card) inset !important;
+            box-shadow: 0 0 0px 1000px var(--card) inset !important;
+            -webkit-text-fill-color: var(--text) !important;
+            caret-color: var(--text);
+            transition: background-color 9999s ease-in-out 0s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="question">
+        <p>Your intent has been recorded. The priest will review it, and if worthy, begin the teaching within <strong>24 hours</strong>. Until then, remain in the courtyard and prepare yourself.</p>
+
+        <p>Time is of the essence. Messages will come from either michael@michaelkorman.com or a Gmail address—check your spam folder.</p>
+
+        <a href="/">Back to the temple</a>
+    </div>
+</body>
+
+</html>
