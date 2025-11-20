@@ -19,9 +19,51 @@
             font-size: 1.1rem;
             justify-content: center;
             display: flex;
+            transition: filter 0.6s ease;
         }
 
-                body::before {
+        body.fade-to-bright {
+            filter: contrast(0);
+        }
+
+        #fog-placeholder {
+            position: fixed;
+            inset: 0;
+            /* background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.85)); */
+            background-color: lightgray;
+            z-index: 9998;
+            /* mix-blend-mode: screen; */
+            visibility: hidden;
+        }
+
+        .fade-in {
+            animation: fogFade 0.6s ease-in forwards;
+        }
+
+        @keyframes fogFade {
+            0% {
+                opacity: 0;
+                filter: blur(0px) brightness(1);
+                visibility: hidden;
+            }
+
+            100% {
+                opacity: 1;
+                filter: blur(0px) brightness(1);
+                visibility: visible;
+            }
+        }
+
+        div#gate-container {
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+
+        div#gate-container.fade-out {
+            opacity: 0;
+        }
+
+        body::before {
             content: "";
             position: absolute;
             top: 0;
@@ -248,7 +290,8 @@
 </head>
 
 <body>
-    <div class="faq-container">
+    <div id="fog-placeholder"></div>
+    <div id="gate-container" class="faq-container">
         <div class="overlay"></div>
         <div class="content">
             <a href="/">Home</a>
@@ -266,13 +309,34 @@
 
             <p>Must be 18+.</p>
 
-            <a href="entry/" class="btn" data-event="enter-gate-of-intent">Knock on the Gate</a>
+            <a href="entry/" id="gate-button" class="btn" data-event="enter-gate-of-intent">Knock on the Gate</a>
 
             <p style="margin: 0 auto; display: block;">
                 <em>(The link leads to a short form where you’ll state your intent and give your email address so I can reply to you and begin the ritual. You will not be added to any mailing lists.)</em>
             </p>
 
         </div>
+
+        <script>
+            document.getElementById("gate-button").addEventListener("click", function (e) {
+                e.preventDefault();              // stop instant navigation
+                //document.getElementById("gate-container").classList.add("fade-out");
+                //document.body.classList.add("fade-to-bright");
+                document.getElementById("fog-placeholder").classList.add("fade-in");
+
+                const url = this.href;
+
+                setTimeout(() => {
+                    window.location = url;
+                }, 600); // match CSS transition length
+            });
+
+            window.addEventListener('pageshow', () => {
+                //document.body.classList.remove('fade-out', 'fade-to-bright');
+                document.getElementById("fog-placeholder").classList.remove("fade-in");
+                //document.body.style.filter = '';
+            });
+        </script>
 </body>
 
 </html>

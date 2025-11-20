@@ -19,10 +19,70 @@
             --card: #dfd8d4;
             --warning: #a11515;
             --accent: #18121c;
-            --accent-hover: #e6e6e6;
+            --accent-hover: #424242;
             --text: black;
             --subtle: #636363;
             --button-text: white;
+        }
+
+        #fog-placeholder {
+            position: fixed;
+            inset: 0;
+            /* background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.85)); */
+            /* background-color: #5b5b5b; */
+            background-color: lightgray;
+            pointer-events: none;
+            /* background-color: #b6b6b6; */
+            z-index: 9999;
+            /* mix-blend-mode: overlay;  */
+
+        }
+
+        #fog-video {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 9998;
+            opacity: 0;
+            animation: fog-sequence 4.8s ease-out forwards;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
+        @keyframes fog-sequence {
+            0% {
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                
+            }
+        }
+
+
+        .fade-out {
+            /* animation: fogFade 2s ease-in forwards; */
+            animation: fogFade 4.8s ease-out forwards;
+        }
+
+        @keyframes fogFade {
+            0% {
+                opacity: 1;
+                filter: blur(0px) brightness(1);
+            }
+
+            100% {
+                opacity: 0;
+                filter: blur(0px) brightness(1);
+                visibility: hidden;
+            }
         }
 
         body::before {
@@ -252,13 +312,21 @@
 </head>
 
 <body>
+    <div id="fog-placeholder"></div>
+    <video id="fog-video" autoplay muted playsinline>
+        <source src="short-fog.mp4" type="video/mp4">
+    </video>
 
     <div class="question">
         <h1>The Gate of Intent – Entry Form</h1>
+
         <p><strong>Welcome, traveler</strong>. The gates of the temple respond only to those who act with intent. By submitting this form, your intent will be recorded. The priest will review it, and if deemed worthy, <strong>begin a teaching</strong> with you within 24 hours. Until then, you remain in the courtyard.</p>
         <p class="warning"><strong>⛩️ BE AWARE</strong>: The temple gates open and close according to the clock. Time is of the essence. Messages will come from michael@michaelkorman.com or a Gmail address—<strong>check with care</strong>; those who miss the call miss the Gate.</p>
+
         <p>🜃⦲</p>
+
         <p><em>(Your name and email are held in trust for this purpose alone.)</em></p>
+
         <p class="note">* Indicates required question</p>
     </div>
 
@@ -337,6 +405,22 @@
                 alert("Submission failed. Try again.");
             }
         };
+
+        // Fog effect
+        document.addEventListener("DOMContentLoaded", () => {
+            const vid = document.getElementById("fog-video");
+            const placeholder = document.getElementById("fog-placeholder");
+
+            // ensure both layers start opaque
+            //vid.style.opacity = "1";
+            placeholder.style.opacity = "1";
+
+            // fade them out only once the video is ready(ish)
+           vid.addEventListener("loadeddata", () => {
+                vid.classList.add("fade-out");
+                placeholder.classList.add("fade-out");
+            });
+        });
     </script>
 
 </body>
