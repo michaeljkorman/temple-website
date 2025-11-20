@@ -13,6 +13,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=IM+Fell+English:ital,wght@0,400;0,700&family=Lora:ital,wght@0,400..700;1,400..700&family=Alegreya+Sans&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="/css/temple.css?v=4">
+
     <style>
         :root {
             --bg: #313131;
@@ -62,7 +64,7 @@
 
             100% {
                 opacity: 0;
-                
+
             }
         }
 
@@ -416,7 +418,7 @@
             placeholder.style.opacity = "1";
 
             // fade them out only once the video is ready(ish)
-           vid.addEventListener("loadeddata", () => {
+            vid.addEventListener("loadeddata", () => {
                 vid.classList.add("fade-out");
                 placeholder.classList.add("fade-out");
             });

@@ -1,0 +1,11 @@
+button, .btn, label {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  transition: filter 0.1s ease;
+}
+
+.btn:active {
+  filter: brightness(1.2);
+}

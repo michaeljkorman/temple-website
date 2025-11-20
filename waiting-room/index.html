@@ -1,91 +1,95 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
 
-  <meta name="theme-color" content="#242424">
-    
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  
-  <title>The Waiting Room</title>
+<head>
 
-  <style>
-    body::before {
-	content: "";
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
-	background-image: url('/images/waiting-room-bg.jpg');
-	background-repeat: no-repeat;
-	background-position: bottom right;
-	background-size: auto;
-	z-index: -1;
-	pointer-events: none;
-    }
-    
-    body {
-      margin: 0;
-      background: #242424;
-      /* background-image: url('background.jpg'); */
-      /* background-size: cover;        /\* or 'contain' if you want full visibility *\/ */
-      /* background-position: bottom right; */
-      /* background-repeat: no-repeat; */
-      
-/*      opacity: 0.1;*/
-      
-      color: #dddddd;
-      font-family: "Lora", serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      flex-direction: column;
-      text-align: center;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
-      font-family: 'Alegreya', serif;
-    }
-    p {
-	font-size: 1.2em;
-	margin: 0;
-    }
-    button {
-	margin-top: 3em;
-	font-family: 'Alegreya Sans', sans-serif;
-	font-size: 1.2em;
-    }
+    <meta name="theme-color" content="#242424">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <title>The Waiting Room</title>
+
+    <link rel="stylesheet" href="/css/temple.css">
+
+    <style>
+        body::before {
+            content: "";
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/waiting-room-bg.jpg');
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            background-size: auto;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body {
+            margin: 0;
+            background: #242424;
+            /* background-image: url('background.jpg'); */
+            /* background-size: cover;        /\* or 'contain' if you want full visibility *\/ */
+            /* background-position: bottom right; */
+            /* background-repeat: no-repeat; */
+
+            /*      opacity: 0.1;*/
+
+            color: #dddddd;
+            font-family: "Lora", serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            font-family: 'Alegreya', serif;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        button {
+            margin-top: 3em;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 1.2em;
+        }
 
 
-    	
-    button {
-	/*	background: #420061;*/
-	background: rgb(24, 18, 28);
-	color: white;
-/*	font-weight: bold;*/
-	padding: 12px 24px;
-	border: none;
-	border-radius: 12px;
-	box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-	cursor: pointer;
-	transition: background 0.2s ease;
-    }
 
-    button:hover {
-	/*	background: #620061;*/
-	background: rgb(34, 28, 38);
-    }
-    
-  </style>
-  <script>
+        button {
+            /*	background: #420061;*/
+            background: rgb(24, 18, 28);
+            color: white;
+            /*	font-weight: bold;*/
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            /*	background: #620061;*/
+            background: rgb(34, 28, 38);
+        }
+    </style>
+    <script>
         !function (t, e) { var o, n, p, r; e.__SV || (window.posthog && window.posthog.__loaded) || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init Rr Mr fi Or Ar ci Tr Cr capture Mi calculateEventProperties Lr register register_once register_for_session unregister unregister_for_session Hr getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ur jr createPersonProfile zr kr Br opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Dr debug M Nr getPageViewId captureTraceFeedback captureTraceMetric $r".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
         posthog.init('phc_X3RBPEtoltUZgeok4tGE3IrU3lfpISjx9IHvia0RlGZ', {
             api_host: 'https://us.i.posthog.com',
@@ -94,65 +98,67 @@
         })
     </script>
 </head>
+
 <body>
-  <h1>Have a seat.</h1>
-  <p>You’re not ready to offer.</p>
-  <p>But you’re still here.</p>
-  
-  <button id="sound-toggle" class="sealed">🔇 Awaken</button>
-  <audio id="audio" loop>
-    <source src="https://michaelkorman.com/waiting-room/temple_sound.mp3" type="audio/mpeg" />
-  </audio>
-  
-  <script>
-    let currentFade = null;
-    
-    function fadeAudio(audio, targetVolume, duration = 2000) {
-	let step = 0.02;
-	let interval = duration / (1 / step);
+    <h1>Have a seat.</h1>
+    <p>You’re not ready to offer.</p>
+    <p>But you’re still here.</p>
 
-	if (currentFade) {
-	    clearInterval(currentFade);
-	}
+    <button id="sound-toggle" class="sealed">🔇 Awaken</button>
+    <audio id="audio" loop>
+        <source src="https://michaelkorman.com/waiting-room/temple_sound.mp3" type="audio/mpeg" />
+    </audio>
 
-	if (targetVolume > audio.volume || audio.paused) {
-	    audio.volume = 0;
-	    audio.play();
-	}
-	
-	currentFade = setInterval(() => {
-	    let diff = targetVolume - audio.volume;
-	    if (Math.abs(diff) < step) {
-		audio.volume = targetVolume;
+    <script>
+        let currentFade = null;
 
-		if (targetVolume === 0) {
-		    audio.pause();
-		}
-		
-		clearInterval(currentFade);
-		currentFade = null;
-	    } else {
-		audio.volume += step * Math.sign(diff);
-//		console.log(audio.volume);
-	    }
-	}, interval);
-    }
-    
-    const btn = document.getElementById('sound-toggle');
-    const audio = document.getElementById('audio');
-    btn.addEventListener('click', () => {
-	btn.classList.toggle('sealed');
-	btn.classList.toggle('unsealed');
+        function fadeAudio(audio, targetVolume, duration = 2000) {
+            let step = 0.02;
+            let interval = duration / (1 / step);
 
-	if (btn.classList.contains('unsealed')) {
-	    btn.textContent = '🔊 Sleep';
-	    fadeAudio(audio, 1);
-	} else {
-	    btn.textContent = '🔇 Awaken';
-	    fadeAudio(audio, 0);
-	}
-    });
-  </script>
+            if (currentFade) {
+                clearInterval(currentFade);
+            }
+
+            if (targetVolume > audio.volume || audio.paused) {
+                audio.volume = 0;
+                audio.play();
+            }
+
+            currentFade = setInterval(() => {
+                let diff = targetVolume - audio.volume;
+                if (Math.abs(diff) < step) {
+                    audio.volume = targetVolume;
+
+                    if (targetVolume === 0) {
+                        audio.pause();
+                    }
+
+                    clearInterval(currentFade);
+                    currentFade = null;
+                } else {
+                    audio.volume += step * Math.sign(diff);
+                    //		console.log(audio.volume);
+                }
+            }, interval);
+        }
+
+        const btn = document.getElementById('sound-toggle');
+        const audio = document.getElementById('audio');
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('sealed');
+            btn.classList.toggle('unsealed');
+
+            if (btn.classList.contains('unsealed')) {
+                btn.textContent = '🔊 Sleep';
+                fadeAudio(audio, 1);
+            } else {
+                btn.textContent = '🔇 Awaken';
+                fadeAudio(audio, 0);
+            }
+        });
+    </script>
 
 </body>
+
 </html>
