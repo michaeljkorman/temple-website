@@ -40,7 +40,7 @@
         }
 
         .fade-in {
-            animation: fogFade 0.6s ease-in forwards;
+            animation: fogFade 2.0s ease-in forwards;
         }
 
         @keyframes fogFade {
@@ -331,7 +331,7 @@
 
                 setTimeout(() => {
                     window.location = url;
-                }, 600); // match CSS transition length
+                }, 2000); // match CSS transition length
             });
 
             window.addEventListener('pageshow', () => {
