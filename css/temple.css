@@ -2,10 +2,30 @@ button, .btn, label {
     -webkit-tap-highlight-color: transparent;
 }
 
-button {
-  transition: filter 0.1s ease;
+/* button, .btn {
+  transition: filter 2s ease;
 }
 
-.btn:active {
+.btn.pressed, button.pressed {
   filter: brightness(1.2);
+} */
+
+
+button, .btn {
+  position: relative;
+  overflow: hidden;
+}
+
+button::after, .btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+button.pressed::after, .btn.pressed::after {
+  opacity: 0.08;
 }
