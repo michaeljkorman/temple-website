@@ -71,13 +71,17 @@
 
         .fade-out {
             /* animation: fogFade 2s ease-in forwards; */
-            animation: fogFade 1.3s ease-out forwards;
+            animation: fogFade 0.5s ease-in forwards;
         }
 
         @keyframes fogFade {
             0% {
                 opacity: 1;
                 filter: blur(0px) brightness(1);
+            }
+
+            10% {
+                opacity: 1;
             }
 
             100% {
@@ -420,7 +424,7 @@
 
             // fade them out only once the video is ready(ish)
             vid.addEventListener("loadeddata", () => {
-                vid.classList.add("fade-out");
+                //vid.classList.add("fade-out");
                 placeholder.classList.add("fade-out");
             });
         });
