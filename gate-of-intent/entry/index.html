@@ -297,6 +297,15 @@
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.75);
         }
 
+        button:disabled {
+            background-color: #583c52;
+            /* or any color you want */
+            cursor: not-allowed;
+            opacity: 0.8;
+            box-shadow: none;
+            transform: none;
+        }
+
         input:-webkit-autofill,
         input:-webkit-autofill:hover,
         input:-webkit-autofill:focus {
@@ -449,11 +458,9 @@
                     alert("Submission failed. Try again.");
                 }
             } finally {
-                if (!response.ok) {
-                    button.disabled = false;
-                    btnText.style.display = 'inline-block';
-                    spinner.style.display = 'none';
-                }
+                button.disabled = false;
+                btnText.style.display = 'inline-block';
+                spinner.style.display = 'none';
             }
         });
 
