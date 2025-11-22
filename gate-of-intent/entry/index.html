@@ -316,6 +316,7 @@
             border-radius: 50%;
             animation: spin 0.6s linear infinite;
             margin-left: 8px;
+            vertical-align: middle;
         }
 
         @keyframes spin {
@@ -402,7 +403,7 @@
 
         <button id="submitBtn" type="submit">
             <span class="btn-text">Submit</span>
-            <span class="spinner" style="display:none"></span>
+            <span class="spinner" style="opacity: 0"></span>
         </button>
 
         <span id="status"></span>
@@ -421,7 +422,7 @@
             // flashy immediate feedback
             button.disabled = true;
             btnText.style.opacity = 0.5;
-            spinner.style.display = 'inline-block';
+            spinner.style.opacity = 1;
             status.textContent = '';
 
             try {
@@ -447,7 +448,7 @@
             } finally {
                 button.disabled = false;
                 btnText.style.opacity = 1;
-                spinner.style.display = 'none';
+                spinner.style.opacity = 0;
             }
         });
 
