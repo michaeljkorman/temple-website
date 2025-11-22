@@ -306,6 +306,23 @@
             caret-color: var(--text);
             transition: background-color 9999s ease-in-out 0s;
         }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(190, 190, 190, 0.712);
+            border-top-color: rgb(77, 77, 77);
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 
     <script>
@@ -383,35 +400,60 @@
             <textarea id="message" name="message"></textarea>
         </div>
 
-        <button type="submit">Submit</button>
+        <button id="submitBtn" type="submit">
+            <span class="btn-text">Submit</span>
+            <span class="spinner" style="display:none"></span>
+        </button>
+
+        <span id="status"></span>
     </form>
 
     <script>
+        const button = document.getElementById('submitBtn');
+        const btnText = button.querySelector('.btn-text');
+        const spinner = button.querySelector('.spinner');
+        const status = document.getElementById('status');
         const form = document.getElementById('templeForm');
 
-        form.onsubmit = async function (e) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const data = new FormData(form);
+            // flashy immediate feedback
+            button.disabled = true;
+            btnText.style.opacity = 0.5;
+            spinner.style.display = 'inline-block';
+            status.textContent = '';
 
-            // Concatenate all checked checkboxes into a single string
-            const conditions = Array.from(form.querySelectorAll('input[name="conditions"]:checked'))
-                .map(cb => cb.value)
-                .join('; ');
-            data.set('conditions', conditions);
+            form.onsubmit = async function (e) {
+                e.preventDefault();
 
-            const response = await fetch('https://gate.michaelkorman.com/submit', {
-                method: 'POST',
-                body: data
-            });
+                try {
+                    const data = new FormData(form);
 
-            if (response.ok) {
-                // Redirect to thank you page
-                window.location.href = "recorded.html";
-            } else {
-                alert("Submission failed. Try again.");
-            }
-        };
+                    // Concatenate all checked checkboxes into a single string
+                    const conditions = Array.from(form.querySelectorAll('input[name="conditions"]:checked'))
+                        .map(cb => cb.value)
+                        .join('; ');
+                    data.set('conditions', conditions);
+
+                    const response = await fetch('https://gate.michaelkorman.com/submit', {
+                        method: 'POST',
+                        body: data
+                    });
+
+                    if (response.ok) {
+                        // Redirect to thank you page
+                        window.location.href = "recorded.html";
+                    } else {
+                        alert("Submission failed. Try again.");
+                    }
+                } finally {
+                    button.disabled = false;
+                    btnText.style.opacity = 1;
+                    spinner.style.display = 'none';
+                }
+            };
+        });
 
         // Fog effect
         document.addEventListener("DOMContentLoaded", () => {
