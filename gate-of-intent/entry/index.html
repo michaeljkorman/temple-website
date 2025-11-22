@@ -449,9 +449,11 @@
                     alert("Submission failed. Try again.");
                 }
             } finally {
-                button.disabled = false;
-                btnText.style.display = 'inline-block';
-                spinner.style.display = 'none';
+                if (!response.ok) {
+                    button.disabled = false;
+                    btnText.style.display = 'inline-block';
+                    spinner.style.display = 'none';
+                }
             }
         });
 
