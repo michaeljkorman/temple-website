@@ -424,35 +424,31 @@
             spinner.style.display = 'inline-block';
             status.textContent = '';
 
-            form.onsubmit = async function (e) {
-                e.preventDefault();
+            try {
+                const data = new FormData(form);
 
-                try {
-                    const data = new FormData(form);
+                // Concatenate all checked checkboxes into a single string
+                const conditions = Array.from(form.querySelectorAll('input[name="conditions"]:checked'))
+                    .map(cb => cb.value)
+                    .join('; ');
+                data.set('conditions', conditions);
 
-                    // Concatenate all checked checkboxes into a single string
-                    const conditions = Array.from(form.querySelectorAll('input[name="conditions"]:checked'))
-                        .map(cb => cb.value)
-                        .join('; ');
-                    data.set('conditions', conditions);
+                const response = await fetch('https://gate.michaelkorman.com/submit', {
+                    method: 'POST',
+                    body: data
+                });
 
-                    const response = await fetch('https://gate.michaelkorman.com/submit', {
-                        method: 'POST',
-                        body: data
-                    });
-
-                    if (response.ok) {
-                        // Redirect to thank you page
-                        window.location.href = "recorded.html";
-                    } else {
-                        alert("Submission failed. Try again.");
-                    }
-                } finally {
-                    button.disabled = false;
-                    btnText.style.opacity = 1;
-                    spinner.style.display = 'none';
+                if (response.ok) {
+                    // Redirect to thank you page
+                    window.location.href = "recorded.html";
+                } else {
+                    alert("Submission failed. Try again.");
                 }
-            };
+            } finally {
+                button.disabled = false;
+                btnText.style.opacity = 1;
+                spinner.style.display = 'none';
+            }
         });
 
         // Fog effect
