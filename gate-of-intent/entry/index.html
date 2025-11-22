@@ -275,7 +275,7 @@
             align-items: left;
             justify-content: center;
             position: relative;
-            /* width: 75%; */
+            min-width: 120px;
             max-width: 95%;
             box-sizing: border-box;
             /* margin: 2rem auto; */
@@ -308,15 +308,18 @@
         }
 
         .spinner {
-            display: inline-block;
+            position: relative;
+            right: auto;
+            /* top: 50%; */
+            /* transform: translateY(-50%); */
             width: 16px;
             height: 16px;
-            border: 2px solid rgba(190, 190, 190, 0.712);
-            border-top-color: rgb(77, 77, 77);
+            border: 2px solid rgba(109, 109, 109, 0.658);
+            border-top-color: rgb(190, 190, 190);
             border-radius: 50%;
             animation: spin 0.6s linear infinite;
-            margin-left: 8px;
-            vertical-align: middle;
+            display: none;
+            /* hide by default */
         }
 
         @keyframes spin {
@@ -402,8 +405,8 @@
         </div>
 
         <button id="submitBtn" type="submit">
-            <span class="btn-text">Submit</span>
-            <span class="spinner" style="opacity: 0"></span>
+            <span class="btn-text" style="display: inline-block">Submit</span>
+            <span class="spinner" style="display: none;"></span>
         </button>
 
         <span id="status"></span>
@@ -421,8 +424,8 @@
 
             // flashy immediate feedback
             button.disabled = true;
-            btnText.style.opacity = 0.5;
-            spinner.style.opacity = 1;
+            btnText.style.display = 'none';
+            spinner.style.display = 'inline-block';
             status.textContent = '';
 
             try {
@@ -447,8 +450,8 @@
                 }
             } finally {
                 button.disabled = false;
-                btnText.style.opacity = 1;
-                spinner.style.opacity = 0;
+                btnText.style.display = 'inline-block';
+                spinner.style.display = 'none';
             }
         });
 
