@@ -442,6 +442,7 @@
 
             try {
                 const data = new FormData(form);
+                data.set('pathway', 'gate-of-intent');
 
                 // Concatenate all checked checkboxes into a single string
                 const conditions = Array.from(form.querySelectorAll('input[name="conditions"]:checked'))
