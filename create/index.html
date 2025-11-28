@@ -7,7 +7,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Laws of the Temple</title>
+    <title>The Path of Creation</title>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700&family=Alegreya+Sans&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/temple.css">
@@ -111,6 +111,16 @@
             text-align: left;
         }
 
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 30px;
+            margin-top: 0px;
+        }
+
         ul,
         ol {
             margin-bottom: 1em;
@@ -170,6 +180,19 @@
             }
         }
 
+        .subtitle,
+        .note {
+            text-align: center;
+            color: var(--muted);
+            margin: 0 auto 2rem;
+            max-width: 45ch;
+            font-size: smaller;
+        }
+
+        .note {
+            margin: 0 auto 1rem;
+        }
+
         /*details.active {
       background-color: white;
       max-height: 500px;
@@ -192,63 +215,63 @@
         <div class="overlay"></div>
         <div class="content">
             <a href="/">Home</a>
-            <h1 id="laws-of-the-temple">✦ The Laws of the Temple ✦</h1>
+            <article class="plaque" role="region" aria-labelledby="title">
+                <h1 id="title" class="title">The Path of Creation</h1>
 
-            <p>The temple is a living organism. These Laws describe how to interact with it—they guide, but do not bind, for the temple moves beyond them.</p>
+                <p>Some who enter the temple aren’t here for meditation. They’re building something that needs to be seen.</p>
 
-            <p>To enter the temple, one must pass through one of the following gates:</p>
+                <p>Creation, in this hall, means shaping attention in the real world—clients, audiences, movement.</p>
 
-            <ol>
-                <li>Make an <a href="https://offering.michaelkorman.com/">offering</a> of $11, or</li>
-                <!--<li>Follow the priest on <a href="https://instagram.com/kormanmusic">Instagram</a> AND enter the ritual hall (view the story), or</li>
-                <li>DM the priest 'HERE' on <a href="http://instagram.com/kormanmusic">Instagram</a>, or</li>-->
-                <li>Enter the <a href="/gate-of-intent/">Gate of Intent</a>, or</li>
-                <li>Acquire an item from the temple <a href="https://shop.michaelkorman.com/">shop</a>.</li>
-            </ol>
+                <p>
+                    Not performance. <br>
+                    Not gimmicks. <br>
+                    Just clear expression that cuts through the static.
+                </p>
 
-            <p class="ritual-separator">✦ ✧ ✦ ✧ ✦</p>
+                <p>If that’s the thread you’re following, you already know it. You’re trying to grow something, and you want to do it without the usual marketing sludge.
+                </p>
 
-            <!-- #region These acts do NOT grant entry -->
-            <p id="do-not-grant-entry">These acts do NOT grant entry. They leave one in the courtyard:</p>
+                <p>The temple keeps a path for that.</p>
 
-            <ol>
-                <li>Commenting.</li>
-                <li>Sending messages.</li>
-                <li>Liking, subscribing, or following.</li>
-            </ol>
+                <p>If you want a quiet heads-up when it opens, leave your email.</p>
 
-            <p>Commenting is subject to the <a href="courtyard/">Courtyard Decrees</a>.</p>
+                <form id="notifyForm" style="gap: 10px; justify-content: center; margin-bottom: 20px;">
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <button type="submit">Notify me</button>
+                </form>
 
-            <p class="ritual-separator">✦ ✧ ✦ ✧ ✦</p>
-            <!-- #endregion -->
+                <p style="font-size: 18px; max-width: 500px; line-height: 1.3em;"><em>(The temple will hold your email address in trust only for the purpose of notifying you when this path is ready. You will not be added to any mailing lists. You may request the temple delete your information at any time.)</em></p>
 
-            <p>The temple contains: </p>
-
-            <ul>
-                <li>Rites of distortion and stillness, both to be <em>experienced</em>, not <em>completed.</em> </li>
-                <li><a href="https://shop.michaelkorman.com/collection/parables-and-lore">Parables and lore</a> that hold the temple’s history and illustrate its design. </li>
-                <li>The <a href="https://shop.michaelkorman.com/b/fragmented-scrolls">Fragmented Scrolls</a>, a founding document. </li>
-                <li>A <a href="https://shop.michaelkorman.com/b/take-yourself-seriously">sacred tract</a>.</li>
-                <li>Spoken <a href="http://nomichaelhere.substack.com/podcast">discourses</a></li>
-                <li>Temple bucks—a sacred currency</li>
-                <li>The ritual hall—the canonical stream of drops.</li>
-                <li>The reels and shorts: mere noise in the courtyard.</li>
-                <li>The back room and the secret corridor.</li>
-            </ul>
-
-            <p class="ritual-separator">✦ ✧ ✦ ✧ ✦</p>
-
-            <p>The temple is not a cult, not a game, not a brand.</p>
-
-            <p>It is a force.</p>
-
-            <p>It calls only to those who <a href="/create">Create</a>. <br />
-                Those who do not will feel the friction of its gates.</p>
-
-            <p>To enter the myth, one must find the gate.</p>
+            </article>
         </div>
     </div>
 
+    <script src="/js/temple.js"></script>
+
+    <script>
+        const form = document.getElementById('notifyForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            data.set('pathway', 'notification');
+            data.set('topic', 'path-of-creation')
+
+            try {
+                const response = await fetch('https://gate.michaelkorman.com/submit', {
+                    method: 'POST',
+                    body: data
+                });
+                if (response.ok) {
+                    alert("Your presence is noted. The temple will be in touch.");
+                } else {
+                    alert("Submission failed.");
+                }
+            } catch (err) {
+                alert("Error submitting form.");
+                console.error(err);
+            }
+        });
+    </script>
 </body>
 
 </html>
