@@ -84,7 +84,8 @@ const klaroConfig = {
     version: 1,
     elementID: 'klaro',
     privacyPolicy: '/privacy',
-    default: true,
+    default: false,
+    acceptAll: true,
     htmlTexts: true,
     services: [
         {
@@ -101,12 +102,6 @@ const klaroConfig = {
                     }
                 }
             }
-        },
-
-        {
-            name: 'font-awesome',
-            purposes: ['styling'],
-            cookies: [],
         },
     ],
     translations: {
@@ -125,7 +120,7 @@ const klaroConfig = {
             privacyPolicy: {
                 text: 'To understand how your data is processed, please consult the {privacyPolicy}.'
             },
-            ok: 'Allow',
+            ok: 'Allow all',
             decline: 'Decline'
         }
     }
