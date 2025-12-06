@@ -85,10 +85,11 @@ const klaroConfig = {
     elementID: 'klaro',
     privacyPolicy: '/privacy',
     default: true,
+    htmlTexts: true,
     services: [
         {
             name: 'posthog',
-            purposes: ['analytics'],
+            purposes: ['user-experience-research'],
             cookies: ['ph_*'],
 
             callback: function (consent, service) {
@@ -103,17 +104,26 @@ const klaroConfig = {
         },
 
         {
-            name: 'google-fonts',
+            name: 'font-awesome',
             purposes: ['styling'],
-
-            // Google Fonts doesn't set cookies, but it still leaks the IP address
             cookies: [],
         },
     ],
     translations: {
         en: {
             consentNotice: {
-                description: 'The temple would like to enable some additional services for {purposes}. You can always change or withdraw your consent later.'
+                description: 'The temple was built to make use of services necessary for {purposes}. Opting in allows me to access the data I need to refine and improve the content you see. But you have the legal right to decline or customize your consent below.'
+            },
+            // consentModal: {
+            //     description: 'On this website, I use specific services to make things work as designed. The law gives you the right to disable any services below, but please be aware that core functionality, content quality, and site optimization may be negatively impacted. I respect your legal rights, but your decision affects the data I rely on to improve the site.'
+            // },
+            consentModal: {
+                description: `<p>On this website, I use specific services to ensure the site <strong>functions and performs optimally</strong>. The law guarantees your right to disable any services below, but I must be clear: opting out will <strong>directly hinder my ability to refine the user experience</strong> and may result in broken functionality, stale content, or unresolved UI issues.</p>
+
+                <p>Your choice is respected, but it is a direct trade-off with the quality of the site.</p>`,
+            },
+            privacyPolicy: {
+                text: 'To understand how your data is processed, please consult the {privacyPolicy}.'
             },
             ok: 'Allow',
             decline: 'Decline'
