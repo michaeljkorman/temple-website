@@ -33,7 +33,9 @@
       margin: 0;
       padding: 0;
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       font-family: 'Lora', serif;
       background-color: #5B5B5B;
       color: black;
@@ -41,7 +43,7 @@
 
     .container {
       position: relative;
-      margin: 3rem 1rem;
+      margin: 3rem 1rem 0;
       max-width: 520px;
       width: 100%;
       background: url('images/texture.png');
@@ -84,12 +86,13 @@
     }
 
     .profile-pic {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       object-fit: cover;
       /*    border: 3px solid #4a6cf7;*/
-      margin-bottom: 1rem;
+      margin-top: 3rem;
+      margin-bottom: 0rem;
     }
 
     h1 {
@@ -284,11 +287,11 @@
       display: block;
     }
 
-    footer {
-      margin-top: 2rem;
+    /* footer {
+      margin-top: 1rem;
       font-size: 0.9rem;
       color: black;
-    }
+    } */
   </style>
 </head>
 
@@ -351,10 +354,12 @@
           Temple Bucks
         </a>-->
 
-        <!--<a href="/faq" class="btn">
-          <i class="fas fa-question"></i>
+        <a href="/faq" class="btn">
+          <span class="img-wrap">
+            <img src="images/faq.jpg" alt="">
+          </span>
           <span>FAQs About the Temple</span>
-        </a>-->
+        </a>
 
         <!--<a href="https://shop.michaelkorman.com/collection/parables-and-lore" class="btn">
           <img src="images/parables-and-lore.png" alt="">
@@ -431,9 +436,11 @@
         </a>
       </div>
 
-      <footer>© 2025 Michael Korman | <a href="/privacy">Privacy Policy</a></footer>
     </div>
+    <footer>© 2025 Michael Korman | <a href="/privacy">Privacy Policy</a></footer>
+
   </div>
+
 
   <script src="/js/temple.js"></script>
 </body>

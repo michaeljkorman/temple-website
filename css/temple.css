@@ -1,5 +1,7 @@
-button, .btn, label {
-    -webkit-tap-highlight-color: transparent;
+button,
+.btn,
+label {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* button, .btn {
@@ -11,12 +13,14 @@ button, .btn, label {
 } */
 
 
-button, .btn {
+button,
+.btn {
   position: relative;
   overflow: hidden;
 }
 
-button::after, .btn::after {
+button::after,
+.btn::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -26,10 +30,23 @@ button::after, .btn::after {
   pointer-events: none;
 }
 
-button.pressed::after, .btn.pressed::after {
+button.pressed::after,
+.btn.pressed::after {
   opacity: 0.08;
 }
 
 a {
-    color: #000000;
+  color: #000000;
+}
+
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: black;
+}
+
+footer a {
+  color: black;
 }
