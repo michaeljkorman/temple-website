@@ -43,6 +43,11 @@ function ccpaOptOut() {
     }
 }
 
+/**
+ * Inserts a California Consumer Privacy Act (CCPA) opt-out link into the footer (or body) of the page.
+ * If the user has already opted out of data capture, a confirmation message is shown instead.
+ * @param {object} posthog The PostHog tracker object.
+ */
 function insertCaliOptOutLink(posthog) {
     console.log("Inserting CA link");
     // If the user is already opted out, do NOT show the link!
