@@ -1,5 +1,6 @@
 button,
 .btn,
+details,
 label {
   -webkit-tap-highlight-color: transparent;
 }
