@@ -149,7 +149,7 @@
     }
 
     @media (max-width: 600px) {
-       /* .faq-container {
+      /* .faq-container {
         width: 100%;
         margin: 0;
         padding: 2rem 1rem;
@@ -173,7 +173,7 @@
     <div class="content">
       <a href="/">Home</a>
 
-      <h1>Frequently Asked Questions About the Temple</h1>
+      <h1>Frequently Asked Questions</h1>
       <details>
         <summary>What is the temple?</summary>
         <p>A program of study in piano, meditation, and creation, created to fulfill the promise that serious devotion to work, craft, and meaning matters—a promise the world consistently fails to honor.</p>
@@ -203,6 +203,11 @@
 
       document.querySelectorAll('details').forEach(d => {
         d.addEventListener('click', e => {
+          // If user is selecting text, don’t toggle
+          if (window.getSelection().toString()) {
+            return;
+          }
+
           // Only toggle if the click is not on a link inside
           if (e.target.tagName !== 'SUMMARY' && e.target.tagName !== 'A') {
             d.open = !d.open;
