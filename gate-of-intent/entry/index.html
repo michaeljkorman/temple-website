@@ -151,6 +151,16 @@
             font-family: 'IM Fell English', serif;
         }
 
+        p.receipt-text {
+            /* font-family: 'Alegreya Sans', serif; */
+            font-style: italic;
+            /* font-size: 1.1em; */
+            /* max-width:40ch; */
+            margin-top: 2em;
+            margin-bottom: 2em;
+            color: var(--card);
+        }
+
         label.required::after {
             content: " *";
             color: var(--warning);
@@ -409,10 +419,13 @@
             <textarea id="message" name="message"></textarea>
         </div>
 
+        <p class="receipt-text">A copy of your response will be sent to the email you provided.</p>
+
         <button id="submitBtn" type="submit">
             <span class="btn-text" style="display: inline-block">Submit</span>
             <span class="spinner" style="display: none;"></span>
         </button>
+
 
         <span id="status"></span>
     </form>
