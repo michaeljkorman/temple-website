@@ -42,13 +42,23 @@
             color: #dddddd;
             font-family: "Lora", serif;
             display: flex;
-            /* align-items: start; */
+            align-items: center;
             justify-content: center;
-            height: 100vh;
+            /* height: 100vh; */
             flex-direction: column;
             font-size: 1.2rem;
             text-align: center;
             padding: 0 5vw;
+            min-height: 100vh;
+        }
+
+        #gate-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* align-items: left; */
+            width: 100%;
         }
 
         h1 {
@@ -194,6 +204,15 @@
         a:visited {
             color: #555555;
         }
+
+        footer {
+            bottom: 10px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #555555;
+            /* Less dominant color */
+            padding: 5px;
+        }
     </style>
 </head>
 
@@ -217,14 +236,7 @@
         <span id="submissionMsg" class="fade hidden"></span>
     </div>
 
-    <footer id="footer" style="position: fixed;
-    bottom: 10px;
-    left: 50%; 
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 0.8em;
-    color: #555555; /* Less dominant color */
-    padding: 5px;" class="hidden fade">© 2025 Michael Korman | <a href="/privacy">Privacy Policy</a></footer>
+    <footer id="footer" class="hidden fade">© 2025 Michael Korman | <a href="/privacy">Privacy Policy</a></footer>
 
     <script>
         // Make sure to test these posibilities:
@@ -278,7 +290,7 @@
                 // A. Make Visible Instantly: Remove the 'hidden' class immediately
                 //    *BEFORE* we remove the 'fade' transition class.
                 formElement.classList.add("dimmed");
-                
+
                 formElement.classList.remove("hidden");
                 footer.classList.remove("hidden");
 
