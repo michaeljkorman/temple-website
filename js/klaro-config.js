@@ -132,32 +132,41 @@ const klaroConfig = {
 
 };
 
-fetch('https://ipapi.co/json')
-    .then(res => res.json())
-    .then(data => {
-        const country = data.country_code;
-        const region = data.region_code;
+const isLocalhost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname.startsWith("192.168.");
 
-        // EU countries + United Kingdom
-        const euCountries = [
-            'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE',
-            'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT',
-            'RO', 'SK', 'SI', 'ES', 'SE', 'GB'
-        ];
+if (!isLocalhost) {
+    fetch('https://ipapi.co/json')
+        .then(res => res.json())
+        .then(data => {
+            const country = data.country_code;
+            const region = data.region_code;
 
-        if (euCountries.includes(country)) {
-            console.log("Setting up Klaro for " + country);
-            klaro.setup(klaroConfig);
-        } else if (country === 'US' && region === 'CA') {
-            console.log("Found California: " + region);
-            initPostHog_California();
-        } else {
+            // EU countries + United Kingdom
+            const euCountries = [
+                'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE',
+                'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT',
+                'RO', 'SK', 'SI', 'ES', 'SE', 'GB'
+            ];
+
+            if (euCountries.includes(country)) {
+                console.log("Setting up Klaro for " + country);
+                klaro.setup(klaroConfig);
+            } else if (country === 'US' && region === 'CA') {
+                console.log("Found California: " + region);
+                initPostHog_California();
+            } else {
+                initPostHog_RestOfWorld();
+            }
+        })
+        .catch(error => {
+            // Failsafe: If the Geo-IP service fails, default to US mode (run PostHog) 
+            // OR the safer EU mode (load Klaro). Running PostHog is easier.
+            console.error('Geolocation failed, defaulting to direct load.', error);
             initPostHog_RestOfWorld();
-        }
-    })
-    .catch(error => {
-        // Failsafe: If the Geo-IP service fails, default to US mode (run PostHog) 
-        // OR the safer EU mode (load Klaro). Running PostHog is easier.
-        console.error('Geolocation failed, defaulting to direct load.', error);
-        initPostHog_RestOfWorld();
-    });
+        });
+} else {
+    console.log("Skipping Klaro for localhost");
+}

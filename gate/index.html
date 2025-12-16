@@ -13,6 +13,8 @@
 
     <title>A Gate Stands Before You</title>
 
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/temple.css">
 
@@ -180,36 +182,76 @@
         }
 
         form.dimmed {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
+        }
+
+        #pre-form-text.dimmed {
+            opacity: 0.4;
+        }
+
+        a:link,
+        a:visited {
+            color: #555555;
         }
     </style>
 </head>
 
 <body class="">
-    <h1 id="gate-heading" class="fade hidden"></h1>
-    <div id="timer" class="hidden fade"></div>
+    <div id="gate-container">
+        <h1 id="gate-heading" class="fade hidden"></h1>
+        <div id="timer" class="hidden fade"></div>
 
-    <div id="pre-form-text" class="fade hidden dimmed">
-        <p>Your identity is noted: <em id="name">random traveler</em>.</p>But that name defines the past. To pass beyond this point requires a new truth.</p>
+        <div id="pre-form-text" class="fade hidden">
+            <p>Your identity is observed: <em id="name">random traveler</em>.</p>But that name defines the past. To pass beyond this point requires a new truth.</p>
 
-        <p><strong>Define the role you wish to claim in the myth.</strong></p>
+            <p><strong>Define the role you wish to claim in the myth.</strong></p>
+        </div>
+
+        <form id="form" class="fade hidden" name="form">
+            <label id="prompt" class="">Pick a word or phrase:</label>
+            <input id="word" required disabled="true" type="text">
+            <button id="submitBtn" class="" disabled="true">Submit</button>
+        </form>
+
+        <span id="submissionMsg" class="fade hidden"></span>
     </div>
 
-    <form id="form" class="fade hidden" name="form">
-        <label id="prompt" class="dimmed">Pick a word or phrase:</label>
-        <input id="word" required disabled="true" type="text">
-        <button id="submitBtn" class="" disabled="true">Submit</button>
-    </form>
-
-    <span id="submissionMsg" class="fade hidden"></span>
+    <footer id="footer" style="position: fixed;
+    bottom: 10px;
+    left: 50%; 
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 0.8em;
+    color: #555555; /* Less dominant color */
+    padding: 5px;" class="hidden fade">© 2025 Michael Korman | <a href="/privacy">Privacy Policy</a></footer>
 
     <script>
+        // Make sure to test these posibilities:
+        // 1. Invalid token
+        // 2. Submitted, not expired
+        // 3. Submitted, expired
+        // 4. Not yet submitted, not expired
+        // 5. Not yet submitted, expired
+        // 6. Gate expiring
+        // 7. Submitting form
+
         async function initGate() {
+            const formElement = document.getElementById("form");
+            const headingElement = document.getElementById("gate-heading");
+            const preFormTextElement = document.getElementById("pre-form-text");
+            const nameElement = document.getElementById("name");
+            const promptElement = document.getElementById("prompt");
+            const timerElement = document.getElementById("timer");
+            const wordInput = document.getElementById("word");
+            const submitBtn = document.getElementById("submitBtn");
+            const footer = document.getElementById("footer");
+            const container = document.getElementById("gate-container");
+
             const params = new URLSearchParams(window.location.search);
             const token = params.get("token");
             if (!token) {
-                document.body.textContent = "No gate token provided.";
+                container.textContent = "No gate token provided.";
                 return;
             }
 
@@ -221,41 +263,35 @@
 
                 // If a 403 is returned, the token is invalid.
                 if (res.status === 403) {
-                    document.body.textContent = "This gate does not know you.";
+                    container.textContent = "This gate does not know you.";
+                    footer.classList.remove("hidden");
                     return;
                 }
+
+                nameElement.textContent = data.user_id;
             } catch {
                 // token invalid or expired; fake data to show closed gate
-                data = { gate: "pickword", expires: new Date().toISOString() };
+                data = { gate: "pickword", expires: new Date().toISOString(), user_id: "random traveler" };
             }
-
-            document.getElementById("name").textContent = data.user_id;
-
-            const formElement = document.getElementById("form");
-            const headingElement = document.getElementById("gate-heading");
-            const preFormTextElement = document.getElementById("pre-form-text");
-            const promptElement = document.getElementById("prompt");
-            const timerElement = document.getElementById("timer");
-            const wordInput = document.getElementById("word");
-            const submitBtn = document.getElementById("submitBtn");
 
             if (data.submission) {
                 // A. Make Visible Instantly: Remove the 'hidden' class immediately
                 //    *BEFORE* we remove the 'fade' transition class.
                 formElement.classList.add("dimmed");
+                
                 formElement.classList.remove("hidden");
-                headingElement.classList.remove("hidden");
-                // preFormTextElement.classList.remove("hidden");
+                footer.classList.remove("hidden");
+
+                headingElement.style.display = "none";
+                timerElement.style.display = "none";
                 preFormTextElement.style.display = "none";
 
                 // B. Clear the 'fade' class to ensure NO animation occurs
                 formElement.classList.remove("fade");
-                headingElement.classList.remove("fade");
-                preFormTextElement.classList.remove("fade");
+                footer.classList.remove("fade");
 
                 // C. Set data and keep form disabled
                 wordInput.value = data.submission;
-                // headingElement.textContent = "The Gate is CLOSED"; // Or similar status
 
                 // The form, input, and button remain in their initial disabled state
                 // (due to 'disabled' class/attribute in HTML)
@@ -267,27 +303,43 @@
                 // A. Remove the 'disabled' states/attributes
                 wordInput.disabled = false;
                 submitBtn.disabled = false;
-                // submitBtn.classList.remove("dimmed");
-                //formElement.classList.remove("dimmed");
-                // promptElement.classList.remove("dimmed");
-                // preFormTextElement.classList.remove("dimmed");
 
                 // B. Trigger the Fade-In: Remove the 'hidden' class.
                 //    The 'fade' class remains, ensuring a smooth transition.
+                footer.classList.add("fade");
                 formElement.classList.remove("hidden");
                 timerElement.classList.remove("hidden");
                 headingElement.classList.remove("hidden");
-                preFormTextElement.display = "block";
                 preFormTextElement.classList.remove("hidden");
+                //preFormTextElement.style.display = "block";
+            }
 
+            const expires = Date.parse(data.expires);
+
+            // Uncomment for testing:
+            // const expires = Date.now() + 10*1000;
+
+            console.log(expires);
+            if (expires < Date.now()) {
+                formElement.classList.add("dimmed");
+                timerElement.classList.add("dimmed");
+                preFormTextElement.classList.add("dimmed");
+                wordInput.disabled = true;
+                submitBtn.disabled = true;
+                formElement.disabled = true;
+
+                headingElement.classList.remove("fade");
+                formElement.classList.remove("fade");
+                timerElement.classList.remove("fade");
+                preFormTextElement.classList.remove("fade");
+
+                headingElement.textContent = "The Gate is CLOSED";
+            } else {
                 headingElement.textContent = "The Gate is Open";
             }
 
-            //document.getElementById("prompt").textContent = `Pick a word to define your role in the myth:`;
-            document.getElementById("submitBtn").classList.remove("dimmed");
-
-            const expires = Date.parse(data.expires);
-            console.log(expires);
+            footer.classList.remove("hidden");
+            submitBtn.classList.remove("dimmed");
 
             function tick() {
                 const remaining = Math.max(0, expires - Date.now());
@@ -295,14 +347,17 @@
                 const minutes = Math.floor((remaining % 3600000) / 60000);
                 const seconds = Math.floor((remaining % 60000) / 1000);
 
-                document.getElementById("timer").textContent =
+                timerElement.textContent =
                     `${hours}h ${minutes}m ${seconds}s`;
 
                 if (remaining === 0) {
-                    document.getElementById("gate-heading").textContent = "The Gate is CLOSED";
-                    document.getElementById("submitBtn").classList.add("dimmed");
-                    document.getElementById("form").classList.add("dimmed");
-                    document.getElementById("word").disabled = true;
+                    //headingElement.textContent = "The Gate is CLOSED";
+                    submitBtn.classList.add("dimmed");
+                    form.classList.add("dimmed");
+                    preFormTextElement.classList.add("dimmed");
+                    word.disabled = true;
+                    submitBtn.disabled = true;
+                    form.disabled = true;
                 }
             }
 
@@ -325,29 +380,26 @@
             document.getElementById("submitBtn").disabled = true;
 
             try {
+                const form = document.getElementById("form");
+                const header = document.getElementById("gate-heading");
+                const timer = document.getElementById("timer");
+                const preFormText = document.getElementById("pre-form-text");
+                const msg = document.getElementById("submissionMsg");
+
+                form.classList.add("hidden");
+                header.classList.add("hidden");
+                timer.classList.add("hidden");
+                preFormText.classList.add("hidden");
+
                 const res = await fetch("https://gate.michaelkorman.com/gate/submit", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ token, word })
                 });
+
                 const data = await res.json();
+
                 if (data.success) {
-                    const form = document.getElementById("form");
-                    const header = document.getElementById("gate-heading");
-                    const timer = document.getElementById("timer");
-                    const preFormText = document.getElementById("pre-form-text");
-                    const msg = document.getElementById("submissionMsg");
-
-                    // form.classList.add("fade");
-                    // header.classList.add("fade");
-                    // timer.classList.add("fade");
-                    // msg.classList.add("fade");
-
-                    form.classList.add("hidden");
-                    header.classList.add("hidden");
-                    timer.classList.add("hidden");
-                    preFormText.classList.add("hidden");
-
                     setTimeout(() => {
                         form.style.display = "none";
                         header.style.display = "none";
@@ -358,10 +410,10 @@
                         msg.textContent = "Your request has been recorded.";
                     }, 2000);
                 } else {
-                    document.body.textContent = data.message;
+                    document.getElementById('gate-container').textContent = data.message;
                 }
             } catch (err) {
-                document.body.textContent = "Submission failed. Try again.";
+                document.getElementById('gate-container').textContent = "Submission failed. Try again.";
             }
         });
 
