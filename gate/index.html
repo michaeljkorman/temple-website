@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="theme-color" content="#242424">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script defer type="text/javascript" src="/js/klaro-config.js"></script>
+    <script defer type="text/javascript" src="https://cdn.kiprotect.com/klaro/v0.7.22/klaro.js"></script>
+
+    <title>A Gate Stands Before You</title>
+
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/temple.css">
+
+    <style>
+        body::before {
+            content: "";
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            /* background-image: url('/images/waiting-room-bg.jpg'); */
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            background-size: auto;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body {
+            margin: 0;
+            background: #242424;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #dddddd;
+            font-family: "Lora", serif;
+            display: flex;
+            /* align-items: start; */
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 0 5vw;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0;
+            font-family: 'Alegreya', serif;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-top: 0;
+        }
+
+        button {
+            /* margin-top: 3em; */
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        button {
+            /*	background: #420061;*/
+            background: rgb(24, 18, 28);
+            color: white;
+            /*	font-weight: bold;*/
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-top: 1em;
+        }
+
+        button:hover {
+            /*	background: #620061;*/
+            background: rgb(34, 28, 38);
+        }
+
+        #timer {
+            font-size: 1.5em;
+            /* margin-top: 1.5em;  */
+            /* margin-bottom: 2em;  */
+            padding: 10px;
+
+            font-family: 'Courier New', monospace;
+            font-weight: 900;
+
+            /* Creepy Red Color */
+            color: #cc0000;
+
+            /* The Ominous Glow/Shadow */
+            text-shadow:
+                0 0 5px rgba(204, 0, 0, 0.5),
+                0 0 20px rgba(204, 0, 0, 0.8),
+                1px 1px 3px #000000;
+        }
+
+        input[type="text"] {
+            font-size: 1.2rem;
+            margin-bottom: 0.5em;
+            font-family: 'Alegreya Sans', sans-serif;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background 0.2s ease;
+            background: rgb(24, 18, 28);
+            color: white;
+            text-align: left;
+        }
+
+        label {
+            font-size: 1.2rem;
+            margin-bottom: 0.5em;
+            font-family: 'Alegreya Sans', sans-serif;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            /* justify-content: left; */
+        }
+
+        /* form.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        } */
+
+        input[type="text"]:disabled {
+            /* opacity: 0.5;*/
+            cursor: not-allowed;
+            /* opacity: 1; */
+        }
+
+
+        button:disabled {
+            /* opacity: 0.5; */
+            cursor: not-allowed;
+        }
+
+        /* No hover effect for button when disabled */
+        button:disabled:hover {
+            background: rgb(24, 18, 28);
+        }
+
+        #submissionMsg {
+            font-size: 1.2rem;
+            margin-top: 1em;
+            font-family: 'Alegreya Sans', sans-serif;
+            text-align: center;
+        }
+
+        #pre-form-text {
+            font-size: 1.2rem;
+            margin-top: 1em;
+            margin-bottom: 2em;
+            font-family: 'Lora', serif;
+            text-align: left;
+            /* display: none; */
+        }
+
+        .fade {
+            transition: opacity 1.8s ease;
+            /* opacity: 0; */
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        form.dimmed {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body class="">
+    <h1 id="gate-heading" class="fade hidden"></h1>
+    <div id="timer" class="hidden fade"></div>
+
+    <div id="pre-form-text" class="fade hidden dimmed">
+        <p>Your identity is noted: <em id="name">random traveler</em>.</p>But that name defines the past. To pass beyond this point requires a new truth.</p>
+
+        <p><strong>Define the role you wish to claim in the myth.</strong></p>
+    </div>
+
+    <form id="form" class="fade hidden" name="form">
+        <label id="prompt" class="dimmed">Pick a word or phrase:</label>
+        <input id="word" required disabled="true" type="text">
+        <button id="submitBtn" class="" disabled="true">Submit</button>
+    </form>
+
+    <span id="submissionMsg" class="fade hidden"></span>
+
+    <script>
+        async function initGate() {
+            const params = new URLSearchParams(window.location.search);
+            const token = params.get("token");
+            if (!token) {
+                document.body.textContent = "No gate token provided.";
+                return;
+            }
+
+            let data;
+            try {
+                const res = await fetch(`https://gate.michaelkorman.com/gate/open/${token}`);
+                data = await res.json();
+                console.log(data);
+
+                // If a 403 is returned, the token is invalid.
+                if (res.status === 403) {
+                    document.body.textContent = "This gate does not know you.";
+                    return;
+                }
+            } catch {
+                // token invalid or expired; fake data to show closed gate
+                data = { gate: "pickword", expires: new Date().toISOString() };
+            }
+
+            document.getElementById("name").textContent = data.user_id;
+
+            const formElement = document.getElementById("form");
+            const headingElement = document.getElementById("gate-heading");
+            const preFormTextElement = document.getElementById("pre-form-text");
+            const promptElement = document.getElementById("prompt");
+            const timerElement = document.getElementById("timer");
+            const wordInput = document.getElementById("word");
+            const submitBtn = document.getElementById("submitBtn");
+
+            if (data.submission) {
+                // A. Make Visible Instantly: Remove the 'hidden' class immediately
+                //    *BEFORE* we remove the 'fade' transition class.
+                formElement.classList.add("dimmed");
+                formElement.classList.remove("hidden");
+                headingElement.classList.remove("hidden");
+                // preFormTextElement.classList.remove("hidden");
+                preFormTextElement.style.display = "none";
+
+                // B. Clear the 'fade' class to ensure NO animation occurs
+                formElement.classList.remove("fade");
+                headingElement.classList.remove("fade");
+                preFormTextElement.classList.remove("fade");
+
+                // C. Set data and keep form disabled
+                wordInput.value = data.submission;
+                // headingElement.textContent = "The Gate is CLOSED"; // Or similar status
+
+                // The form, input, and button remain in their initial disabled state
+                // (due to 'disabled' class/attribute in HTML)
+
+                return;
+            } else {
+                // --- 2. No Submission: Fade In (Enabled) ---
+
+                // A. Remove the 'disabled' states/attributes
+                wordInput.disabled = false;
+                submitBtn.disabled = false;
+                // submitBtn.classList.remove("dimmed");
+                //formElement.classList.remove("dimmed");
+                // promptElement.classList.remove("dimmed");
+                // preFormTextElement.classList.remove("dimmed");
+
+                // B. Trigger the Fade-In: Remove the 'hidden' class.
+                //    The 'fade' class remains, ensuring a smooth transition.
+                formElement.classList.remove("hidden");
+                timerElement.classList.remove("hidden");
+                headingElement.classList.remove("hidden");
+                preFormTextElement.display = "block";
+                preFormTextElement.classList.remove("hidden");
+
+                headingElement.textContent = "The Gate is Open";
+            }
+
+            //document.getElementById("prompt").textContent = `Pick a word to define your role in the myth:`;
+            document.getElementById("submitBtn").classList.remove("dimmed");
+
+            const expires = Date.parse(data.expires);
+            console.log(expires);
+
+            function tick() {
+                const remaining = Math.max(0, expires - Date.now());
+                const hours = Math.floor(remaining / 3600000);
+                const minutes = Math.floor((remaining % 3600000) / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+
+                document.getElementById("timer").textContent =
+                    `${hours}h ${minutes}m ${seconds}s`;
+
+                if (remaining === 0) {
+                    document.getElementById("gate-heading").textContent = "The Gate is CLOSED";
+                    document.getElementById("submitBtn").classList.add("dimmed");
+                    document.getElementById("form").classList.add("dimmed");
+                    document.getElementById("word").disabled = true;
+                }
+            }
+
+            tick();
+            setInterval(tick, 1000);
+        }
+
+        const form = document.getElementById("form");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault(); // stop normal page reload
+
+            if (form.classList.contains("dimmed")) {
+                return;
+            }
+
+            const word = document.getElementById("word").value;
+            const token = new URLSearchParams(window.location.search).get("token");
+
+            // optional: disable immediately
+            document.getElementById("submitBtn").disabled = true;
+
+            try {
+                const res = await fetch("https://gate.michaelkorman.com/gate/submit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ token, word })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    const form = document.getElementById("form");
+                    const header = document.getElementById("gate-heading");
+                    const timer = document.getElementById("timer");
+                    const preFormText = document.getElementById("pre-form-text");
+                    const msg = document.getElementById("submissionMsg");
+
+                    // form.classList.add("fade");
+                    // header.classList.add("fade");
+                    // timer.classList.add("fade");
+                    // msg.classList.add("fade");
+
+                    form.classList.add("hidden");
+                    header.classList.add("hidden");
+                    timer.classList.add("hidden");
+                    preFormText.classList.add("hidden");
+
+                    setTimeout(() => {
+                        form.style.display = "none";
+                        header.style.display = "none";
+                        timer.style.display = "none";
+                        preFormText.style.display = "none";
+
+                        msg.classList.remove("hidden");
+                        msg.textContent = "Your request has been recorded.";
+                    }, 2000);
+                } else {
+                    document.body.textContent = data.message;
+                }
+            } catch (err) {
+                document.body.textContent = "Submission failed. Try again.";
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            initGate();
+        });
+    </script>
+
+</body>
+
+</html>
