@@ -216,7 +216,7 @@
       --bg-color-initial: #18121c21; */
     }
 
-    .btn-kormusic::after {
+    .btn-shimmer::after {
       content: '';
       position: absolute;
       top: -50%;
@@ -242,12 +242,12 @@
       }
     }
 
-    .btn-kormusic:hover::after {
-      animation: shimmer 3s ease-out forwards;
+    .btn-shimmer::after {
+      animation: shimmer 2.3s infinite;
     }
 
-    .btn-kormusic::after {
-      animation: shimmer 2.5s infinite;
+    .btn-shimmer:hover::after {
+      animation: shimmer 2.3s ease-in infinite;
     }
 
     .btn:hover {
@@ -337,7 +337,7 @@
           <span class="btn-text">Rite of Distortion</span>
         </a>
 
-        <a href="https://shop.michaelkorman.com/b/5-dollar-piano-lesson/" class="btn btn-kormusic">
+        <a href="https://shop.michaelkorman.com/b/5-dollar-piano-lesson/" class="btn">
           <span class="img-wrap">
             <img src="images/5-dollar-lesson-thumbnail.jpg" alt="">
           </span>
@@ -357,7 +357,7 @@
 
       <div class="section">
         <h2>🜃 Explore the Temple</h2>
-        <a href="/gate-of-intent" class="btn btn-highlight">
+        <a href="/gate-of-intent" class="btn btn-highlight btn-shimmer">
           <span class="img-wrap">
             <img src="images/wall.jpeg" alt="">
           </span>
