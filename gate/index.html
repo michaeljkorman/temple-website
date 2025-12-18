@@ -250,6 +250,7 @@
             const token = params.get("token");
             if (!token) {
                 container.textContent = "This gate does not know you.";
+                footer.classList.remove("hidden");
                 return;
             }
 
