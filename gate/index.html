@@ -249,7 +249,7 @@
             const params = new URLSearchParams(window.location.search);
             const token = params.get("token");
             if (!token) {
-                container.textContent = "No gate token provided.";
+                container.textContent = "This gate does not know you.";
                 return;
             }
 
