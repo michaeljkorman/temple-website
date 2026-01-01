@@ -4,7 +4,7 @@
   font-family: 'Alegreya';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/alegreya-v39-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../fonts/Alegreya-Regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* alegreya-italic - latin */
 @font-face {
@@ -20,7 +20,7 @@
   font-family: 'Alegreya';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/alegreya-v39-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../fonts/Alegreya-Bold.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* alegreya-700italic - latin */
 @font-face {
