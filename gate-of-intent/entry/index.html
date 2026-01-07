@@ -487,11 +487,7 @@
 
                 const payload = Object.fromEntries(data.entries());
 
-                // const response = await fetch('https://gate.michaelkorman.com/submit', {
-                //     method: 'POST',
-                //     body: data
-                // });
-                const response = await fetch('http://localhost:8001/submit', {
+                const response = await fetch('https://gate.michaelkorman.com/submit', {
                     method: 'POST',
                     body: JSON.stringify(payload),
                     headers: {
