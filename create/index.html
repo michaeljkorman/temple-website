@@ -257,10 +257,17 @@
             data.set('topic', 'path-of-creation')
 
             try {
+                const payload = Object.fromEntries(data.entries());
                 const response = await fetch('https://gate.michaelkorman.com/submit', {
                     method: 'POST',
-                    body: data
+                    body: JSON.stringify(payload),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 });
+
+                const result = await response.json();
+
                 if (response.ok) {
                     alert("Your presence is noted. The temple will be in touch. In the meantime, perhaps a knock is in order.");
                 } else {
