@@ -103,21 +103,10 @@
             /* subtle temple texture */
             border-radius: 2rem;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(2px);
+            /* z-index: 0; */
+            /* backdrop-filter: blur(2px); */
         }
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(30, 30, 30, 0.6), rgba(0, 0, 0, 0.6));
-            /*background: white;*/
-            border-radius: 24px;
-            pointer-events: none;
-            z-index: 0;
-        }
 
         a {
             color: #bf93e2;
@@ -148,7 +137,7 @@
 
         .content {
             position: relative;
-            z-index: 1;
+            /* z-index: 1; */
         }
 
         details {
@@ -286,6 +275,7 @@
 </head>
 
 <body>
+    <div id="thin-temple-fog"></div>
     <div id="fog-placeholder"></div>
     <div id="gate-container" class="faq-container">
         <div class="overlay"></div>
@@ -306,7 +296,7 @@
 
             <p>Must be 18+.</p>
 
-            <a href="entry/" id="gate-button" class="btn" data-event="enter-gate-of-intent">Knock on the Gate</a>
+            <a href="entry/" id="gate-button" class="btn punch-through" data-event="enter-gate-of-intent">Knock on the Gate</a>
 
             <!-- <p style="margin: 0 auto; display: block;">
                 <em>(The link leads to a short form where you’ll state your intent and give your email address so I can reply to you and begin the ritual. You will not be added to any mailing lists.)</em>
