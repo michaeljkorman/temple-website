@@ -6,5 +6,8 @@
     },
     "saveEditorLayout.list": [],
     "html.format.wrapAttributes": "auto",
-    "editor.wordWrapColumn": 90
+    "editor.wordWrapColumn": 90,
+    "css.styleSheets": [
+        "css/**/*.css"
+    ],
 }

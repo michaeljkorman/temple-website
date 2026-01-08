@@ -1,3 +1,13 @@
+body {
+  color: #cfd3d6;
+}
+
+strong,
+b {
+  /* color: #f2f0ea; */
+  color: #f5f2e8;
+}
+
 button,
 .btn,
 details,
@@ -50,8 +60,8 @@ footer {
   /* margin-bottom: 1rem; */
   /* font-size: 0.9rem; */
   /* bottom: 2rem; */
-            text-align: center;
-            font-size: 0.9em;
+  text-align: center;
+  font-size: 0.9em;
   color: black;
 }
 

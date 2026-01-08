@@ -17,7 +17,7 @@
     <title>The Gate of Intent – Entry Form</title>
 
     <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/temple.css?v=5">
+    <link rel="stylesheet" href="/css/temple.css">
 
     <style>
         :root {
@@ -26,7 +26,7 @@
             --warning: #a11515;
             --accent: #18121c;
             --accent-hover: #424242;
-            --text: black;
+            --text: rgb(24, 24, 24);
             --subtle: #636363;
             --button-text: white;
         }
@@ -172,7 +172,8 @@
             max-width: 40ch;
             /* margin-top: 2em; */
             /* margin-bottom: 2em; */
-            color: var(--card);
+            /* color: var(--card); */
+            color: #cfd3d6;
         }
 
         label.required::after {
@@ -202,6 +203,10 @@
             padding: 24px;
             margin: 0 0 12px;
             /* margin-bottom: 2em; */
+        }
+
+        .question b, .question strong {
+            color: var(--text);
         }
 
         @media (max-width: 600px) {
@@ -316,6 +321,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
             transition: transform 0.15s ease, box-shadow 0.15s ease;
             border: none;
+            cursor: pointer;
         }
 
         button:hover {
@@ -446,7 +452,7 @@
         </div>
 
         <p class="payment-text">
-            Declaring your intent requires an $11 offering.
+            An offering of $11 is required to declare your intent.
             <br><span style="font-size:smaller">You will be redirected to Stripe for payment.</span>
         </p>
 
