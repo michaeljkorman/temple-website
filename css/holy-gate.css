@@ -1,0 +1,173 @@
+.the-holy-gate {
+    all: unset;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* max-width: 95%; */
+    /* height: 95px; */
+    background: #200000;
+    /* margin: 0.7rem auto; */
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+    height: 69px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+    text-decoration: none;
+    /* animation: push-fog 3s infinite ease-in-out; */
+    will-change: transform, opacity, box-shadow;
+    /* transform: translateZ(0);  */
+    backface-visibility: hidden;
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+    /* animation: push-fog 3s infinite ease-in-out; */
+    margin: 0;
+
+    opacity: 0.8;
+    /* filter: blur(1px); */
+}
+
+#gate-anchor {
+    all: unset;
+    display: inline-block;
+    justify-content: center;
+    /* width: fit-content; */
+    width: 95%;
+    /* margin: 0.7rem auto; */
+    align-self: center;
+    animation: push-fog 3s infinite ease-in-out;
+    transition: opacity 0.6s ease, transform 1s ease, box-shadow 0.5s ease;
+    z-index: 100;
+    /* background: transparent; */
+    position: relative;
+    border-radius: 12px;
+}
+
+@keyframes push-fog {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+        box-shadow: 0 0 20px 5px rgba(218, 218, 218, 0.884);
+        /* backdrop-filter: blur(2px); */
+    }
+
+    50% {
+        transform: scale(1.01);
+        opacity: 1;
+        box-shadow: 0 0 40px 20px rgba(214, 214, 214, 0.89);
+        /* backdrop-filter: blur(0.0px); */
+    }
+}
+
+#gate-anchor:hover .the-holy-gate {
+    /* animation: none; */
+    /* animation: gate-held 3s infinite ease-in-out; */
+    transform: scale(1.01);
+    opacity: 1;
+    filter: blur(0px);
+    /* filter: invert(); */
+    /* box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.6); */
+}
+
+#gate-anchor:hover {
+    animation-play-state: paused;
+    /* animation: none; */
+    filter: blur(0px);
+    opacity: 1;
+
+}
+
+.the-holy-gate .btn-text {
+    flex-grow: 1;
+    color: #eeeeee;
+    /* animation: text-ghost 3s infinite ease-in-out; */
+}
+
+@keyframes text-ghost {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        /* Text almost vanishes in the deep fog */
+        filter: blur(1px);
+    }
+
+    50% {
+        opacity: 0.8;
+        /* Text punches through when the button scales up */
+        filter: blur(0.2px);
+    }
+}
+
+.the-holy-gate .img-wrap {
+    all: unset;
+    width: 95px;
+    height: 95px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 0;
+}
+
+.the-holy-gate .img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* The seamless blend */
+.the-holy-gate .img-wrap::after {
+    content: "";
+    inset: 0;
+    background: linear-gradient(to right, #20000073 40%, #200000 90%);
+    width: 97px;
+    /* margin-left: 0px; */
+    position: absolute;
+}
+
+.the-holy-gate .btn-text {
+    flex-grow: 1;
+    color: #eeeeee;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-left: 0px;
+    padding-right: 100px;
+    /* Visual balance */
+    z-index: 1;
+}
+
+.gate-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 300%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(45deg) translateX(100%);
+    opacity: 0;
+    /* filter: blur(10px); */
+}
+
+/* The shimmer will move horizontally across the button */
+@keyframes gate-shimmer {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.gate-shimmer::after {
+    animation: gate-shimmer 2.3s infinite;
+}
+
+.gate-shimmer:hover::after {
+    animation: gate-shimmer 2.3s ease-in infinite;
+}
