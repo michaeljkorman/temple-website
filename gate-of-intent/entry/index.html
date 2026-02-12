@@ -205,7 +205,8 @@
             /* margin-bottom: 2em; */
         }
 
-        .question b, .question strong {
+        .question b,
+        .question strong {
             color: var(--text);
         }
 
@@ -491,6 +492,14 @@
                 data.set('conditions', conditions);
 
                 const payload = Object.fromEntries(data.entries());
+
+                if (window.posthog) {
+                    posthog.capture('gate_of_intent_submitted', {
+                        declaration: payload.declaration,
+                        priest_message: payload.message,
+                        pathway: 'gate-of-intent'
+                    });
+                }
 
                 const response = await fetch(`${GATE_API_BASE_URL}/submit`, {
                     method: 'POST',
