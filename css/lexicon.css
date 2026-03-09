@@ -13,7 +13,7 @@
     --lex-hover-bg: #ede8df;
 }
 
-.bio {
+.bio, .homepage-section {
     --lex-bg: #686868;
     --lex-border: #464646;
     --lex-text: #141414;
@@ -22,7 +22,7 @@
 
 .lexicon-term {
     font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
-    font-size: smaller;
+    font-size: medium;
 
     background-color: var(--lex-bg);
     border: 1px solid var(--lex-border);

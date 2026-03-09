@@ -97,7 +97,7 @@ class LexiconTerm extends HTMLElement {
   connectedCallback() {
     // We wrap this in a timeout so the browser has time to parse the inner text
     setTimeout(() => {
-      const termId = this.getAttribute('term') || this.innerText.trim();//toLowerCase().trim();
+      const termId = this.getAttribute('term') || this.innerText.toLowerCase().trim();//toLowerCase().trim();
       
       // If it's still empty, don't break the page
       if (!termId) return;

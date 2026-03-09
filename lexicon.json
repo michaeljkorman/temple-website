@@ -1,4 +1,8 @@
 {
+  "acquire": {
+    "title": "Acquire",
+    "content": "To buy an item (digital product)."
+  },
   "courtyard": {
     "title": "Courtyard",
     "content": "The public-facing, external spaces of the temple (such as comment sections, social media feeds, or public message boards). This is in contrast to the parts of the temple you pay to access."
@@ -10,6 +14,10 @@
   "enter": {
     "title": "Enter",
     "content": "The transition from passive observer to active participant. This occurs when you stop browsing and officially engage with the business, whether through a purchase or another formal channel."
+  },
+  "flame": {
+    "title": "Flame",
+    "content": "Time and energy spent creating digital products and content."
   },
   "gate": {
     "title": "Gate",
@@ -30,6 +38,10 @@
   "knock": {
     "title": "Knock",
     "content": "The act of showing up at a gate to request access."
+  },
+  "kormusic": {
+    "title": "KorMusic",
+    "content": "The system of music practice developed by Michael Korman (the priest)."
   },
   "myth": {
     "title": "Myth",
@@ -54,6 +66,10 @@
   "ritual": {
     "title": "Ritual",
     "content": "The ongoing stream of content and media produced by the temple."
+  },
+    "scroll": {
+    "title": "Scroll",
+    "content": "Text document."
   },
   "temple": {
     "title": "Temple",
