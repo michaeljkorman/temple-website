@@ -1,0 +1,62 @@
+{
+  "courtyard": {
+    "title": "Courtyard",
+    "content": "The public-facing, external spaces of the temple (such as comment sections, social media feeds, or public message boards). This is in contrast to the parts of the temple you pay to access."
+  },
+  "drop": {
+    "title": "Drop",
+    "content": "Any piece of gated content. This includes public content released under specific conditions or digital products accessible only to those who have made an offering."
+  },
+  "enter": {
+    "title": "Enter",
+    "content": "The transition from passive observer to active participant. This occurs when you stop browsing and officially engage with the business, whether through a purchase or another formal channel."
+  },
+  "gate": {
+    "title": "Gate",
+    "content": "A barrier to entry. This can be a paywall, a password-protected area, or a section that requires a specific action to be completed before access is granted."
+  },
+  "Gate of Intent": {
+    "title": "Gate of Intent",
+    "content": "A specialized gate that requires a declaration of intent. Unlike a standard 'Join' or 'Contact Me' button, it forces the user to manually state their motivation before access is granted. It serves as a qualitative filter to ensure that those who enter are doing so with deliberate focus rather than passive curiosity."
+  },
+  "god": {
+    "title": "Gods",
+    "content": "Fictional characters within the myth that represent higher forces outside the direct control of the priest."
+  },
+  "intent": {
+    "title": "Intent",
+    "content": "The specific motivation or reason for joining. It reflects the principle that participants approach the temple of their own volition rather than being targeted by traditional marketing."
+  },
+  "knock": {
+    "title": "Knock",
+    "content": "The act of showing up at a gate to request access."
+  },
+  "myth": {
+    "title": "Myth",
+    "content": "The overarching narrative of the temple. It encompasses the internal history of the project as well as the experiences and stories of everyone who interacts with it."
+  },
+  "offering": {
+    "title": "Offering",
+    "content": "Used in the temple the way most businesses would say 'price', 'payment', or 'fee'. A fixed cost for specific access or items; <b>not</b> a donation."
+  },
+  "Pillar of Stones": {
+    "title": "Pillar of Stones",
+    "content": "A progress marker for collective goals. As offerings are made, the stones light up. Each stone represents a specific financial milestone requirement."
+  },
+  "priest": {
+    "title": "Priest",
+    "content": "The creator and administrator of the temple. The individual responsible for the content, the rules, and the management of the business."
+  },
+  "rite": {
+    "title": "Rite",
+    "content": "An online course or structured educational program provided within the temple."
+  },
+  "ritual": {
+    "title": "Ritual",
+    "content": "The ongoing stream of content and media produced by the temple."
+  },
+  "temple": {
+    "title": "Temple",
+    "content": "The entire business and ecosystem. This refers to the total project, including the website, products, and all social media."
+  }
+}

@@ -28,3 +28,4 @@ document.querySelectorAll('.btn, button').forEach(el => {
     if (!window.PointerEvent) addPressed(e);
   });
 });
+

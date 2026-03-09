@@ -1,0 +1,257 @@
+:root {
+    /* --lex-bg: #1e1e1e; */
+    --lex-bg: #414141;
+    --lex-border: #333;
+    --lex-text: #e0dcd5;
+    --lex-hover-bg: #2d2d2d;
+}
+
+.question {
+    --lex-bg: #d6d2d0;
+    --lex-border: #e0dcd5;
+    --lex-text: #333;
+    --lex-hover-bg: #ede8df;
+}
+
+.bio {
+    --lex-bg: #686868;
+    --lex-border: #464646;
+    --lex-text: #141414;
+    --lex-hover-bg: #ede8df;
+}
+
+.lexicon-term {
+    font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+    font-size: smaller;
+
+    background-color: var(--lex-bg);
+    border: 1px solid var(--lex-border);
+    color: var(--lex-text);
+
+    padding: 2px 4px;
+    border-radius: 4px;
+    cursor: help;
+    text-decoration: none;
+    font-style: normal;
+    display: inline;
+    transition: all 0.2s ease;
+}
+
+.lexicon-term:hover {
+    background-color: var(--lex-hover-bg);
+    border-color: #b08d57;
+    /* Gold highlight */
+    color: #b08d57;
+    box-shadow: 0 0 8px rgba(176, 141, 87, 0.3);
+    /* Soft gold glow */
+}
+
+#lexicon-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    padding: 40px;
+
+    transform: translateX(100%);
+
+    background-color: #121212;
+    /* Deep Obsidian */
+    color: #d1d1d1;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    /* transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
+    transition: transform 0.5s ease, visibility 0.5s;
+
+    border-left: 1px solid #333;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+    visibility: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: block;
+}
+
+.drawer-header {
+    position: sticky;
+    top: -40px;
+    background-color: #121212;
+    /* padding: 40px;  */
+    z-index: 1010;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+#lexicon-drawer.open {
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Custom Scrollbar for the Drawer */
+#lexicon-drawer::-webkit-scrollbar {
+    width: 5px;
+}
+
+#lexicon-drawer::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+#lexicon-drawer::-webkit-scrollbar-thumb {
+    background: #333;
+    /* Matches your border color */
+    border-radius: 10px;
+}
+
+#lexicon-drawer::-webkit-scrollbar-thumb:hover {
+    background: #b08d57;
+    /* Turns gold when they scroll */
+}
+
+#lexicon-drawer h2 {
+    position: sticky;
+    top: -40px;
+    background-color: #121212;
+    /* Matches drawer background to hide text scrolling behind it */
+    margin: 0;
+    padding: 20px 0;
+    /* Adds some breathing room */
+    z-index: 10;
+    /* Ensures it stays above the scrolling definitions */
+    border-bottom: 1px solid #333;
+    /* Optional: adds a "shelf" effect when scrolling */
+    color: #b08d57;
+}
+
+.lexicon-entry h3 {
+    font-family: monospace;
+    background: #252525;
+    color: #b08d57;
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    text-transform: lowercase;
+    margin-bottom: 12px;
+}
+
+.lexicon-entry.active {
+    border-left: 2px solid #b08d57;
+    padding-left: 15px;
+    opacity: 1;
+}
+
+#lexicon-drawer .lexicon-entry.active {
+    color: #ffffff; /* Brighter text for focus */
+    border-left: 3px solid #b08d57; /* A "gold" vertical bar */
+    padding-left: 15px; /* Offset to accommodate the bar */
+    background-color: rgba(255, 255, 255, 0.03); /* Subtle highlight */
+    transition: all 0.3s ease;
+    padding-bottom: 5px;
+}
+
+#lexicon-drawer .lexicon-entry {
+    border-left: 3px solid transparent; /* Prevents layout shifting */
+    padding-left: 15px;
+    margin-bottom: 25px;
+    opacity: 0.6; /* Dim inactive terms */
+}
+
+#lexicon-drawer .lexicon-entry.active {
+    opacity: 1; /* Full brightness for the active term */
+}
+
+#temple-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    /* Deepen the shadow for your dark mode */
+    backdrop-filter: blur(1px);
+    z-index: 999;
+    display: none;
+    /* Hidden by default */
+    cursor: pointer;
+}
+
+/* Add a dimming overlay when the drawer is open */
+#lexicon-drawer.open~#temple-overlay {
+    display: block;
+}
+
+.close-btn {
+    /* Reset standard button styles */
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+
+    /* The Technical Look */
+    font-family: 'ui-monospace', monospace;
+    font-size: 1.2rem;
+    color: #666;
+    /* Dimmed by default */
+    cursor: pointer;
+
+    /* Positioning it in the drawer */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    /* Interaction */
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 32px;
+    border: 1px solid transparent;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+    /* Subtle red "exit" alert */
+    background-color: rgba(255, 77, 77, 0.1);
+    border: 1px solid rgba(255, 77, 77, 0.2);
+    border-radius: 4px;
+}
+
+/* Optional: Label it like code */
+.close-btn::before {
+    content: 'ESC';
+    font-size: 0.6rem;
+    margin-right: 8px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    letter-spacing: 1px;
+}
+
+.close-btn:hover::before {
+    opacity: 0.6;
+}
+
+@keyframes pulse-red {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+        color: #ff4d4d;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.close-pulse {
+    animation: pulse-red 0.2s ease-out;
+}
