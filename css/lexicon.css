@@ -13,11 +13,19 @@
     --lex-hover-bg: #ede8df;
 }
 
-.bio, .homepage-section {
+.bio,
+.homepage-section {
     --lex-bg: #686868;
     --lex-border: #464646;
     --lex-text: #141414;
     --lex-hover-bg: #ede8df;
+}
+
+.under-icons-text {
+    --lex-bg: #666666;
+    --lex-border: #333;
+    --lex-text: #a7a5a1;
+    --lex-hover-bg: #2d2d2d;
 }
 
 .lexicon-term {
@@ -144,23 +152,30 @@
 }
 
 #lexicon-drawer .lexicon-entry.active {
-    color: #ffffff; /* Brighter text for focus */
-    border-left: 3px solid #b08d57; /* A "gold" vertical bar */
-    padding-left: 15px; /* Offset to accommodate the bar */
-    background-color: rgba(255, 255, 255, 0.03); /* Subtle highlight */
+    color: #ffffff;
+    /* Brighter text for focus */
+    border-left: 3px solid #b08d57;
+    /* A "gold" vertical bar */
+    padding-left: 15px;
+    /* Offset to accommodate the bar */
+    background-color: rgba(255, 255, 255, 0.03);
+    /* Subtle highlight */
     transition: all 0.3s ease;
     padding-bottom: 5px;
 }
 
 #lexicon-drawer .lexicon-entry {
-    border-left: 3px solid transparent; /* Prevents layout shifting */
+    border-left: 3px solid transparent;
+    /* Prevents layout shifting */
     padding-left: 15px;
     margin-bottom: 25px;
-    opacity: 0.6; /* Dim inactive terms */
+    opacity: 0.6;
+    /* Dim inactive terms */
 }
 
 #lexicon-drawer .lexicon-entry.active {
-    opacity: 1; /* Full brightness for the active term */
+    opacity: 1;
+    /* Full brightness for the active term */
 }
 
 #temple-overlay {

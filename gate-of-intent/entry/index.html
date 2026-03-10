@@ -393,8 +393,7 @@
     <div class="question">
         <h1>The Gate of Intent – Entry Form</h1>
 
-        <p>The <lex-term term="gate">gates</lex-term> of the <lex-term>temple</lex-term> respond only to those who act with <lex-term>intent</lex-term>. By submitting this form, your <lex-term>intent</lex-term> will be recorded. The <lex-term>priest</lex-term> will review it, and if deemed worthy, <strong>begin a teaching</strong> with you within 24 hours. Until then, you remain in the <lex-term>courtyard</lex-term> with the others.</p>
-        <p class="warning"><strong>⛩️ BE AWARE</strong>: The <lex-term term="gate">temple gates</lex-term> open and close according to the clock. Time is of the essence. Messages will come from michael@michaelkorman.com or a Gmail address—<strong>check with care</strong>; those who miss the call miss the <lex-term term="Gate of Intent">Gate</lex-term>.</p>
+        <p>⛩️ The <lex-term term="gate">gates</lex-term> of the <lex-term>temple</lex-term> respond only to those who act with <lex-term>intent</lex-term>. By submitting this <lex-term term="Gate of Intent">form</lex-term>, your <lex-term>intent</lex-term> will be recorded. The <lex-term>priest</lex-term> (me) will personally review it and see if we’re a good fit. If so, I’ll begin a teaching with you within 24 hours, conducted via a <strong>back-and-forth email exchange</strong>. Until then, you remain in the <lex-term>courtyard</lex-term> with the others.</p>
 
         <p>🜃⦲</p>
 
@@ -417,19 +416,20 @@
         </div>
 
         <div class="question">
-            <label class="question-title required" for="handle">Primary Public Handle</label>
-            <p class="description">Provide a single, stable public profile (website, Instagram, YouTube, X, LinkedIn, etc.) showing real activity. Must be viewable <strong>without logging in</strong>. Throwaway or empty accounts will not receive a reply. Indicate the platform used.</p>
+            <label class="question-title required" for="handle">Primary Public or Professional Presence</label>
+            <p class="description">Share a profile that represents you and your work (website, YouTube, LinkedIn, research page, etc.). I’ll review it to understand who I’m speaking with before responding.</p>
+            <p class="description">If you don’t have a public profile, include something that represents your work (for example a piano recording, portfolio sample, or similar).</p>
             <input type="text" id="handle" name="handle" required>
         </div>
 
         <div class="question">
             <label class="question-title required" for="declaration">Declaration of <lex-term>Intent</lex-term></label>
-            <p class="description">Tell me what’s on your mind. No spiritual/fantasy language necessary. Feel free to info-dump; if it’s not clear enough, I’ll ask for more details.</p>
+            <p class="description">Tell me why you’re here. No spiritual/fantasy language necessary. If it’s not clear enough, I’ll ask for more details.</p>
             <textarea id="declaration" name="declaration" maxlength="500" required></textarea>
             <div id="declaration-char-count" class="char-count">500 characters remaining</div>
         </div>
 
-        <div class="question">
+        <!-- <div class="question">
             <label class="question-title required">Conditions of Engagement</label>
             <p class="description">You must agree to all conditions to <lex-term>enter</lex-term>.</p>
             <div class="checkbox-group">
@@ -442,18 +442,20 @@
                 <input type="checkbox" id="cond4" name="conditions" value="understand_gate" required>
                 <label for="cond4">I understand the Gate does not open for trolling, wasting time, or malicious intent, and that throwaway accounts will be rejected.</label>
             </div>
-        </div>
+        </div> -->
 
         <div class="question">
-            <label class="question-title" for="message">Message to the <lex-term>Priest</lex-term> (optional)</label>
-            <p class="description">Any words, questions, or declarations you wish to include. If we've had <strong>prior communication</strong>, also include any information that will help the temple recognize you (unless already provided above).</p>
+            <label class="question-title" for="message">Optional Message to the <lex-term>Priest</lex-term> (me)</label>
+            <p class="description">Any additional questions or information you wish to include. If we’ve had prior communication, also <strong>include any details that will help me recognize you</strong> (unless already provided above).</p>
             <textarea id="message" maxlength="500" name="message"></textarea>
             <div id="message-char-count" class="char-count">500 characters remaining</div>
         </div>
 
         <p class="payment-text">
-            An <lex-term>offering</lex-term> of $11 is required to <lex-term>knock</lex-term> on the <lex-term term="Gate of Intent">Gate</lex-term>.
-            <br><span style="font-size:smaller">You will be redirected to Stripe for payment.</span>
+            An <lex-term>offering</lex-term> (fee) of $11 is required to compensate me for my time in processing your submission.
+            <br><span style="font-size:smaller">You will be redirected to Stripe for payment.
+                <br>Either you’re on the bus or you’re not.
+            </span>
         </p>
 
         <!-- <p class="receipt-text">A copy of your response will be sent to the email you provided.</p> -->
@@ -491,7 +493,8 @@
                 const conditions = Array.from(form.querySelectorAll('input[name="conditions"]:checked'))
                     .map(cb => cb.value)
                     .join('; ');
-                data.set('conditions', conditions);
+                //data.set('conditions', conditions);
+                data.set('conditions', 'N/A');
 
                 const payload = Object.fromEntries(data.entries());
 
