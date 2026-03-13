@@ -25,7 +25,7 @@
   },
   "Gate of Intent": {
     "title": "Gate of Intent",
-    "content": "A specialized gate that requires a declaration of intent. Unlike a standard 'Join' or 'Contact Me' button, it forces the user to manually state their motivation before access is granted. It serves as a qualitative filter to ensure that those who enter are doing so with deliberate focus rather than passive curiosity."
+    "content": "A specialized gate that records a declaration of intent from those who cross it. Unlike a standard ‘Join’ or ‘Contact Me’ button, it requires both an offering and a written declaration before interaction begins. It serves as a qualitative filter to ensure that those who enter are doing so with deliberate focus rather than passive curiosity."
   },
   "god": {
     "title": "Gods",

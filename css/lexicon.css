@@ -28,6 +28,13 @@
     --lex-hover-bg: #2d2d2d;
 }
 
+.offering-notice {
+    --lex-bg: #0e0e0e;
+    --lex-border: #333;
+    --lex-text: #c4c1bc;
+    --lex-hover-bg: #2d2d2d;
+}
+
 .lexicon-term {
     font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
     font-size: medium;
@@ -36,7 +43,7 @@
     border: 1px solid var(--lex-border);
     color: var(--lex-text);
 
-    padding: 2px 4px;
+    padding: 1px 1px;
     border-radius: 4px;
     cursor: help;
     text-decoration: none;
