@@ -562,6 +562,14 @@
 
             // At this point, payment verified → continue fog reveal
             console.log("payment verified, continuing...");
+
+            // Fire PostHog event
+            if (window.posthog) {
+                posthog.capture("paid_gate_of_intent", {
+                    session_id: session_id
+                });
+            }
+
             const vid = document.getElementById("fog-video");
             const placeholder = document.getElementById("fog-placeholder");
 
