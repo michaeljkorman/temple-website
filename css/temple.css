@@ -5,35 +5,35 @@
 body {
   color: #cfd3d6;
 }
-
+/*
 #temple-fog {
   position: fixed;
   top: 0;
   left: 0;
-  /* inset: 0; */
+ 
   inset: 0;
 
-  /* background: rgba(255, 255, 255, 0.363); */
-  /* background: rgba(177, 177, 177, 0.329); */
+
   background: var(--fog-color);
   backdrop-filter: blur(1.2px);
   z-index: 50;
   pointer-events: none;
-  /* mix-blend-mode: lighten; */
+ */
 }
 
 #thin-temple-fog {
+/*
   position: fixed;
   top: 0;
   left: 0;
   inset: 0;
-  /* background: rgba(255, 255, 255, 0.096); */
-    /* background: rgba(255, 255, 255, 0.363); */
+ 
   background: var(--fog-color);
   backdrop-filter: blur(0.6px);
   z-index: 50;
   pointer-events: none;
-  /* mix-blend-mode: screen; */
+ 
+*/
 }
 
 .punch-through {
