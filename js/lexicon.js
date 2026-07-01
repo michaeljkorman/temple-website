@@ -20,10 +20,12 @@ async function openLexicon(termId) {
             let htmlContent = "";
 
             for (const [id, data] of Object.entries(lexicon)) {
+                // definition = data.definition;
+                definition = "🔒";
                 htmlContent += `
                     <div id="def-${id}" class="lexicon-entry">
                         <h3>${data.title}</h3>
-                        <p>${data.content}</p>
+                        <p>${definition}</p>
                     </div>`;
             }
 
