@@ -1,0 +1,165 @@
+/* Reset & Background Setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1f1f1f; /* Match the dark gray background from Krita */
+  color: #e0e0e0;
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* Vertical Scroll Column */
+.terminal-container {
+  width: 100%;
+  max-width: 360px;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px; /* Space between scrubbed frames */
+}
+
+/* Individual Frame Wrapper */
+.frame {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.frame.spill {
+  width: 135%; /* Expands 25% beyond the 360px parent container */
+  margin-left: -12.5%; /* Centers the oversized image */
+}
+
+/* Image Assets */
+.relic-img {
+  width: 100%;
+  /* height: auto; */
+  display: block;
+  pointer-events: none; /* Prevents accidental drag selection */
+}
+
+.frame.spill .relic-img {
+  width: 100%;
+  max-width: none; /* Overrides default max-width limits */
+}
+
+/* Buy Button Specific Interactions */
+.terminal-buy-link {
+  display: block;
+  width: 50%;
+  text-decoration: none;
+}
+
+.buy-btn-img {
+  pointer-events: auto; /* Re-enable pointer events for click/tap */
+  opacity: 0.85;
+  filter: brightness(0.9);
+  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.terminal-buy-link:hover .buy-btn-img {
+  opacity: 1;
+  filter: brightness(1.25);
+  transform: scale(1.02);
+}
+
+.terminal-buy-link:active .buy-btn-img {
+  transform: scale(0.98);
+  filter: brightness(1.4);
+}
+
+/* Accessibility: Hidden Text for Screen Readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.comment-cluster {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Vertical distance between comments */
+  width: 100%;
+}
+
+/* Individual comment sizing */
+.comment-cluster .relic-img {
+  max-width: 70%; /* Leaves room for staggering without touching screen edges */
+  height: auto;
+}
+
+/* Positional alignments */
+.comment-left {
+  align-self: flex-start;
+  margin-left: 5%;
+}
+
+.comment-right {
+  align-self: flex-end;
+  margin-right: 5%;
+}
+
+.comment-center {
+  align-self: center;
+}
+
+.video-frame {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.masked-video {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  display: block;
+  
+  /* Apply the Krita transparency mask */
+  -webkit-mask-image: url('assets/audiobook-mask.webp');
+  mask-image: url('assets/audiobook-mask.webp');
+  
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  
+  -webkit-mask-position: center;
+  mask-position: center;
+  
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.terminal-footer {
+  text-align: center;
+  padding: 40px 0 20px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.terminal-footer a {
+  color: #888;
+  text-decoration: none;
+}
+
+.terminal-footer a:hover {
+  color: #ccc;
+}
