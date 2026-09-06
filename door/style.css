@@ -163,3 +163,28 @@ a, button {
 .terminal-footer a:hover {
   color: #ccc;
 }
+
+.player-monitor {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  /* border: 1px solid #222; */
+}
+/* Subtle, thin playhead/sweep moving across the image */
+.sweep-line {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+  animation: sweep 4s linear infinite;
+}
+
+@keyframes sweep {
+  0% { left: 0%; opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { left: 100%; opacity: 0; }
+}
