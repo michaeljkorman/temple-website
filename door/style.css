@@ -5,6 +5,14 @@
   padding: 0;
 }
 
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #1f1f1f; /* Match the dark gray background from Krita */
   color: #e0e0e0;
@@ -12,7 +20,6 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  overflow-x: hidden;
 }
 
 /* Vertical Scroll Column */
@@ -31,11 +38,14 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 
 .frame.spill {
-  width: 135%; /* Expands 25% beyond the 360px parent container */
-  margin-left: -12.5%; /* Centers the oversized image */
+  width: 115%; /* Expands 25% beyond the 360px parent container */
+  margin-left: -7.5%;
+  /* Centers the oversized image */
 }
 
 /* Image Assets */
