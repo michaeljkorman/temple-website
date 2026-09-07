@@ -5,7 +5,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
@@ -14,7 +15,8 @@ html, body {
 }
 
 body {
-  background-color: #1f1f1f; /* Match the dark gray background from Krita */
+  background-color: #1f1f1f;
+  /* Match the dark gray background from Krita */
   color: #e0e0e0;
   font-family: system-ui, -apple-system, sans-serif;
   min-height: 100vh;
@@ -30,7 +32,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 100px; /* Space between scrubbed frames */
+  gap: 100px;
+  /* Space between scrubbed frames */
 }
 
 /* Individual Frame Wrapper */
@@ -42,14 +45,9 @@ body {
   position: relative;
 }
 
-@media (min-width: 1024px) {
-  .terminal-container {
-    max-width: 440px;
-  }
-}
-
 .frame.spill {
-  width: 115%; /* Expands 25% beyond the 360px parent container */
+  width: 115%;
+  /* Expands 25% beyond the 360px parent container */
   margin-left: -7.5%;
   /* Centers the oversized image */
 }
@@ -59,12 +57,14 @@ body {
   width: 100%;
   /* height: auto; */
   display: block;
-  pointer-events: none; /* Prevents accidental drag selection */
+  pointer-events: none;
+  /* Prevents accidental drag selection */
 }
 
 .frame.spill .relic-img {
   width: 100%;
-  max-width: none; /* Overrides default max-width limits */
+  max-width: none;
+  /* Overrides default max-width limits */
 }
 
 /* Buy Button Specific Interactions */
@@ -75,14 +75,16 @@ body {
 }
 
 .buy-btn-img {
-  pointer-events: auto; /* Re-enable pointer events for click/tap */
+  pointer-events: auto;
+  /* Re-enable pointer events for click/tap */
   opacity: 0.85;
   filter: brightness(0.9);
   transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
   cursor: pointer;
 }
 
-a, button {
+a,
+button {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -113,29 +115,34 @@ a, button {
 .comment-cluster {
   display: flex;
   flex-direction: column;
-  gap: 24px; /* Vertical distance between comments */
+  gap: 10px;
+  /* Vertical distance between comments */
   width: 100%;
 }
 
 /* Individual comment sizing */
 .comment-cluster .relic-img {
-  max-width: 70%; /* Leaves room for staggering without touching screen edges */
+  /* max-width: 60%; */
+  /* Leaves room for staggering without touching screen edges */
   height: auto;
 }
 
 /* Positional alignments */
 .comment-left {
   align-self: flex-start;
+  max-width: 60%;
   margin-left: 5%;
 }
 
 .comment-right {
   align-self: flex-end;
+  max-width: 60%;
   margin-right: 5%;
 }
 
 .comment-center {
   align-self: center;
+  max-width: 80%;
 }
 
 .video-frame {
@@ -149,17 +156,17 @@ a, button {
   max-width: 360px;
   height: auto;
   display: block;
-  
+
   /* Apply the Krita transparency mask */
   -webkit-mask-image: url('assets/audiobook-mask.webp');
   mask-image: url('assets/audiobook-mask.webp');
-  
+
   -webkit-mask-size: cover;
   mask-size: cover;
-  
+
   -webkit-mask-position: center;
   mask-position: center;
-  
+
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 }
@@ -186,6 +193,7 @@ a, button {
   overflow: hidden;
   /* border: 1px solid #222; */
 }
+
 /* Subtle, thin playhead/sweep moving across the image */
 .sweep-line {
   position: absolute;
@@ -199,8 +207,31 @@ a, button {
 }
 
 @keyframes sweep {
-  0% { left: 0%; opacity: 0; }
-  10% { opacity: 0.6; }
-  90% { opacity: 0.6; }
-  100% { left: 100%; opacity: 0; }
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.6;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .terminal-container {
+    max-width: 440px;
+  }
+
+  .comment-cluster {
+    max-width: 100%;
+  }
 }
