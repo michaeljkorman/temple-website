@@ -42,6 +42,12 @@ body {
   position: relative;
 }
 
+@media (min-width: 1024px) {
+  .terminal-container {
+    max-width: 440px;
+  }
+}
+
 .frame.spill {
   width: 115%; /* Expands 25% beyond the 360px parent container */
   margin-left: -7.5%;
