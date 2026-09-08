@@ -46,9 +46,9 @@ body {
 }
 
 .frame.spill {
-  width: 115%;
+  width: 125%;
   /* Expands 25% beyond the 360px parent container */
-  margin-left: -7.5%;
+  /* margin-left: -7.5%; */
   /* Centers the oversized image */
 }
 
