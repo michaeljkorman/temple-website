@@ -130,19 +130,19 @@ button {
 /* Positional alignments */
 .comment-left {
   align-self: flex-start;
-  max-width: 60%;
-  margin-left: 5%;
+  max-width: 80%;
+  margin-left: 0%;
 }
 
 .comment-right {
   align-self: flex-end;
-  max-width: 60%;
-  margin-right: 5%;
+  max-width: 80%;
+  margin-right: 0%;
 }
 
 .comment-center {
   align-self: center;
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .video-frame {
