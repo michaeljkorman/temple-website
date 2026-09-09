@@ -115,9 +115,10 @@ button {
 .comment-cluster {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0px;
   /* Vertical distance between comments */
   width: 100%;
+  overflow: visible;
 }
 
 /* Individual comment sizing */
@@ -143,6 +144,17 @@ button {
 .comment-center {
   align-self: center;
   max-width: 100%;
+}
+
+/* Pull every comment up so it overlaps the one above it */
+.comment-cluster > * + * {
+  margin-top: -20px;
+}
+
+/* Ensure the overlapping comments stack correctly */
+.comment-cluster > * {
+  position: relative;
+  z-index: 1;
 }
 
 .video-frame {
