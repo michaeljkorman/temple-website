@@ -117,7 +117,7 @@ button {
   flex-direction: column;
   gap: 0px;
   /* Vertical distance between comments */
-  width: 100%;
+  max-width: 100%;
   overflow: visible;
 }
 
@@ -144,6 +144,11 @@ button {
 .comment-center {
   align-self: center;
   max-width: 100%;
+}
+
+.comment-big {
+  align-self: center;
+  width: 140%;
 }
 
 /* Pull every comment up so it overlaps the one above it */
@@ -244,6 +249,6 @@ button {
   }
 
   .comment-cluster {
-    max-width: 100%;
+    max-width: 130%;
   }
 }
