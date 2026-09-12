@@ -24,6 +24,24 @@ body {
   justify-content: center;
 }
 
+h2 {
+  font-family: monospace;
+  color: #333333;
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+.stage-setting {
+  font-family: monospace;
+  color: #333333;
+  text-align: center;
+}
+
+.scene-heading {
+  margin-bottom: 1em;
+}
+
 /* Vertical Scroll Column */
 .terminal-container {
   width: 100%;
@@ -115,7 +133,7 @@ button {
 .comment-cluster {
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 20px;
   /* Vertical distance between comments */
   max-width: 100%;
   overflow: visible;
@@ -151,16 +169,41 @@ button {
   width: 140%;
 }
 
-/* Pull every comment up so it overlaps the one above it */
-.comment-cluster > * + * {
-  margin-top: -20px;
+.comment-strong {
+  max-width: 90%;
+  /* filter: brightness(140%); */
 }
 
+.comment-weak {
+  max-width: 70%;
+  opacity: 70%;
+}
+
+.comment-verystrong {
+  max-width: 100%;
+  filter: brightness(140%);
+}
+
+.comment-veryweak {
+  max-width: 60%;
+  opacity: 50%;
+}
+
+.comment-veryveryweak {
+  max-width: 50%;
+  opacity: 50%;
+}
+
+/* Pull every comment up so it overlaps the one above it */
+/* .comment-cluster > * + * {
+  margin-top: -20px;
+} */
+
 /* Ensure the overlapping comments stack correctly */
-.comment-cluster > * {
+/* .comment-cluster > * {
   position: relative;
   z-index: 1;
-}
+} */
 
 .video-frame {
   width: 100%;
