@@ -106,6 +106,17 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Make plain text links gray and distressed looking. Have separate colors for hover and active. */
+a:link,
+a:visited {
+  color: #999999;
+}
+
+a:hover,
+a:active {
+  color: #666666;
+}
+
 .terminal-buy-link:hover .buy-btn-img {
   opacity: 1;
   filter: brightness(1.25);
@@ -206,7 +217,7 @@ button {
 } */
 
 .video-frame {
-  width: 100%;
+  width: 70%;
   display: flex;
   justify-content: center;
 }
