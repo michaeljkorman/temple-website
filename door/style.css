@@ -32,6 +32,14 @@ h2 {
   margin-bottom: 0.5em;
 }
 
+.the-book-title {
+  font-family: monospace;
+  color: #333333;
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
 .stage-setting {
   font-family: monospace;
   color: #333333;
@@ -177,7 +185,7 @@ a:active {
 
 .comment-big {
   align-self: center;
-  width: 140%;
+  width: 130%;
 }
 
 .comment-strong {
