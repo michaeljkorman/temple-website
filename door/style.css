@@ -17,7 +17,7 @@ body {
 body {
   background-color: #1f1f1f;
   /* Match the dark gray background from Krita */
-  color: #e0e0e0;
+  color: #707070;
   font-family: system-ui, -apple-system, sans-serif;
   min-height: 100vh;
   display: flex;
@@ -109,7 +109,7 @@ button {
 /* Make plain text links gray and distressed looking. Have separate colors for hover and active. */
 a:link,
 a:visited {
-  color: #999999;
+  color: #818181;
 }
 
 a:hover,
