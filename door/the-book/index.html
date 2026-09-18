@@ -90,7 +90,7 @@
 
         <!-- Frame 12: Purchase Mechanism -->
         <section class="frame frame-action">
-            <a href="https://payhip.com/buy?link=23rYU" class="terminal-buy-link" aria-label="Digital Bundle — $19">
+            <a href="https://payhip.com/buy?link=23rYU" id="get-digital-bundle-btn" class="terminal-buy-link" aria-label="Digital Bundle — $19">
                 <img src="../assets/button-digital.webp" alt="" role="presentation" class="relic-img buy-btn-img">
             </a>
         </section>
@@ -114,6 +114,21 @@
             </p>
         </footer>
     </main>
+
+    <script>
+        const btn = document.getElementById('get-digital-bundle-btn');
+
+        btn.addEventListener('click', () => {
+            try {
+                posthog.capture('get_the_book_clicked',
+                    { destination: 'payhip' },
+                    { transport: 'sendBeacon', send_instantly: true }
+                );
+            } catch (e) {
+                // PostHog blocked or not loaded — carry on  
+            }
+        });  
+    </script>
 </body>
 
 </html>
