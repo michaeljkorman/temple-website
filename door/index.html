@@ -49,6 +49,10 @@
             <div class="sr-only">
             </div>
 
+            <div class="vignette-date">
+                <p>July, 2026</p>
+            </div>
+
             <!-- <div class="scene-heading">
                 <h2>Battle #1</h2>
                 <p class="stage-setting">As seen in the YouTube comments.</p>
@@ -83,6 +87,7 @@
             <div class="sr-only">
                 <p>Fragment of text from a book reading: </p>
             </div>
+
             <img src="assets/vow-of-silence.webp" alt="Fragment of text about the priest saying NO" class="relic-img">
         </section>
 
@@ -110,6 +115,10 @@
         <!-- Frame 7: Scene "academic + progress" -->
         <section class="frame comment-cluster">
             <div class="sr-only">
+            </div>
+
+            <div class="vignette-date">
+                <p>May, 2026</p>
             </div>
 
             <img src="assets/progress-parable.webp" alt="" class="relic-img comment-left">
@@ -177,6 +186,32 @@
             </p>
         </footer>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                // Triggers as soon as the top of the element crosses 15% up from the bottom of the screen
+                rootMargin: '0px 0px -15% 0px',
+                threshold: 0 // Fires immediately upon touching that line, regardless of element height
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        console.log("adding visible " + entry.target.id);
+                        // Un-observe if you only want the animation to play once:
+                        //observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.frame').forEach(block => {
+                observer.observe(block);
+            });
+        });
+    </script>
 </body>
 
 </html>
