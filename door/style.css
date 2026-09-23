@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-VariableFont_wght.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Italic-VariableFont_wght.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Reset & Background Setup */
 * {
   box-sizing: border-box;
@@ -15,6 +31,7 @@ body {
 }
 
 body {
+  overflow-x: clip;
   background-color: #1f1f1f;
   /* Match the dark gray background from Krita */
   color: #464646;
@@ -76,6 +93,35 @@ h2 {
   /* Expands 25% beyond the 360px parent container */
   /* margin-left: -7.5%; */
   /* Centers the oversized image */
+}
+
+.vignette-date {
+  font-family: "Geist Mono", monospace;
+  font-size: 2.0rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  /* text-transform: uppercase; */
+  /* color: #e0e0e0; */
+  color:rgba(255, 255, 255, 0.4);
+  
+  /* Initial hidden state */
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  margin-bottom: 1.5rem;
+  border-left: 3px solid #ff3333; /* Optional stark visual accent */
+  padding-left: 1rem;
+}
+
+/* Active state triggered on scroll */
+.frame.visible .vignette-date {
+  opacity: 1;
+  transform: translateX(0);
+  position: sticky;
+  top: 50%;
+  z-index: 1;
 }
 
 /* Image Assets */
@@ -305,37 +351,6 @@ a:active {
   }
 }
 
-.vignette-date {
-  font-family: "DejaVu Sans Mono", monospace;
-  font-size: 2.0rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #e0e0e0;
-
-  /* TURN OFF FOR NOW */
-  display: none;
-  
-  /* Initial hidden state */
-  opacity: 0;
-  transform: translateX(-60px);
-  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
-  
-  margin-bottom: 1.5rem;
-  border-left: 3px solid #ff3333; /* Optional stark visual accent */
-  padding-left: 1rem;
-}
-
-/* Active state triggered on scroll */
-.frame.visible .vignette-date {
-  opacity: 0.5;
-  transform: translateX(0);
-  position: sticky;
-  top: 1rem;
-  z-index: 1;
-}
-
 @media (min-width: 1024px) {
   .terminal-container {
     max-width: 440px;
@@ -343,5 +358,10 @@ a:active {
 
   .comment-cluster {
     max-width: 130%;
+  }
+
+  .frame.visible .vignette-date {
+    opacity: 1;
+    transform: translateX(-200px);
   }
 }
