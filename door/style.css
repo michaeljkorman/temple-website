@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-family: 'Geist Mono';
+  font-family: 'Geist Mono', monospace;
   src: url('/fonts/GeistMono-Italic-VariableFont_wght.woff2') format('woff2');
   font-weight: 100 900;
   font-style: italic;
@@ -35,7 +35,7 @@ body {
   background-color: #1f1f1f;
   /* Match the dark gray background from Krita */
   color: #464646;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: "Geist Mono", system-ui, -apple-system, sans-serif;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -163,12 +163,12 @@ button {
 /* Make plain text links gray and distressed looking. Have separate colors for hover and active. */
 a:link,
 a:visited {
-  color: #818181;
+  color: #494949;
 }
 
 a:hover,
 a:active {
-  color: #666666;
+  color: #4d4d4d;
 }
 
 .terminal-buy-link:hover .buy-btn-img {
