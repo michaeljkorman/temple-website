@@ -93,6 +93,7 @@ h2 {
   /* Expands 25% beyond the 360px parent container */
   /* margin-left: -7.5%; */
   /* Centers the oversized image */
+  /* overflow: visible; */
 }
 
 .vignette-date {
@@ -120,7 +121,7 @@ h2 {
   opacity: 1;
   transform: translateX(0);
   position: sticky;
-  top: 50%;
+  top: 3rem;
   z-index: 1;
 }
 
