@@ -128,9 +128,13 @@ h3 {
 .frame.visible .vignette-date {
   opacity: 1;
   transform: translateX(0);
+  /* top: 3rem; */
+  z-index: 1;
+}
+
+.vignette-date.sticky {
   position: sticky;
   top: 3rem;
-  z-index: 1;
 }
 
 /* Image Assets */
@@ -169,6 +173,11 @@ h3 {
   cursor: pointer;
 }
 
+.under-btn-link {
+
+}
+
+}
 a,
 button {
   -webkit-tap-highlight-color: transparent;
@@ -177,12 +186,12 @@ button {
 /* Make plain text links gray and distressed looking. Have separate colors for hover and active. */
 a:link,
 a:visited {
-  color: #494949;
+  color: #919191;
 }
 
 a:hover,
 a:active {
-  color: #4d4d4d;
+  color: #aaaaaa;
 }
 
 .terminal-buy-link:hover .buy-btn-img {
@@ -328,7 +337,7 @@ a:active {
 } */
 
 .video-frame {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
