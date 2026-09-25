@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get the Book ­— The Temple Papers</title>
+    <title>Read Before Buying</title>
 
     <link rel="icon" href="/images/favicon-flame.png" type="image/png">
 
@@ -19,27 +19,32 @@
 <body>
 
     <main class="terminal-container">
+        <section class="frame text-frame">
+            <h1 class="the-book-title">Read Before Buying</h1>
 
-        <h1 class="the-book-title">Get the Book</h1>
+            <!-- <h3>Why MISERY? Why not JOY?</h3> -->
 
-        <!-- Frame 12: File Manager" -->
-        <section class="frame">
-            <div class="sr-only">
-                <p>A file manager showing three files:
-                <ol>
-                    <li>the-temple-papers.epub (425 KiB) - Electronic book document</li>
-                    <li>the-temple-papers.m4b (221.5 MiB) - MPEG4 audio book</li>
-                    <li>the-temple-papers.pdf (1.9 MiB) - PDF document</li>
-                </ol>
-                </p>
-            </div>
-            <img src="/door/assets/file-manager.webp" alt="Screenshot of 3 files" class="relic-img">
+            <p>Throughout <em>The Temple Papers</em>, you’ll see me referring to MISERY as the force that turns the engine of money.</p>
+
+            <p>We buy food when we’re hungry.</p>
+            <p> We get a new phone when our old one breaks.</p>
+            <p> We sign up for a yoga class when we feel restless and sick of sitting on the couch. </p>
+
+            <p>Emotions are what make us <em>move</em>—and I’m calling them all “MISERY”.</p>
+
+            <p>But why MISERY? Why not JOY?</p>
+
+            <p>Is this just pessimism?</p>
+
+            <p>Not at all. It’s Buddhism.</p>
+
+            <p>Consider yourself warned.</p>
         </section>
 
         <!-- Frame 12: Purchase Mechanism -->
         <section class="frame frame-action">
-            <a href="misery/" id="get-digital-bundle-btn" class="terminal-buy-link" aria-label="Digital Bundle — $19">
-                <img src="/door/assets/button-digital.webp" alt="" role="presentation" class="relic-img buy-btn-img">
+            <a href="https://payhip.com/buy?link=23rYU" id="keep-going-btn" class="terminal-buy-link" aria-label="Keep Going">
+                <img src="/door/assets/button-keepgoing.webp" alt="" role="presentation" class="relic-img buy-btn-img">
             </a>
         </section>
 
@@ -51,10 +56,6 @@
             <img src="assets/typst-template.webp" alt="Fragment of computer code" class="relic-img">
         </section> -->
 
-        <section class="frame">
-            <p>(Paperback edition available on Amazon.)</p>
-        </section>
-
         <footer class="terminal-footer">
             <p>
                 <a href="https://shop.michaelkorman.com/contact">Contact</a> |
@@ -64,11 +65,11 @@
     </main>
 
     <script>
-        const btn = document.getElementById('get-digital-bundle-btn');
+        const btn = document.getElementById('keep-going-btn');
 
         btn.addEventListener('click', () => {
             try {
-                posthog.capture('digital_bundle_clicked',
+                posthog.capture('keep_going_clicked',
                     { destination: 'payhip' },
                     { transport: 'sendBeacon', send_instantly: true }
                 );
