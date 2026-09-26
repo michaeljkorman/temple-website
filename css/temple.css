@@ -21,8 +21,8 @@ body {
 }
   */
 
-#thin-temple-fog {
 /*
+#thin-temple-fog {
   position: fixed;
   top: 0;
   left: 0;
@@ -32,9 +32,8 @@ body {
   backdrop-filter: blur(0.6px);
   z-index: 50;
   pointer-events: none;
- 
-*/
 }
+*/
 
 .punch-through {
   position: relative;
