@@ -29,7 +29,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: 'Geist Mono', monospace; /*'Lora', serif; */
+      font-family: 'Geist Mono', monospace;
+      /*'Lora', serif; */
       background-color: #5B5B5B;
       color: black;
     }
@@ -79,7 +80,8 @@
 
     h1 {
       margin: 0.5rem 0 0.5rem 0;
-      font-family: 'Geist Mono', monospace; /*'Alegreya', serif; */
+      font-family: 'Geist Mono', monospace;
+      /*'Alegreya', serif; */
       color: black;
       /* font-weight: bold; */
       font-size: 1.2rem;
@@ -196,7 +198,7 @@
       --bg-color-initial: #18121c21;
       border-radius: 12px;
       text-decoration: none;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
       overflow: hidden;
@@ -292,14 +294,16 @@
       width: 95px;
       height: 95px;
       /* overflow: hidden; */
-      /* z-index: 2; */ /* I don't know why this was here but it's blocking the text on the button so commenting it out for now */
+     
+      /* z-index: 2; */
+      /* I don't know why this was here but it's blocking the text on the button so commenting it out for now */
     }
 
     .img-wrap::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, var(--bg-color-initial) 0%, var(--bg-color) 100%);
+      background: linear-gradient(to right, var(--bg-color-initial) -40%, var(--bg-color) 95%);
       pointer-events: none;
       width: 97px;
     }
@@ -382,7 +386,7 @@
         <a href="/door" class="btn" data-attr="the-temple-papers-btn">
           <span class="img-wrap">
             <!-- <img src="images/the-temple-papers-audiobook.jpeg" alt=""> -->
-                        <img src="images/the-temple-papers-pen.jpeg" alt="">
+            <img src="images/the-temple-papers-pen.jpeg" alt="">
 
           </span>
           <span class="btn-text">The Temple Papers
@@ -400,14 +404,14 @@
           <span class="img-wrap">
             <img src="images/ritual-smoke.png" alt="">
           </span>
-          <span class="btn-text">Ruins of the<br>Ritual Hall</span>
+          <span class="btn-text">Ruins of the Ritual Hall</span>
         </a>
 
         <a class="btn btn-disabled">
           <span class="img-wrap">
             <img src="images/laws.png" alt="">
           </span>
-          <span class="btn-text">Laws of the<br>Temple</span>
+          <span class="btn-text">Laws of the Temple</span>
         </a>
 
         <!-- <a href="https://offering.michaelkorman.com/" class="btn" rel="nofollow"> -->
@@ -415,7 +419,7 @@
           <span class="img-wrap">
             <img src="images/offering.png" alt="">
           </span>
-          <span class="btn-text">Temple Offering<br>$11</span>
+          <span class="btn-text">Temple Offering — $11</span>
         </a>
 
         <!--<a href="/temple-bucks" class="btn">
@@ -449,7 +453,7 @@
           <span class="img-wrap">
             <img src="images/tys-text.png" alt="">
           </span>
-          <span class="btn-text">Take Yourself<br>Seriously</span>
+          <span class="btn-text">Take Yourself Seriously</span>
         </a>
 
         <!-- <a href="https://www.paypal.com/ncp/payment/RKZEL5FV9TR66" class="btn btn-disabled" data-attr="rite-of-distortion-btn"> -->
@@ -502,7 +506,7 @@
           <span class="img-wrap">
             <img src="images/every-tiny-thing.jpeg" alt="">
           </span>
-          <span class="btn-text">An Artifact from before<br>the Collapse</span>
+          <span class="btn-text">An Artifact from before</span>
         </a>
       </div>
 
@@ -526,7 +530,8 @@
 
     </div>
     <footer>© 2020-2026 Michael Korman<br><a href="/about">About</a> |
-<a href="https://shop.michaelkorman.com/contact">Contact</a> | <a href="/privacy">Privacy Policy</a></footer>
+      <a href="https://shop.michaelkorman.com/contact">Contact</a> | <a href="/privacy">Privacy Policy</a>
+    </footer>
 
   </div>
 
